@@ -1,0 +1,36 @@
+#vertical_signature {
+    position: absolute;
+    width: 81.88px;
+    height: 165.61px;
+    left: 191px;
+    top: 54.02px;
+}
+.landing_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    position: absolute;
+    width: 835px;
+    height: 131px;
+    left: 235.25px;
+    top: 316.98px;
+    .top {
+        font-weight: 900;
+        font-size: 100px;
+    }
+    .bottom {
+        .email {
+            font-weight: 400;
+            font-size: 20px;
+        }
+        .desc {
+            font-weight: 700;
+            font-size: 30px;
+        }
+    }
+    ::selection {
+        background: black;
+        color: white;
+    }
+}

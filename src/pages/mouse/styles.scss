@@ -1,0 +1,18 @@
+#mouse-wrapper {
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 1;
+    z-index: 4;
+    .mouse-inner {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        transform: translate(-50%, -50%);
+        -webkit-transition: background-color 300ms linear;
+        -ms-transition: background-color 300ms linear;
+        transition: background-color 300ms linear;
+    }
+}
