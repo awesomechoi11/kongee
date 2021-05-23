@@ -18,5 +18,10 @@ export default function useLoadTracker(assets) {
             },
         };
     }
+    if (loading) {
+        if (total.current === totalLoaded.current) {
+            setLoading(false);
+        }
+    }
     return [result, loading, progress];
 }

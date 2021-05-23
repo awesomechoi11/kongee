@@ -2,7 +2,31 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    z-index: 2;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    z-index: 1;
+    // overflow-y: scroll;
+    // overflow-x: hidden;
+}
+
+#navbar {
+    position: absolute;
+    left: 200.69px;
+    right: 76.26px;
+    top: 65px;
+    display: flex;
+    justify-content: space-between;
+    .right {
+        gap: 18px;
+        display: flex;
+        align-items: center;
+    }
+    .nav_button {
+        cursor: pointer;
+        padding: 8px 16px;
+        font-weight: bold;
+    }
+    #language_globe {
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+    }
 }

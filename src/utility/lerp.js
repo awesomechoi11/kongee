@@ -1,3 +1,7 @@
-export default function lerp(a, b, t) {
-    return a.map((value, index) => value * (1 - t) + b[index] * t);
+export default function lerp(fromArr, toArr, t) {
+    return fromArr.map((value, index) =>
+        Math.abs(value - toArr[index]) > 1
+            ? value * (1 - t) + toArr[index] * t
+            : toArr[index]
+    );
 }

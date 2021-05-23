@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function LoadingOverlay() {
     const loadingState = useRecoilValue(loading_atom);
-    console.log(loadingState);
     return (
         <AnimatePresence>
             {loadingState.loading && (
@@ -16,6 +15,7 @@ function LoadingOverlay() {
                     exit={{ opacity: 0 }}
                     transition={{
                         delay: 1,
+                        duration: 1,
                     }}
                     id="loadingOverlay"
                 >

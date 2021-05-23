@@ -26,8 +26,7 @@ body,
     height: 100vh;
     font-family: Apparel;
     font-weight: normal;
-}
-#Main {
-    width: 100vw;
-    height: 100vh;
+    // isolation: isolate;
+    color: black;
+    background-color: white;
 }

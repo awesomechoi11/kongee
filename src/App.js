@@ -7,8 +7,8 @@ function App() {
     return (
         <>
             <Mouse />
-            <LoadingOverlay />
             <Main />
+            <LoadingOverlay />
         </>
     );
 }
