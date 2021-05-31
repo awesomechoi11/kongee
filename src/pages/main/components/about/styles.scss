@@ -1,0 +1,256 @@
+.scrollhere {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+#about {
+    background-color: white;
+    position: relative;
+    width: 1920px;
+    height: 2415px;
+    .square {
+        position: absolute;
+        width: 544px;
+        height: 544px;
+        left: 197.5px;
+        top: 184px;
+        background: black;
+        cursor: pointer;
+    }
+    .square2 {
+        position: absolute;
+        width: 460px;
+        height: 457.5px;
+        left: 371.25px;
+        top: 338.23px;
+        background: black;
+    }
+    .about-me {
+        position: absolute;
+        width: 322px;
+        height: 240px;
+        left: 770.52px;
+        top: 310.23px;
+
+        font-family: Apparel;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 120px;
+        line-height: 100%;
+        mix-blend-mode: difference;
+        color: white;
+    }
+
+    .group-1 {
+        position: absolute;
+        width: 847.77px;
+        height: 851.01px;
+        left: 873.54px;
+        top: 764.99px;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            .phrase {
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 48px;
+                line-height: 63px;
+                /* identical to box height */
+
+                color: #000000;
+            }
+            .icons {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 63px;
+                .social_wrapper {
+                    cursor: pointer;
+                    .circle {
+                        width: 41px;
+                        height: 41px;
+                        position: absolute;
+                        border-radius: 100%;
+                    }
+                }
+            }
+        }
+
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            margin: 15px 0;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            .title {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 2px;
+            }
+            .body {
+                width: 608.76px;
+                font-size: 20px;
+                line-height: 26px;
+            }
+            .list {
+                display: flex;
+                gap: 70px;
+                > * {
+                    width: 270pxr;
+                }
+            }
+        }
+    }
+
+    .group-2 {
+        position: absolute;
+        width: 302px;
+        height: 425.64px;
+        left: 200.69px;
+        top: 1184.53px;
+        .date {
+            font-family: Apparel;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 120px;
+            line-height: 100%;
+        }
+        .age {
+            font-family: Apparel;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 21px;
+        }
+    }
+    .group-3 {
+        position: absolute;
+        width: 617.21px;
+        height: 350.3px;
+        left: 324.4px;
+        top: 1687.17px;
+        display: flex;
+        justify-content: space-between;
+        .left {
+            width: 218.42px;
+        }
+        .right {
+            width: 359.83px;
+            .top {
+                margin-top: 32px;
+                margin-bottom: 49px;
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 31px;
+            }
+            .middle {
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 48px;
+                line-height: 63px;
+                text-decoration-line: underline;
+                margin-bottom: 17px;
+            }
+            .bottom {
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 30px;
+                line-height: 39px;
+            }
+        }
+    }
+    .group-4 {
+        position: absolute;
+        width: 899.31px;
+        height: 160.37px;
+        left: 200.69px;
+        top: 2161.65px;
+        .top {
+            font-family: Apparel;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 63px;
+        }
+        .bottom {
+            font-family: Apparel;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 26px;
+        }
+    }
+    .group-5 {
+        > * {
+            transform-origin: top left;
+        }
+        .big-line {
+            position: absolute;
+            width: 1737.77px;
+            height: 2px;
+            left: 200.69px;
+            top: 1003.39px;
+            mix-blend-mode: difference;
+
+            background-color: #ffffff;
+            transform: rotate(38.62deg);
+        }
+        .small-line {
+            position: absolute;
+            width: 530.09px;
+            height: 2px;
+            left: 1022.21px;
+            top: 2144.82px;
+            mix-blend-mode: difference;
+
+            background-color: #ffffff;
+            transform: rotate(-25.24deg);
+        }
+        .circle1 {
+            position: absolute;
+            width: 333.43px;
+            height: 333.43px;
+            left: 1145.14px;
+            top: 1787px;
+            border-radius: 100%;
+            background: #ffffff;
+            mix-blend-mode: difference;
+        }
+        .circle2 {
+            position: absolute;
+            width: 83.47px;
+            height: 83.47px;
+            left: 1099.99px;
+            top: 1911.98px;
+            border-radius: 100%;
+            mix-blend-mode: difference;
+
+            background: #ffffff;
+        }
+        .circle3 {
+            position: absolute;
+            width: 29.93px;
+            height: 29.93px;
+            left: 1588.38px;
+            top: 2082.53px;
+            border-radius: 100%;
+            mix-blend-mode: difference;
+
+            background: #ffffff;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+    }
+}

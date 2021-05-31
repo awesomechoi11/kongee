@@ -1,28 +1,11 @@
 import { atom, selector } from "recoil";
 
-// const textState = atom({
-//     key: "textState", // unique ID (with respect to other atoms/selectors)
-//     default: "", // default value (aka initial value)
-// });
-
 export const mouse_atom = atom({
     key: "mouse_atom", // unique ID (with respect to other atoms/selectors)
     default: {
         animState: "default",
         backgroundColor: "#fff",
     }, // default value (aka initial value)
-});
-
-export const mouseAnimState_atom = selector({
-    key: "mouseAnimState_atom", // unique ID (with respect to other atoms/selectors)
-    get: ({ get }) => {
-        const mouseState = get(mouse_atom);
-        return mouseState.animState;
-    },
-    set: ({ get, set }, newValue) => {
-        const oldState = get(mouse_atom);
-        set(mouse_atom, { ...oldState, animState: newValue });
-    },
 });
 
 export const mousePartialState_atom = selector({
@@ -69,4 +52,9 @@ export const loading_atom = atom({
         loading: true,
         progress: 0,
     }, // default value (aka initial value)
+});
+
+export const transition_atom = atom({
+    key: "transition_atom", // unique ID (with respect to other atoms/selectors)
+    default: true, // default value (aka initial value)
 });

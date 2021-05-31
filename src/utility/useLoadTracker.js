@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { loading_atom } from "../recoil/atoms";
 
 export default function useLoadTracker(assets) {
     var result = {};
     const total = useRef(Object.keys(assets).length);
     const totalLoaded = useRef(0);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useRecoilState(loading_atom);
     const [progress, setProgress] = useState(0);
     for (const [key, value] of Object.entries(assets)) {
         result[key] = {
@@ -23,5 +25,6 @@ export default function useLoadTracker(assets) {
             setLoading(false);
         }
     }
+
     return [result, loading, progress];
 }

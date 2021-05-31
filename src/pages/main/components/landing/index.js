@@ -18,20 +18,14 @@ import {
 } from "../../../../assets/socialMediaIcons";
 import lerp from "../../../../utility/lerp";
 import { motion } from "framer-motion";
+import { rectToCenter } from "../../../../utility/elemCenter";
+import GravityButton from "../../../../components/GravityButton";
+import ReactiveShape from "../../../../components/ReactiveShape";
 
 function Landing() {
     const [loadTracker, loading, progress] = useLoadTracker({
         vsig,
     });
-    const setLoading = useSetRecoilState(loading_atom);
-    useLayoutEffect(() => {
-        if (!loading) {
-            setLoading({
-                loading,
-                progress,
-            });
-        }
-    }, [loading, progress]);
     const setMouse = useSetRecoilState(mousePartialState_atom);
 
     const sizeEvents = (animState) => ({
@@ -45,6 +39,7 @@ function Landing() {
                 animState: "big",
             }),
     });
+
     return (
         <motion.div id="landing">
             <img
@@ -63,7 +58,7 @@ function Landing() {
                                 animState: "big",
                             })}
                         >
-                            hello@kongee.com
+                            hello@kongee.info
                         </span>
                     </div>
                     <div className="desc">ux/ui & product designer</div>
@@ -136,75 +131,3 @@ function Landing() {
 }
 
 export default Landing;
-
-function rectToCenter(rect) {
-    return [rect.left + rect.width / 2, rect.top + rect.height / 2];
-}
-
-function GravityButton({ enterRadius, leaveRadius, ...props }) {
-    const setOverride = useSetRecoilState(override_mouse_atom);
-    const [enabled, setEnabled] = useState(false);
-    const socialWidth = 25;
-    const translate =
-        socialWidth / 2 - (enabled ? leaveRadius : enterRadius) / 2;
-
-    function handleMouseMove(e) {
-        if (!enabled) setEnabled(true);
-        const position = [e.clientX, e.clientY];
-        const center = rectToCenter(e.target.getBoundingClientRect());
-        setOverride({
-            enabled: true,
-            position: lerp(position, center, 0.9),
-        });
-    }
-    function handleMouseLeave() {
-        setEnabled(false);
-        setOverride({
-            enabled: false,
-            position: [0, 0],
-        });
-    }
-    return (
-        <div {...props}>
-            <span
-                className="circle"
-                style={{
-                    width: enabled ? leaveRadius : enterRadius,
-                    height: enabled ? leaveRadius : enterRadius,
-                    transform: `translate(${translate}px,${translate}px)`,
-                }}
-                onMouseLeave={handleMouseLeave}
-                onMouseMove={handleMouseMove}
-            ></span>
-            {props.children}
-        </div>
-    );
-}
-
-function ReactiveShape({ lerpValue, rotate = 0, ...props }) {
-    const mousePosition = useRecoilValue(global_mouse_position_atom);
-    const lerpedPosition = useRef([0, 0]);
-    const elem = useRef(null);
-    const center = useRef(null);
-    const style = useRef(null);
-    useLayoutEffect(() => {
-        if (elem.current && mousePosition.default) {
-            if (!center.current) {
-                center.current = rectToCenter(
-                    elem.current.getBoundingClientRect()
-                );
-            }
-            lerpedPosition.current = lerp(
-                center.current,
-                mousePosition.lerped,
-                lerpValue
-            );
-            style.current = {
-                transform: `translate(calc(${lerpedPosition.current[0]}px - 50%),calc(${lerpedPosition.current[1]}px - 50%)) rotate(${rotate}deg)`,
-                top: 0,
-                left: 0,
-            };
-        }
-    }, [elem, mousePosition]);
-    return <div {...props} style={style.current} ref={elem} />;
-}

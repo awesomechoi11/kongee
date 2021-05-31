@@ -1,6 +1,11 @@
 import { useSetRecoilState } from "recoil";
-import { loading_atom, mousePartialState_atom } from "../../recoil/atoms";
-import React, { Suspense, useLayoutEffect } from "react";
+import {
+    loading_atom,
+    mousePartialState_atom,
+    override_mouse_atom,
+    transition_atom,
+} from "../../recoil/atoms";
+import React, { Suspense, useEffect, useLayoutEffect, useState } from "react";
 
 import {
     BrowserRouter as Router,
@@ -8,46 +13,87 @@ import {
     Route,
     Link,
     useHistory,
+    useLocation,
 } from "react-router-dom";
 import "./styles.scss";
-import { AnimatePresence } from "framer-motion";
+import {
+    AnimatePresence,
+    useAnimation,
+    useMotionValue,
+    motion,
+} from "framer-motion";
 import { globe_svg } from "../../assets/svg";
+import { eventToCenter } from "../../utility/elemCenter";
+import clsx from "clsx";
+
+function withTransitionSetter(WrappedComponent) {
+    return () => {
+        const setTransition = useSetRecoilState(transition_atom);
+
+        useEffect(() => {
+            setTransition(false);
+        }, []);
+        return <WrappedComponent />;
+    };
+}
 
 const routeMap = [
     {
         name: "landing",
         path: "/",
-        component: React.lazy(() => import("./components/landing")),
-        children: <span className="navbar_left_name">SALLY (HYUNJI) KIM</span>,
+        component: withTransitionSetter(
+            React.lazy(() => import("./components/landing"))
+        ),
+        children: "SALLY (HYUNJI) KIM",
         onNavbar: "left",
         showNavbar: true,
+        exact: true,
     },
     {
         name: "work",
         path: "/work",
-        component: React.lazy(() => import("./components/work")),
+        component: withTransitionSetter(
+            React.lazy(() => import("./components/work"))
+        ),
         children: "WORK",
         onNavbar: "right",
         showNavbar: true,
+        exact: false,
     },
     {
         name: "playground",
         path: "/playground",
-        component: React.lazy(() => import("./components/work")),
+        component: withTransitionSetter(
+            React.lazy(() => import("./components/work"))
+        ),
         children: "PLAYGROUND",
         onNavbar: "right",
         showNavbar: true,
+        exact: true,
+    },
+    {
+        name: "about",
+        path: "/about",
+        component: withTransitionSetter(
+            React.lazy(() => import("./components/about"))
+        ),
+        children: "ABOUT",
+        onNavbar: "right",
+        showNavbar: true,
+        exact: true,
     },
 ];
 
 function Navbar() {
+    const location = useLocation();
     return (
         <div id="navbar">
             <div className="left">
                 {routeMap.map(
-                    (pageData) =>
-                        pageData.onNavbar === "left" && (
-                            <NavButton path={pageData.path}>
+                    (pageData, index) =>
+                        pageData.onNavbar === "left" &&
+                        location.pathname !== "/" && (
+                            <NavButton key={index} path={pageData.path}>
                                 {pageData.children}
                             </NavButton>
                         )
@@ -55,9 +101,9 @@ function Navbar() {
             </div>
             <div className="right">
                 {routeMap.map(
-                    (pageData) =>
+                    (pageData, index) =>
                         pageData.onNavbar === "right" && (
-                            <NavButton path={pageData.path}>
+                            <NavButton key={index} path={pageData.path}>
                                 {pageData.children}
                             </NavButton>
                         )
@@ -70,33 +116,98 @@ function Navbar() {
 
 function NavButton(props) {
     let history = useHistory();
+    let location = useLocation();
+
     let setMousePartial = useSetRecoilState(mousePartialState_atom);
+    const [navigating, setNavigating] = useState(false);
+    const setOverride = useSetRecoilState(override_mouse_atom);
+    const setTransition = useSetRecoilState(transition_atom);
+
+    const controls = useAnimation();
+
     return (
         <div
             className="nav_button"
             {...props}
-            onClick={(e) => {
+            onClick={async (e) => {
+                if (location.pathname === props.path) return;
+
                 // run animation then change
+                console.log(e.target, e.target.getBoundingClientRect());
 
-                //screen to black
-                // e.target.
-                //setMousePartial({ animState: "gigantic" });
+                // get element position
+                const elemCenter = eventToCenter(e);
 
-                // copy paste button
+                // override mouse to hover
+                setOverride({
+                    enabled: true,
+                    position: elemCenter,
+                });
 
-                //black overlay
+                // position transition overlay
+                const { width, height } = e.target.getBoundingClientRect();
+                // show transition overlay
+                setNavigating(true);
 
-                // change location
-                setMousePartial({ animState: "gigantic" });
-                history.push(props.path);
+                controls.set({
+                    width: 0,
+                    height: 0,
+                    display: "block",
+                    transform: `translate(calc(${
+                        width / 2 - 16
+                    }px - 50%),calc(${height / 2 - 8}px - 50%))`,
+                });
+
+                //set mouse to big
+                setMousePartial({ animState: "big" });
+
+                // play growing ball transition
+                await controls.start({
+                    width: "200vw",
+                    height: "200vw",
+                    transition: { duration: 0.6 },
+                });
+
+                // free the mouse
+                setOverride({
+                    enabled: false,
+                    position: elemCenter,
+                });
+
+                //set mouse to normal
+                setMousePartial({ animState: "default" });
+
+                //show real overlay
+                setTransition(true);
+
+                setTimeout(() => {
+                    history.push(props.path);
+                }, 150);
+
+                // now new page is responsible for closing overlay
             }}
             onMouseEnter={() => {
                 setMousePartial({ animState: "icon" });
             }}
             onMouseLeave={() => {
+                if (navigating) return;
                 setMousePartial({ animState: "default" });
             }}
         >
+            <div
+                className={clsx(
+                    "navigation-transition-overlay",
+                    navigating && "active"
+                )}
+            >
+                <div className="circle-wrapper">
+                    <motion.div
+                        animate={controls}
+                        className="circle-inner"
+                    ></motion.div>
+                </div>
+                {props.children}
+            </div>
             {props.children}
         </div>
     );
@@ -108,8 +219,12 @@ function Main() {
             <Router>
                 <AnimatePresence exitBeforeEnter>
                     <Switch>
-                        {routeMap.map((pageData) => (
-                            <Route exact path={pageData.path}>
+                        {routeMap.map((pageData, index) => (
+                            <Route
+                                exact={pageData.exact}
+                                key={index}
+                                path={pageData.path}
+                            >
                                 <Suspense
                                     fallback={
                                         <SuspenseFallback
@@ -118,8 +233,8 @@ function Main() {
                                     }
                                 >
                                     <>
-                                        {pageData.showNavbar && <Navbar />}
                                         <pageData.component />
+                                        {pageData.showNavbar && <Navbar />}
                                     </>
                                 </Suspense>
                             </Route>
@@ -132,6 +247,7 @@ function Main() {
 }
 
 function SuspenseFallback({ name }) {
+    console.log("suspense loading");
     const setLoading = useSetRecoilState(loading_atom);
     useLayoutEffect(() => {
         setLoading({
