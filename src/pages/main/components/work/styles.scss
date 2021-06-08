@@ -1,0 +1,107 @@
+#work {
+    .preview-window {
+        position: absolute;
+        width: 88.9rem;
+        height: 48.2rem;
+        left: 54.2rem;
+        top: 30.8rem;
+        background-color: whitesmoke;
+        overflow: hidden;
+        // transition: outline 400ms;
+        cursor: pointer;
+        .preview-overlay {
+            position: absolute;
+            bottom: 0;
+            height: 0rem;
+            width: 100%;
+        }
+    }
+
+    .date {
+        position: absolute;
+        width: 18.9rem;
+        height: 2.476rem;
+        right: 49.1rem;
+        top: 26.025rem;
+
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.8rem;
+        line-height: 2.7rem;
+
+        text-align: right;
+        letter-spacing: 0.03rem;
+    }
+    .side-description {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        transform: rotate(-90deg);
+        transform-origin: left;
+        left: 51.014rem;
+        top: 78rem;
+        width: 48.2rem;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.8rem;
+        line-height: 2.7rem;
+    }
+
+    .work-title-wrapper {
+        position: absolute;
+        height: 16rem;
+        top: 15rem;
+        left: 54.2rem;
+        transform-origin: top;
+        .work-title {
+            position: relative;
+            font-family: Apparel;
+            font-style: normal;
+            font-weight: 900;
+
+            background-color: white;
+        }
+    }
+
+    .work-navigation {
+        position: absolute;
+        bottom: 3rem;
+        left: 20rem;
+        right: 20rem;
+        display: flex;
+        justify-content: space-between;
+        .navgrav {
+            cursor: pointer;
+            .circle {
+                display: block;
+                position: absolute;
+            }
+            .navitem {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 1.8rem;
+                line-height: 2.7rem;
+                /* identical to box height */
+
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                letter-spacing: 0.03rem;
+
+                height: 3.9rem;
+                display: flex;
+                align-items: center;
+                gap: 2.1rem;
+                padding: 0.8rem 1.6rem;
+                cursor: pointer;
+
+                .icon {
+                    height: 3.9rem;
+                }
+            }
+        }
+    }
+}

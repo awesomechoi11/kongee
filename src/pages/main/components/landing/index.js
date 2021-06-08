@@ -1,11 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import {
-    global_mouse_position_atom,
-    loading_atom,
-    override_mouse_atom,
-    mousePartialState_atom,
-} from "../../../../recoil/atoms";
+import { useSetRecoilState } from "recoil";
+import { mousePartialState_atom } from "../../../../recoil/atoms";
 import useLoadTracker from "../../../../utility/useLoadTracker";
 import "./styles.scss";
 
@@ -16,14 +10,12 @@ import {
     mail_svg,
     file_svg,
 } from "../../../../assets/socialMediaIcons";
-import lerp from "../../../../utility/lerp";
 import { motion } from "framer-motion";
-import { rectToCenter } from "../../../../utility/elemCenter";
 import GravityButton from "../../../../components/GravityButton";
 import ReactiveShape from "../../../../components/ReactiveShape";
 
 function Landing() {
-    const [loadTracker, loading, progress] = useLoadTracker({
+    useLoadTracker({
         vsig,
     });
     const setMouse = useSetRecoilState(mousePartialState_atom);
@@ -42,11 +34,7 @@ function Landing() {
 
     return (
         <motion.div id="landing">
-            <img
-                alt="vertical signature"
-                {...loadTracker.vsig}
-                id="vertical_signature"
-            />
+            <img alt="vertical signature" src={vsig} id="vertical_signature" />
 
             <div className="landing_info">
                 <div className="top">Sally (Hyunji) Kim</div>
@@ -76,8 +64,9 @@ function Landing() {
             <div className="socials">
                 <GravityButton
                     className="social_wrapper"
-                    enterRadius={40}
-                    leaveRadius={75}
+                    preventLocalCounter
+                    enterPadding={[15, 15]}
+                    leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
                     })}
@@ -86,8 +75,9 @@ function Landing() {
                 </GravityButton>
                 <GravityButton
                     className="social_wrapper"
-                    enterRadius={40}
-                    leaveRadius={75}
+                    preventLocalCounter
+                    enterPadding={[15, 15]}
+                    leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
                     })}
@@ -96,8 +86,9 @@ function Landing() {
                 </GravityButton>
                 <GravityButton
                     className="social_wrapper"
-                    enterRadius={40}
-                    leaveRadius={75}
+                    preventLocalCounter
+                    enterPadding={[15, 15]}
+                    leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
                     })}
@@ -106,8 +97,9 @@ function Landing() {
                 </GravityButton>
                 <GravityButton
                     className="social_wrapper"
-                    enterRadius={40}
-                    leaveRadius={75}
+                    preventLocalCounter
+                    enterPadding={[15, 15]}
+                    leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
                     })}
@@ -117,13 +109,26 @@ function Landing() {
             </div>
 
             <div className="landing_shapes">
-                <ReactiveShape lerpValue={0.01} className="square" />
-                <ReactiveShape lerpValue={-0.01} className="rectangle" />
-                <ReactiveShape lerpValue={0.03} className="circle" />
+                <ReactiveShape
+                    lerpValue={0.01}
+                    className="square"
+                    scrollableParentSelector="#landing"
+                />
+                <ReactiveShape
+                    lerpValue={-0.01}
+                    className="rectangle"
+                    scrollableParentSelector="#landing"
+                />
+                <ReactiveShape
+                    lerpValue={0.03}
+                    className="circle"
+                    scrollableParentSelector="#landing"
+                />
                 <ReactiveShape
                     lerpValue={-0.03}
                     rotate={36.62}
                     className="line"
+                    scrollableParentSelector="#landing"
                 />
             </div>
         </motion.div>

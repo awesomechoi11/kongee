@@ -16,7 +16,12 @@
     font-weight: 400;
     font-style: normal;
 }
-
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
 @font-face {
     font-family: "Poppins";
     src: url("./assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
@@ -48,6 +53,7 @@
     font-style: normal;
 }
 
+@import "./helpers.scss";
 html,
 body,
 #root {
@@ -58,7 +64,7 @@ body,
     height: 100vh;
     font-family: Apparel;
     font-weight: normal;
-    // isolation: isolate;
+    font-size: 0.520833333vw;
     color: black;
     background-color: white;
 }

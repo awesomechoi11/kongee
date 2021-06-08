@@ -5,10 +5,12 @@ import {
     mouse_atom,
     override_mouse_atom,
     global_mouse_position_atom,
+    forceMouseRerender,
+    mouse_wrapper_atom,
 } from "../../recoil/atoms";
 import lerp from "../../utility/lerp";
 import "./styles.scss";
-
+import fastequal from "fast-deep-equal";
 const mouseAnimStates = {
     default: {
         width: 20,
@@ -44,7 +46,36 @@ const mouseAnimStates = {
             duration: 1,
         },
     },
+    workHover: {
+        width: 125,
+        height: 125,
+        opacity: 1,
+        borderRadius: "100%",
+        backgroundColor: "#000",
+    },
+    workHoverNotEnabled: {
+        width: 125,
+        height: 125,
+        opacity: 1,
+        borderRadius: "100%",
+        backgroundColor: "#000",
+    },
+    left: {
+        width: 125,
+        height: 125,
+        opacity: 1,
+        borderRadius: "100%",
+        backgroundColor: "#000",
+    },
+    right: {
+        width: 125,
+        height: 125,
+        opacity: 1,
+        borderRadius: "100%",
+        backgroundColor: "#000",
+    },
     none: {},
+    custom: {},
 };
 
 export default function Mouse() {
@@ -53,6 +84,25 @@ export default function Mouse() {
     const setGlobalMousePosition = useSetRecoilState(
         global_mouse_position_atom
     );
+
+    const mouse_wrapper_value = useRecoilValue(mouse_wrapper_atom);
+
+    const forceMouseRerenderValue = useRecoilValue(forceMouseRerender);
+    useEffect(() => {
+        if (forceMouseRerenderValue && forceMouseRerenderValue !== 0) {
+            const override = mouseOverrideCallback();
+            if (override.enabled) {
+                mousePosition.current = override.position;
+            }
+            // console.log("force", mousePosition.current);
+            setGlobalMousePosition({
+                default: mousePosition.current,
+                lerped: lerpedMousePosition.current,
+            });
+        }
+    }, [forceMouseRerenderValue]);
+
+    // get mouse overrides without subbing
     const mouseOverrideCallback = useRecoilCallback(({ snapshot }) => () => {
         const overrideLoadable = snapshot.getLoadable(override_mouse_atom);
         if (overrideLoadable.state === "hasValue") {
@@ -73,9 +123,17 @@ export default function Mouse() {
     ]);
     const mousePositionControls = useAnimation();
     const animControls = useAnimation();
-
+    // const animControls2 = useAnimation();
     // set mouse stuff
     useEffect(() => {
+        const override = mouseOverrideCallback();
+        if (override.enabled) {
+            mousePosition.current = override.position;
+        }
+        setGlobalMousePosition({
+            default: mousePosition.current,
+            lerped: lerpedMousePosition.current,
+        });
         // const framelength = 16.6666666667;
         const handleMouseMove = (event) => {
             const override = mouseOverrideCallback();
@@ -93,19 +151,36 @@ export default function Mouse() {
         // listen to mouse events on anim
         var prevTimestamp = 0;
         // timestamp: time elapsed in milliseconds since the web page was loaded
-        requestAnimationFrame(function animFrame(timestamp) {
-            // queue request for next frame// limits fps
+        const animationFrameID = requestAnimationFrame(function animFrame(
+            timestamp
+        ) {
+            // limit fps
+            if (timestamp - prevTimestamp < 13) {
+                requestAnimationFrame(animFrame);
+                return;
+            }
 
-            lerpedMousePosition.current = lerp(
-                lerpedMousePosition.current,
-                mousePosition.current,
-                (timestamp - prevTimestamp) * 0.01
-            );
-            setGlobalMousePosition({
-                default: mousePosition.current,
-                lerped: lerpedMousePosition.current,
-            });
+            // prevent useless updates
+            if (
+                !fastequal(mousePosition.current, lerpedMousePosition.current)
+            ) {
+                lerpedMousePosition.current = lerp(
+                    lerpedMousePosition.current,
+                    mousePosition.current,
+                    (timestamp - prevTimestamp) * 0.01
+                );
+                setGlobalMousePosition({
+                    default: mousePosition.current,
+                    lerped: lerpedMousePosition.current,
+                });
+            }
             prevTimestamp = timestamp;
+            function positionToStyle() {
+                const [x, y] = lerpedMousePosition.current;
+                return {
+                    transform: `translate(${x}px,${y}px)`,
+                };
+            }
             mousePositionControls.set(positionToStyle());
             requestAnimationFrame(animFrame);
             return;
@@ -113,35 +188,108 @@ export default function Mouse() {
 
         return () => {
             document.removeEventListener("mousemove", handleMouseMove);
+            cancelAnimationFrame(animationFrameID);
         };
     }, []);
 
     useEffect(() => {
+        const mousevalues =
+            mouseState.animState === "custom"
+                ? {
+                      ...mouseState,
+                  }
+                : {
+                      ...mouseState,
+                      ...mouseAnimStates[mouseState.animState],
+                  };
         animControls.start({
             transition: {
                 duration: 0.24,
             },
-            ...mouseState,
-            ...mouseAnimStates[mouseState.animState],
+            ...mousevalues,
         });
+
         return () => {
             animControls.stop();
         };
     }, [mouseState]);
 
-    function positionToStyle() {
-        const [x, y] = lerpedMousePosition.current;
-        return {
-            transform: `translate(${x}px,${y}px)`,
-        };
-    }
+    useEffect(() => {
+        if (mouse_wrapper_value) mousePositionControls.set(mouse_wrapper_value);
+    }, [mouse_wrapper_value]);
 
     return (
         <motion.div id="mouse-wrapper" animate={mousePositionControls}>
-            <motion.div
-                className="mouse-inner"
-                animate={animControls}
-            ></motion.div>
+            <motion.div className="mouse-inner" animate={animControls}>
+                {mouseState.animState === "workHover" && (
+                    <span>
+                        learn
+                        <br />
+                        more
+                    </span>
+                )}
+                {mouseState.animState === "workHoverNotEnabled" && (
+                    <span>
+                        coming
+                        <br />
+                        soon
+                    </span>
+                )}
+                {mouseState.animState === "left" && (
+                    <span className="arrow">{left_svg}</span>
+                )}
+                {mouseState.animState === "right" && (
+                    <span className="arrow">{right_svg}</span>
+                )}
+            </motion.div>
         </motion.div>
     );
 }
+const right_svg = (
+    <svg
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M10.4167 25H39.5833"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M25 10.4165L39.5833 24.9998L25 39.5832"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
+);
+const left_svg = (
+    <svg
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M39.5833 25H10.4167"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M25 39.5832L10.4167 24.9998L25 10.4165"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
+);

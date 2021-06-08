@@ -7,28 +7,45 @@
     // overflow-x: hidden;
     background-color: #ffffff;
 }
-
+.scrollhere {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
 #navbar {
     position: absolute;
-    left: 200.69px;
-    right: 76.26px;
-    top: 65px;
+    left: 20.069rem;
+    right: 7.626rem;
+    top: 6.5rem;
     display: flex;
     justify-content: space-between;
+    pointer-events: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.8rem;
+    > * {
+        pointer-events: all;
+    }
     .right {
-        gap: 18px;
+        gap: 1.8rem;
         display: flex;
         align-items: center;
     }
     .nav_button {
         cursor: pointer;
-        padding: 8px 16px;
+        padding: 0.8rem 1.6rem;
         font-weight: bold;
     }
     #language_globe {
-        height: 25px;
-        width: 25px;
+        height: 2.5rem;
+        width: 2.5rem;
         cursor: pointer;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     .navigation-transition-overlay {
@@ -45,10 +62,175 @@
             .circle-inner {
                 position: absolute;
                 transform: translate(-50%, -50%);
-                width: 0px;
-                height: 0px;
+                width: 0rem;
+                height: 0rem;
                 border-radius: 100%;
                 background-color: black;
+            }
+        }
+    }
+}
+
+.universal-footer {
+    position: relative;
+    width: 192rem;
+    height: 50rem;
+    background: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+    .fancy-line-wrapper {
+        width: 22rem;
+        position: relative;
+        .fancy-line {
+            position: absolute;
+            width: 51.823rem;
+            left: -12rem;
+            top: -3rem;
+            height: 0.2rem;
+            background-color: white;
+
+            transform: rotate(-28.74deg);
+        }
+    }
+
+    .quote-n-socials {
+        width: 35.822rem;
+        height: 15rem;
+        margin-right: 20rem;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.8rem;
+        line-height: 2.7rem;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .quote {
+            width: 100%;
+            height: 8.356rem;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: space-between;
+            width: 31rem;
+
+            .item {
+                width: 4.5rem;
+                height: 4.5rem;
+                cursor: pointer;
+                svg {
+                    width: 100%;
+                    height: 100%;
+                    path {
+                        stroke: white;
+                        stroke-width: 1px;
+                    }
+                }
+            }
+        }
+    }
+
+    .sitemap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        margin: 0 6rem;
+
+        width: 17.1rem;
+        height: 24rem;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2.4rem;
+        color: white;
+        .item-inner {
+            cursor: pointer;
+        }
+    }
+
+    .cool-shapes {
+        width: 9rem;
+        height: 25.836rem;
+        position: relative;
+        background-blend-mode: difference;
+        background: #000000;
+        > * {
+            position: absolute;
+            mix-blend-mode: difference;
+            background: #ffffff;
+        }
+        .circle {
+            left: 2.61rem;
+            top: 12.568rem;
+            width: 6.4rem;
+            height: 6.4rem;
+        }
+        .ring {
+            width: 9rem;
+            height: 9rem;
+            left: 0rem;
+            top: 7.151rem;
+            background-color: rgba(0, 0, 0, 0);
+            border: solid 0.1rem white;
+        }
+        .line1 {
+            width: 0.16rem;
+            height: 18.268rem;
+            left: 1.545rem;
+            top: 0rem;
+        }
+        .line2 {
+            width: 0.959rem;
+            height: 22.094rem;
+            left: 3.463rem;
+            top: 3.742rem;
+        }
+    }
+
+    .signature {
+        color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        width: 32.481rem;
+        height: 16.561rem;
+        margin-left: 20rem;
+        .left {
+            width: 8.188rem;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .right {
+            width: 22.2rem;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            .top {
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: 900;
+                font-size: 3.6rem;
+                line-height: 4.7rem;
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.6rem;
+            }
+            .bottom {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1.4rem;
+                line-height: 2.1rem;
             }
         }
     }

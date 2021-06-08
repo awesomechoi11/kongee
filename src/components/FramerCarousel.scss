@@ -1,0 +1,50 @@
+.carousel {
+    position: relative;
+
+    .carousel-controls {
+        position: absolute;
+        z-index: 5;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            opacity: 0;
+            background-color: gray;
+            transition: opacity 220ms;
+        }
+        .right {
+            opacity: 0;
+            background-color: gray;
+            transition: opacity 220ms;
+        }
+        > * {
+            height: 100%;
+            width: 30%;
+            border-radius: 3.2rem;
+        }
+        &:hover {
+            .left {
+                opacity: 0.1;
+            }
+            .right {
+                opacity: 0.1;
+            }
+        }
+    }
+    .carousel-slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .carousel-description {
+        font-family: Apparel;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+        margin-top: 6.4rem;
+        text-align: center;
+    }
+}

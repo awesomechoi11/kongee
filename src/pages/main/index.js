@@ -11,17 +11,11 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     useHistory,
     useLocation,
 } from "react-router-dom";
 import "./styles.scss";
-import {
-    AnimatePresence,
-    useAnimation,
-    useMotionValue,
-    motion,
-} from "framer-motion";
+import { useAnimation, motion } from "framer-motion";
 import { globe_svg } from "../../assets/svg";
 import { eventToCenter } from "../../utility/elemCenter";
 import clsx from "clsx";
@@ -64,7 +58,7 @@ const routeMap = [
         name: "playground",
         path: "/playground",
         component: withTransitionSetter(
-            React.lazy(() => import("./components/work"))
+            React.lazy(() => import("./components/about"))
         ),
         children: "PLAYGROUND",
         onNavbar: "right",
@@ -130,10 +124,21 @@ function NavButton(props) {
             className="nav_button"
             {...props}
             onClick={async (e) => {
-                if (location.pathname === props.path) return;
+                if (
+                    location.pathname.startsWith(props.path) &&
+                    location.pathname.endsWith("/case") &&
+                    props.path !== "/"
+                ) {
+                    history.push(props.path);
+                    return;
+                } else if (
+                    location.pathname.startsWith(props.path) &&
+                    props.path !== "/"
+                )
+                    return;
 
                 // run animation then change
-                console.log(e.target, e.target.getBoundingClientRect());
+                // console.log(e.target, e.target.getBoundingClientRect());
 
                 // get element position
                 const elemCenter = eventToCenter(e);
@@ -217,30 +222,26 @@ function Main() {
     return (
         <div id="main">
             <Router>
-                <AnimatePresence exitBeforeEnter>
-                    <Switch>
-                        {routeMap.map((pageData, index) => (
-                            <Route
-                                exact={pageData.exact}
-                                key={index}
-                                path={pageData.path}
+                <Switch>
+                    {routeMap.map((pageData, index) => (
+                        <Route
+                            exact={pageData.exact}
+                            key={index}
+                            path={pageData.path}
+                        >
+                            <Suspense
+                                fallback={
+                                    <SuspenseFallback name={pageData.name} />
+                                }
                             >
-                                <Suspense
-                                    fallback={
-                                        <SuspenseFallback
-                                            name={pageData.name}
-                                        />
-                                    }
-                                >
-                                    <>
-                                        <pageData.component />
-                                        {pageData.showNavbar && <Navbar />}
-                                    </>
-                                </Suspense>
-                            </Route>
-                        ))}
-                    </Switch>
-                </AnimatePresence>
+                                <>
+                                    <pageData.component />
+                                    {pageData.showNavbar && <Navbar />}
+                                </>
+                            </Suspense>
+                        </Route>
+                    ))}
+                </Switch>
             </Router>
         </div>
     );

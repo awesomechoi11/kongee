@@ -1,42 +1,40 @@
-.scrollhere {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-}
 #about {
     background-color: white;
     position: relative;
-    width: 1920px;
-    height: 2415px;
+    width: 192rem;
+    height: 241.5rem;
     .square {
         position: absolute;
-        width: 544px;
-        height: 544px;
-        left: 197.5px;
-        top: 184px;
+        width: 54.4rem;
+        height: 54.4rem;
+        left: 19.75rem;
+        top: 18.4rem;
         background: black;
         cursor: pointer;
+        > img {
+            width: 100%;
+            height: 100%;
+        }
     }
     .square2 {
         position: absolute;
-        width: 460px;
-        height: 457.5px;
-        left: 371.25px;
-        top: 338.23px;
+        width: 46rem;
+        height: 45.75rem;
+        left: 37.125rem;
+        top: 33.823rem;
         background: black;
     }
     .about-me {
         position: absolute;
-        width: 322px;
-        height: 240px;
-        left: 770.52px;
-        top: 310.23px;
+        width: 32.2rem;
+        height: 24rem;
+        left: 77.052rem;
+        top: 31.023rem;
 
         font-family: Apparel;
         font-style: normal;
         font-weight: 900;
-        font-size: 120px;
+        font-size: 12rem;
         line-height: 100%;
         mix-blend-mode: difference;
         color: white;
@@ -44,10 +42,10 @@
 
     .group-1 {
         position: absolute;
-        width: 847.77px;
-        height: 851.01px;
-        left: 873.54px;
-        top: 764.99px;
+        width: 84.777rem;
+        height: 85.101rem;
+        left: 87.354rem;
+        top: 76.499rem;
 
         .header {
             display: flex;
@@ -56,8 +54,8 @@
                 font-family: Apparel;
                 font-style: normal;
                 font-weight: bold;
-                font-size: 48px;
-                line-height: 63px;
+                font-size: 4.8rem;
+                line-height: 6.3rem;
                 /* identical to box height */
 
                 color: #000000;
@@ -66,12 +64,12 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                gap: 63px;
+                gap: 6.3rem;
                 .social_wrapper {
                     cursor: pointer;
                     .circle {
-                        width: 41px;
-                        height: 41px;
+                        width: 4.1rem;
+                        height: 4.1rem;
                         position: absolute;
                         border-radius: 100%;
                     }
@@ -81,9 +79,9 @@
 
         .divider {
             width: 100%;
-            height: 2px;
+            height: 0.2rem;
             background-color: black;
-            margin: 15px 0;
+            margin: 1.5rem 0;
         }
         .item {
             display: flex;
@@ -92,20 +90,20 @@
                 font-family: Poppins;
                 font-style: normal;
                 font-weight: 600;
-                font-size: 16px;
-                line-height: 24px;
-                letter-spacing: 2px;
+                font-size: 1.6rem;
+                line-height: 2.4rem;
+                letter-spacing: 0.2rem;
             }
             .body {
-                width: 608.76px;
-                font-size: 20px;
-                line-height: 26px;
+                width: 60.876rem;
+                font-size: 2rem;
+                line-height: 2.6rem;
             }
             .list {
                 display: flex;
-                gap: 70px;
+                gap: 7rem;
                 > * {
-                    width: 270pxr;
+                    width: 27rem;
                 }
             }
         }
@@ -113,144 +111,144 @@
 
     .group-2 {
         position: absolute;
-        width: 302px;
-        height: 425.64px;
-        left: 200.69px;
-        top: 1184.53px;
+        width: 30.2rem;
+        height: 42.564rem;
+        left: 20.069rem;
+        top: 118.453rem;
         .date {
             font-family: Apparel;
             font-style: normal;
             font-weight: 900;
-            font-size: 120px;
+            font-size: 12rem;
             line-height: 100%;
         }
         .age {
             font-family: Apparel;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 21px;
+            font-size: 1.6rem;
+            line-height: 2.1rem;
         }
     }
     .group-3 {
         position: absolute;
-        width: 617.21px;
-        height: 350.3px;
-        left: 324.4px;
-        top: 1687.17px;
+        width: 61.721rem;
+        height: 35rem;
+        left: 32.44rem;
+        top: 168.717rem;
         display: flex;
         justify-content: space-between;
         .left {
-            width: 218.42px;
+            width: 21.842rem;
+            img {
+                width: 100%;
+            }
         }
         .right {
-            width: 359.83px;
+            width: 35.983rem;
             .top {
-                margin-top: 32px;
-                margin-bottom: 49px;
+                margin-top: 3.2rem;
+                margin-bottom: 4.9rem;
                 font-family: Apparel;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 24px;
-                line-height: 31px;
+                font-size: 2.4rem;
+                line-height: 3.1rem;
             }
             .middle {
                 font-family: Apparel;
                 font-style: normal;
                 font-weight: bold;
-                font-size: 48px;
-                line-height: 63px;
+                font-size: 4.8rem;
+                line-height: 6.3rem;
                 text-decoration-line: underline;
-                margin-bottom: 17px;
+                margin-bottom: 1.7rem;
             }
             .bottom {
                 font-family: Apparel;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 30px;
-                line-height: 39px;
+                font-size: 3rem;
+                line-height: 3.9rem;
             }
         }
     }
     .group-4 {
         position: absolute;
-        width: 899.31px;
-        height: 160.37px;
-        left: 200.69px;
-        top: 2161.65px;
+        width: 89.931rem;
+        height: 16.037rem;
+        left: 20.069rem;
+        top: 216.165rem;
         .top {
             font-family: Apparel;
             font-style: normal;
             font-weight: bold;
-            font-size: 48px;
-            line-height: 63px;
+            font-size: 4.8rem;
+            line-height: 6.3rem;
         }
         .bottom {
             font-family: Apparel;
             font-style: normal;
             font-weight: normal;
-            font-size: 20px;
-            line-height: 26px;
+            font-size: 2rem;
+            line-height: 2.6rem;
         }
     }
-    .group-5 {
-        > * {
-            transform-origin: top left;
-        }
-        .big-line {
-            position: absolute;
-            width: 1737.77px;
-            height: 2px;
-            left: 200.69px;
-            top: 1003.39px;
-            mix-blend-mode: difference;
 
-            background-color: #ffffff;
-            transform: rotate(38.62deg);
-        }
-        .small-line {
-            position: absolute;
-            width: 530.09px;
-            height: 2px;
-            left: 1022.21px;
-            top: 2144.82px;
-            mix-blend-mode: difference;
-
-            background-color: #ffffff;
-            transform: rotate(-25.24deg);
-        }
-        .circle1 {
-            position: absolute;
-            width: 333.43px;
-            height: 333.43px;
-            left: 1145.14px;
-            top: 1787px;
-            border-radius: 100%;
-            background: #ffffff;
-            mix-blend-mode: difference;
-        }
-        .circle2 {
-            position: absolute;
-            width: 83.47px;
-            height: 83.47px;
-            left: 1099.99px;
-            top: 1911.98px;
-            border-radius: 100%;
-            mix-blend-mode: difference;
-
-            background: #ffffff;
-        }
-        .circle3 {
-            position: absolute;
-            width: 29.93px;
-            height: 29.93px;
-            left: 1588.38px;
-            top: 2082.53px;
-            border-radius: 100%;
-            mix-blend-mode: difference;
-
-            background: #ffffff;
-            transform: matrix(-1, 0, 0, 1, 0, 0);
-        }
+    .big-line {
+        position: absolute;
+        width: 173.777rem;
+        height: 0.2rem;
+        left: 20.069rem;
+        top: 100.339rem;
+        mix-blend-mode: difference;
+        transform-origin: top left;
+        background-color: #ffffff;
+        transform: rotate(38.62deg);
+    }
+    .small-line {
+        position: absolute;
+        width: 53.009rem;
+        height: 0.2rem;
+        left: 102.221rem;
+        top: 214.482rem;
+        mix-blend-mode: difference;
+        transform-origin: top left;
+        background-color: #ffffff;
+        transform: rotate(-25.24deg);
+    }
+    .circle1 {
+        position: absolute;
+        width: 33.343rem;
+        height: 33.343rem;
+        left: 114.514rem;
+        top: 178.7rem;
+        border-radius: 100%;
+        background: #ffffff;
+        mix-blend-mode: difference;
+        transform-origin: top left;
+    }
+    .circle2 {
+        position: absolute;
+        width: 8.347rem;
+        height: 8.347rem;
+        left: 109.999rem;
+        top: 191.198rem;
+        border-radius: 100%;
+        mix-blend-mode: difference;
+        transform-origin: top left;
+        background: #ffffff;
+    }
+    .circle3 {
+        position: absolute;
+        width: 2.993rem;
+        height: 2.993rem;
+        left: 158.838rem;
+        top: 208.253rem;
+        border-radius: 100%;
+        mix-blend-mode: difference;
+        transform-origin: top left;
+        background: #ffffff;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
     }
 }

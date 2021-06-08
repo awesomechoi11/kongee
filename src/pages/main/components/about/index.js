@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
 import ReactiveShape from "../../../../components/ReactiveShape";
-import { loading_atom, mousePartialState_atom } from "../../../../recoil/atoms";
+import { mousePartialState_atom } from "../../../../recoil/atoms";
 import useLoadTracker from "../../../../utility/useLoadTracker";
 
 import "./styles.scss";
@@ -17,11 +17,10 @@ import {
 import GravityButton from "../../../../components/GravityButton";
 
 function About() {
-    const [loadTracker, loading, progress] = useLoadTracker({
+    const [loading, progress] = useLoadTracker({
         sally_pic,
         book_pic,
     });
-    const scrollRef = useRef();
 
     const setMouse = useSetRecoilState(mousePartialState_atom);
 
@@ -38,24 +37,27 @@ function About() {
     });
 
     return (
-        <div className="scrollhere" ref={scrollRef}>
+        <div className="scrollhere" id="about-wrapper">
             <div id="about">
                 <ReactiveShape
                     lerpValue={0.01}
-                    scrollRef={scrollRef}
+                    scrollableParentSelector={"#about-wrapper"}
                     className="square2"
+                    noOffset
                 />
                 <ReactiveShape
                     lerpValue={0.007}
-                    scrollRef={scrollRef}
+                    scrollableParentSelector={"#about-wrapper"}
                     className="square"
+                    noOffset
                 >
-                    <img alt="profile_picture" {...loadTracker.sally_pic} />
+                    <img alt="profile_picture" src={sally_pic} />
                 </ReactiveShape>
                 <ReactiveShape
                     lerpValue={0.005}
-                    scrollRef={scrollRef}
+                    scrollableParentSelector={"#about-wrapper"}
                     className="about-me"
+                    noOffset
                 >
                     about me.
                 </ReactiveShape>
@@ -66,9 +68,10 @@ function About() {
                         <div className="icons">
                             <GravityButton
                                 className="social_wrapper"
-                                enterRadius={70}
-                                leaveRadius={150}
+                                enterPadding={[30, 30]}
+                                leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
+                                preventLocalCounter
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -78,9 +81,10 @@ function About() {
 
                             <GravityButton
                                 className="social_wrapper"
-                                enterRadius={70}
-                                leaveRadius={150}
+                                enterPadding={[30, 30]}
+                                leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
+                                preventLocalCounter
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -90,9 +94,10 @@ function About() {
 
                             <GravityButton
                                 className="social_wrapper"
-                                enterRadius={70}
-                                leaveRadius={150}
+                                enterPadding={[30, 30]}
+                                leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
+                                preventLocalCounter
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -102,9 +107,10 @@ function About() {
 
                             <GravityButton
                                 className="social_wrapper"
-                                enterRadius={70}
-                                leaveRadius={150}
+                                enterPadding={[30, 30]}
+                                leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
+                                preventLocalCounter
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -199,7 +205,7 @@ function About() {
                 </div>
                 <div className="group-3">
                     <div className="left">
-                        <img alt="favorite book" {...loadTracker.book_pic} />
+                        <img alt="favorite book" src={book_pic} />
                     </div>
                     <div className="right">
                         <div className="top">currently reading</div>
@@ -224,13 +230,26 @@ function About() {
                     </div>
                 </div>
 
-                <div className="group-5">
-                    <div className="big-line" />
-                    <div className="small-line" />
-                    <div className="circle1" />
-                    <div className="circle2" />
-                    <div className="circle3" />
-                </div>
+                <div className="big-line" />
+                <div className="small-line" />
+                <ReactiveShape
+                    lerpValue={0.007}
+                    scrollableParentSelector={"#about-wrapper"}
+                    className="circle1"
+                    noOffset
+                />
+                <ReactiveShape
+                    lerpValue={0.02}
+                    scrollableParentSelector={"#about-wrapper"}
+                    className="circle2"
+                    noOffset
+                />
+                <ReactiveShape
+                    lerpValue={-0.01}
+                    scrollableParentSelector={"#about-wrapper"}
+                    className="circle3"
+                    noOffset
+                />
             </div>
         </div>
     );

@@ -1,0 +1,487 @@
+@keyframes bob {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(50%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+$inner-width: 152rem;
+$padding-width: 20rem;
+
+#auxilium-case {
+    height: 100vh;
+    position: relative;
+    background: #ffffff;
+    box-sizing: border-box;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+    .universal-footer {
+        top: 1327.345rem;
+    }
+    .results2 {
+        position: absolute;
+        width: $inner-width;
+        height: 66.962rem;
+        left: $padding-width;
+        top: 1240.95rem;
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left {
+                width: 64.543rem;
+            }
+            .right {
+                width: 80.486rem;
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 2.2rem;
+                line-height: 2.9rem;
+            }
+        }
+    }
+
+    .results {
+        position: absolute;
+        width: $inner-width;
+        height: 279.507rem;
+        left: $padding-width;
+        top: 785.304rem;
+    }
+    .results-mockup {
+        position: absolute;
+        width: 191.785rem;
+        height: 92.341rem;
+        left: 0.108rem;
+        top: 829.226rem;
+        overflow: hidden;
+        img {
+            transform: scale(1.5);
+        }
+    }
+
+    .results-screenshots {
+        position: absolute;
+        width: $inner-width;
+        height: 133.222rem;
+        left: $padding-width;
+        top: 953.048rem;
+
+        .title {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 2.4rem;
+            line-height: 3.6rem;
+            /* identical to box height */
+
+            display: flex;
+            justify-content: center;
+            letter-spacing: 0.2rem;
+        }
+        .screenshots {
+            display: flex;
+            justify-content: space-between;
+            .column {
+                width: 45.3rem;
+                .item {
+                    width: 45.228rem;
+                    .title {
+                        margin: 4.5rem;
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        line-height: 2.7rem;
+                        /* identical to box height */
+
+                        display: flex;
+                        align-items: center;
+                        letter-spacing: 0.2rem;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .results-visuals {
+        position: absolute;
+        width: $inner-width;
+        height: 133.222rem;
+        left: $padding-width;
+        top: 1108.334rem;
+        .title {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 2.4rem;
+            line-height: 3.6rem;
+            /* identical to box height */
+
+            display: flex;
+            justify-content: center;
+            letter-spacing: 0.2rem;
+        }
+    }
+
+    .rnd2 {
+        position: absolute;
+        width: $inner-width;
+        height: 279.5rem;
+        left: $padding-width;
+        top: 484.8rem;
+        .rnd2-fig1 {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            font-family: Apparel;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2.4rem;
+            line-height: 3.1rem;
+            > img {
+                width: 111rem;
+                height: 75rem;
+                margin: 11.7rem 0 3.2rem 0;
+            }
+        }
+        .rnd2-fig2 {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            .text {
+                margin: 4.5rem 0rem;
+            }
+            img {
+                width: 94.766rem;
+                height: 52.888rem;
+            }
+        }
+        .rnd2-fig3 {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+            .text {
+                margin: 4.5rem 0rem;
+            }
+            img {
+                width: 94.786rem;
+                height: 50.345rem;
+            }
+        }
+        .figure {
+            font-family: Apparel;
+            font-style: normal;
+            font-size: 2.4rem;
+            line-height: 3.1rem;
+            display: flex;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin: 6.3rem 0;
+        }
+    }
+
+    .rnd {
+        position: absolute;
+        width: 148.931rem;
+        height: 122.765rem;
+        left: $padding-width;
+        top: 341.057rem;
+        .body {
+            width: 117.145rem;
+        }
+        .title {
+            margin-bottom: 6rem;
+        }
+    }
+    .rnd-graphic {
+        position: absolute;
+        width: 74.723rem;
+        height: 62.023rem;
+        left: 59.148rem;
+        top: 384.697rem;
+    }
+    .rnd-heart {
+        position: absolute;
+        width: 13.7rem;
+        height: 12.7rem;
+        left: 155.3rem;
+        top: 352.93rem;
+        .bob {
+            animation-name: bob;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-duration: 5s;
+        }
+    }
+    .rnd-sarah {
+        position: absolute;
+        width: 37.2rem;
+        height: 18rem;
+        left: 30.145rem;
+        top: 390.1rem;
+
+        font-family: Poppins;
+        font-style: normal;
+        font-size: 2rem;
+        line-height: 3rem;
+        text-align: right;
+    }
+    .rnd-francesca {
+        position: absolute;
+        width: 35rem;
+        height: 18rem;
+        left: 119.714rem;
+        top: 433.831rem;
+
+        font-family: Poppins;
+        font-style: normal;
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+    .rnd-arrow1 {
+        position: absolute;
+        width: 20.419rem;
+        height: 1.918rem;
+        left: 69.242rem;
+        top: 391.102rem;
+    }
+    .rnd-arrow2 {
+        position: absolute;
+        width: 20.419rem;
+        height: 1.918rem;
+        left: 97.619rem;
+        top: 437.318rem;
+        transform-origin: center;
+        transform: rotate(180deg);
+    }
+    .rnd-bubble1 {
+        position: absolute;
+        width: 27.3rem;
+        height: 27.9rem;
+        left: 26.5rem;
+        top: 425rem;
+        &.text {
+            left: 31.7rem;
+            top: 428.4rem;
+            height: 21rem;
+            width: 18.1rem;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.4rem;
+            line-height: 2.1rem;
+        }
+    }
+    .rnd-bubble2 {
+        position: absolute;
+        width: 27.3rem;
+        height: 28.7rem;
+        left: 138.8rem;
+        top: 393.3rem;
+        transform: rotateY(180deg);
+        &.text {
+            transform: none;
+            left: 144rem;
+            top: 395.8rem;
+            height: 21rem;
+            width: 18.1rem;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.4rem;
+            line-height: 2.1rem;
+        }
+    }
+    .approach {
+        position: absolute;
+        width: 66.336rem;
+        height: 25.836rem;
+        left: 20.015rem;
+        top: 294.233rem;
+    }
+    .approach-body {
+        position: absolute;
+        width: 63.271rem;
+        height: 18.6rem;
+        left: 108.714rem;
+        top: 298.818rem;
+    }
+    .approach-ring {
+        position: absolute;
+        width: 9rem;
+        height: 9rem;
+        left: 93.032rem;
+        top: 302.351rem;
+    }
+    .approach-circle {
+        position: absolute;
+        width: 6.39rem;
+        height: 6.39rem;
+        left: 95.643rem;
+        top: 307.768rem;
+    }
+    .approach-line1 {
+        position: absolute;
+        width: 0.16rem;
+        height: 18.268rem;
+        left: 94.577rem;
+        top: 295.2rem;
+    }
+    .approach-line2 {
+        position: absolute;
+        width: 0.959rem;
+        height: 22.094rem;
+        left: 96.495rem;
+        top: 298.942rem;
+    }
+
+    .objective {
+        position: absolute;
+        width: 76.5rem;
+        height: 26.085rem;
+        left: $padding-width;
+        top: 233.225rem;
+    }
+    .objective-graphic {
+        position: absolute;
+        width: 52.7rem;
+        height: 37.1rem;
+        left: 108.646rem;
+        top: 230.247rem;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .objective-bigball {
+        position: absolute;
+        left: 103.964rem;
+        top: 238.981rem;
+        .circle {
+            width: 30.146rem;
+            height: 30rem;
+            background: rgba(238, 200, 120, 0.6);
+        }
+    }
+    .objective-smallball {
+        position: absolute;
+        left: 125.857rem;
+        top: 256.715rem;
+        .circle {
+            width: 14.453rem;
+            height: 14.383rem;
+            background: rgba(238, 200, 120, 0.6);
+        }
+    }
+
+    .problem {
+        position: absolute;
+        width: $inner-width;
+        height: 53.154rem;
+        left: $padding-width;
+        top: 159.083rem;
+        text-align: left;
+        .graphs {
+            display: flex;
+            margin-top: 1.7rem;
+            justify-content: space-between;
+            .graph-item {
+                display: flex;
+                flex-direction: column;
+                width: 35.63rem;
+                gap: 1.3rem;
+            }
+            .source {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+            .description {
+                font-family: Apparel;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1.8rem;
+                line-height: 2.4rem;
+            }
+        }
+    }
+
+    .overview {
+        position: absolute;
+        width: 63.016rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 50.155rem;
+        left: 27.8rem;
+        top: 87.94rem;
+        text-align: right;
+        .header {
+            display: block;
+        }
+        .title {
+            margin-bottom: 3rem;
+        }
+    }
+    .overview-graphic {
+        position: absolute;
+        width: 58.8rem;
+        height: 50rem;
+        left: 102.5rem;
+        top: 87.8rem;
+        > svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .overview-smallball {
+        position: absolute;
+        left: 114.356rem;
+        top: 91.528rem;
+        .circle {
+            width: 14.566rem;
+            height: 14.566rem;
+            background: rgba(238, 200, 120, 0.5);
+        }
+    }
+    .overview-bigball {
+        position: absolute;
+        left: 142.523rem;
+        top: 108.045rem;
+        .circle {
+            width: 21.677rem;
+            height: 21.677rem;
+            background: #eec878;
+        }
+    }
+}
