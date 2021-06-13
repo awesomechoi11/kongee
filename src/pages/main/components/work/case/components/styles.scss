@@ -34,48 +34,54 @@
 .footer-outer {
     height: 104rem;
     width: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     .title {
         margin: 2.6rem 0;
     }
-    .footer-inner {
-        width: 135rem;
-        height: 34rem;
+
+    > * {
+        width: 58rem;
+        height: 100%;
         display: flex;
-        justify-content: space-between;
-        > * {
-            width: 58rem;
-            height: 100%;
-            display: flex;
-            align-items: flex-end;
-            transition: background-color 220ms;
-            cursor: pointer;
+        align-items: flex-end;
+        transition: background-color 220ms;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    .item-wrapper {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        margin: 2rem 3.6rem;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        transition: opacity 300ms;
+        &.inTransition {
+            opacity: 0;
         }
-        .item-wrapper {
-            display: flex;
-            justify-content: space-around;
-            flex-direction: column;
-            margin: 2rem 3.6rem;
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 1.6rem;
-            line-height: 2.4rem;
-        }
-        .right .item-wrapper {
-            align-items: flex-end;
-        }
-        .right {
-            justify-content: flex-end;
-        }
+    }
+    .right .item-wrapper {
+        align-items: flex-end;
+    }
+    .left {
+        width: 57.8rem;
+        height: 33.8rem;
+        transform: translate(20rem, 35.1rem);
+    }
+    .right {
+        justify-content: flex-end;
+        width: 57.8rem;
+        height: 33.8rem;
+        transform: translate(105.9rem, 35.1rem);
     }
 }
 
 .banner-outer {
-    width: 100%;
+    width: 100vw;
     height: 84.5rem;
     display: flex;
     justify-content: center;

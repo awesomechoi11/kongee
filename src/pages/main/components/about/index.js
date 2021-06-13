@@ -6,6 +6,7 @@ import useLoadTracker from "../../../../utility/useLoadTracker";
 
 import "./styles.scss";
 
+import vsig from "../../../../assets/vsig.png";
 import sally_pic from "../../../../assets/aboutme_sally.png";
 import book_pic from "../../../../assets/book.png";
 import {
@@ -15,6 +16,7 @@ import {
     file_thin_svg,
 } from "../../../../assets/socialMediaIcons";
 import GravityButton from "../../../../components/GravityButton";
+import UniversalFooter from "../UniversalFooter";
 
 function About() {
     const [loading, progress] = useLoadTracker({
@@ -29,10 +31,6 @@ function About() {
         onMouseLeave: () =>
             setMouse({
                 animState: "default",
-            }),
-        onClick: () =>
-            setMouse({
-                animState: "big",
             }),
     });
 
@@ -72,6 +70,17 @@ function About() {
                                 leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
                                 preventLocalCounter
+                                onClick={() => {
+                                    setMouse({
+                                        animState: "big",
+                                    });
+                                    setTimeout(() => {
+                                        window.open(
+                                            "https://www.linkedin.com/in/shjkim/",
+                                            "_blank"
+                                        );
+                                    }, 220);
+                                }}
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -85,6 +94,18 @@ function About() {
                                 leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
                                 preventLocalCounter
+                                onClick={() => {
+                                    setMouse({
+                                        animState: "big",
+                                    });
+                                    setTimeout(() => {
+                                        console.log(123);
+                                        window.open(
+                                            "https://www.instagram.com/kongee_illust/",
+                                            "_blank"
+                                        );
+                                    }, 220);
+                                }}
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -98,6 +119,15 @@ function About() {
                                 leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
                                 preventLocalCounter
+                                onClick={() => {
+                                    setMouse({
+                                        animState: "big",
+                                    });
+                                    setTimeout(() => {
+                                        window.location.href =
+                                            "mailto:hello@kongee.info";
+                                    }, 220);
+                                }}
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -111,6 +141,17 @@ function About() {
                                 leavePadding={[110, 110]}
                                 itemDim={[41, 41]}
                                 preventLocalCounter
+                                onClick={() => {
+                                    setMouse({
+                                        animState: "big",
+                                    });
+                                    setTimeout(() => {
+                                        window.open(
+                                            "https://drive.google.com/file/d/1lBze_fJYSSC9Tt10XBATOCQvFrS1Ec99/view?usp=sharing",
+                                            "_blank"
+                                        );
+                                    }, 220);
+                                }}
                                 {...sizeEvents({
                                     animState: "icon",
                                 })}
@@ -250,7 +291,12 @@ function About() {
                     className="circle3"
                     noOffset
                 />
+                <div className="vsig">
+                    <img src={vsig} alt="vertical signature" />
+                </div>
             </div>
+
+            <UniversalFooter scrollableParentSelector={".scrollhere"} />
         </div>
     );
 }

@@ -3,6 +3,13 @@
     position: relative;
     width: 192rem;
     height: 241.5rem;
+    .vsig {
+        position: absolute;
+        width: 6.115rem;
+        height: 12.369rem;
+        left: 146.136rem;
+        top: 208.796rem;
+    }
     .square {
         position: absolute;
         width: 54.4rem;
@@ -56,6 +63,7 @@
                 font-weight: bold;
                 font-size: 4.8rem;
                 line-height: 6.3rem;
+                text-transform: lowercase;
                 /* identical to box height */
 
                 color: #000000;
@@ -72,6 +80,10 @@
                         height: 4.1rem;
                         position: absolute;
                         border-radius: 100%;
+                    }
+                    svg {
+                        width: 4.1rem;
+                        height: 4.1rem;
                     }
                 }
             }

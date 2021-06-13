@@ -13,10 +13,21 @@
     width: 100vw;
     height: 100vh;
 }
+
+.tools {
+    .tools-item {
+        width: 4.5rem;
+        height: 4.5rem;
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
 #navbar {
     position: absolute;
-    left: 20.069rem;
-    right: 7.626rem;
+    left: 18.4rem;
+    right: 20rem;
     top: 6.5rem;
     display: flex;
     justify-content: space-between;
@@ -36,7 +47,6 @@
     .nav_button {
         cursor: pointer;
         padding: 0.8rem 1.6rem;
-        font-weight: bold;
     }
     #language_globe {
         height: 2.5rem;
@@ -167,6 +177,8 @@
             background: #ffffff;
         }
         .circle {
+            border-radius: 50%;
+
             left: 2.61rem;
             top: 12.568rem;
             width: 6.4rem;

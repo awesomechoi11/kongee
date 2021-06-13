@@ -25,10 +25,7 @@ function Landing() {
         onMouseLeave: () =>
             setMouse({
                 animState: "default",
-            }),
-        onClick: () =>
-            setMouse({
-                animState: "big",
+                backgroundColor: "#fff",
             }),
     });
 
@@ -69,7 +66,19 @@ function Landing() {
                     leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
+                        backgroundColor: "#D7984D",
                     })}
+                    onClick={() => {
+                        setMouse({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            window.open(
+                                "https://www.linkedin.com/in/shjkim/",
+                                "_blank"
+                            );
+                        }, 220);
+                    }}
                 >
                     {linkedin_svg}
                 </GravityButton>
@@ -80,7 +89,20 @@ function Landing() {
                     leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
+                        backgroundColor: "#3ECA7B",
                     })}
+                    onClick={() => {
+                        setMouse({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            console.log(123);
+                            window.open(
+                                "https://www.instagram.com/kongee_illust/",
+                                "_blank"
+                            );
+                        }, 220);
+                    }}
                 >
                     {instagram_svg}
                 </GravityButton>
@@ -91,7 +113,16 @@ function Landing() {
                     leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
+                        backgroundColor: "#fff",
                     })}
+                    onClick={() => {
+                        setMouse({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            window.location.href = "mailto:hello@kongee.info";
+                        }, 220);
+                    }}
                 >
                     {mail_svg}
                 </GravityButton>
@@ -102,7 +133,19 @@ function Landing() {
                     leavePadding={[50, 50]}
                     {...sizeEvents({
                         animState: "icon",
+                        backgroundColor: "#fff",
                     })}
+                    onClick={() => {
+                        setMouse({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            window.open(
+                                "https://drive.google.com/file/d/1lBze_fJYSSC9Tt10XBATOCQvFrS1Ec99/view?usp=sharing",
+                                "_blank"
+                            );
+                        }, 220);
+                    }}
                 >
                     {file_svg}
                 </GravityButton>

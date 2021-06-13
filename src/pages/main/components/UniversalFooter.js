@@ -10,14 +10,18 @@ import {
     file_svg,
 } from "../../../assets/socialMediaIcons";
 
-export default function UniversalFooter() {
+export default function UniversalFooter({
+    scrollableParentSelector = ".ScrollbarsCustom-Scroller",
+}) {
     return (
         <div className="universal-footer">
-            <Signature />
-            <CoolShapes />
-            <SiteMap />
-            <FancyLine />
-            <QuoteNSocials />
+            <Signature scrollableParentSelector={scrollableParentSelector} />
+            <CoolShapes scrollableParentSelector={scrollableParentSelector} />
+            <SiteMap scrollableParentSelector={scrollableParentSelector} />
+            <FancyLine scrollableParentSelector={scrollableParentSelector} />
+            <QuoteNSocials
+                scrollableParentSelector={scrollableParentSelector}
+            />
         </div>
     );
 }
@@ -47,6 +51,17 @@ function QuoteNSocials() {
                     onMouseLeave={() => {
                         setMousePartial({ animState: "default" });
                     }}
+                    onClick={() => {
+                        setMousePartial({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            window.open(
+                                "https://www.linkedin.com/in/shjkim/",
+                                "_blank"
+                            );
+                        }, 220);
+                    }}
                 >
                     {linkedin_svg}
                 </div>
@@ -57,6 +72,18 @@ function QuoteNSocials() {
                     }}
                     onMouseLeave={() => {
                         setMousePartial({ animState: "default" });
+                    }}
+                    onClick={() => {
+                        setMousePartial({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            console.log(123);
+                            window.open(
+                                "https://www.instagram.com/kongee_illust/",
+                                "_blank"
+                            );
+                        }, 220);
                     }}
                 >
                     {instagram_svg}
@@ -69,6 +96,14 @@ function QuoteNSocials() {
                     onMouseLeave={() => {
                         setMousePartial({ animState: "default" });
                     }}
+                    onClick={() => {
+                        setMousePartial({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            window.location.href = "mailto:hello@kongee.info";
+                        }, 220);
+                    }}
                 >
                     {mail_svg}
                 </div>
@@ -79,6 +114,17 @@ function QuoteNSocials() {
                     }}
                     onMouseLeave={() => {
                         setMousePartial({ animState: "default" });
+                    }}
+                    onClick={() => {
+                        setMousePartial({
+                            animState: "big",
+                        });
+                        setTimeout(() => {
+                            window.open(
+                                "https://drive.google.com/file/d/1lBze_fJYSSC9Tt10XBATOCQvFrS1Ec99/view?usp=sharing",
+                                "_blank"
+                            );
+                        }, 220);
                     }}
                 >
                     {file_svg}
@@ -102,30 +148,30 @@ function Signature() {
     );
 }
 
-function CoolShapes() {
+function CoolShapes({ scrollableParentSelector }) {
     return (
         <div className="cool-shapes">
             <ReactiveShape
                 lerpValue={0.09}
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                scrollableParentSelector={scrollableParentSelector}
                 className="circle"
             />
 
             <ReactiveShape
                 lerpValue={0.005}
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                scrollableParentSelector={scrollableParentSelector}
                 className="ring circle"
             />
 
             <ReactiveShape
                 lerpValue={0.01}
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                scrollableParentSelector={scrollableParentSelector}
                 className="line2"
             />
 
             <ReactiveShape
                 lerpValue={0.02}
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                scrollableParentSelector={scrollableParentSelector}
                 className="line1"
             />
         </div>

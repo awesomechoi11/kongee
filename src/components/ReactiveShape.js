@@ -161,7 +161,9 @@ export default function ReactiveShape({
                     center.current,
                     lerpedPosition.current
                 );
-                transform = `translate(${lerpedPosition.current[0]}px,${lerpedPosition.current[1]}px) rotate(${rotate}deg)`;
+                transform = `translate(${lerpedPosition.current[0] / 10}rem,${
+                    lerpedPosition.current[1] / 10
+                }rem) rotate(${rotate}deg)`;
 
                 style.current = {
                     transform,

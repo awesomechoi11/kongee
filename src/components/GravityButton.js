@@ -50,6 +50,7 @@ export default function GravityButton({
             const center = rectToCenter(ref.current.getBoundingClientRect());
             // update item dimension
             setItemDimension([width, height]);
+
             // update mouse shape
             setMouse({
                 animState: "custom",
@@ -85,9 +86,9 @@ export default function GravityButton({
         [paddingDimension, itemDimension]
     );
 
-    function handleOnClick() {
-        setLocalCounter(1);
-        if (onClick) onClick();
+    function handleOnClick(e) {
+        if (!preventLocalCounter) setLocalCounter(1);
+        if (onClick) onClick(e);
     }
 
     function handleMouseMove(e) {

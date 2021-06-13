@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
 export default function CaseBanner({ caseDetails }) {
-    // console.log(caseDetails);
     const { title, bannerDetails, date, description, tools } = caseDetails;
     const variants = {
         hidden: {

@@ -31,6 +31,7 @@ import {
 } from "../../../../recoil/atoms";
 import AuxiliumCase from "./case/auxilium";
 import CaseContentWrapper from "./case/components/CaseContentWrapper";
+import { figma_svg } from "../../../../assets/tools";
 
 function getBeforeAndAfter(Arr, index) {
     const length = Arr.length;
@@ -46,7 +47,6 @@ function getBeforeAndAfter(Arr, index) {
 
 const contentMap = [
     {
-        className: "",
         titleStyle: {
             // top is calculated by subtracting from max
             width: "48.9rem",
@@ -56,38 +56,36 @@ const contentMap = [
             fontSize: "12rem",
             lineHeight: "15.7rem",
         },
-        caseDetails: {
-            description: "36-HR HACKATHON • PROTOTYPING • DESIGN",
-            date: "FEB 2021 - MAR 2021",
-            title: "auxilium",
-            tools: ["figma"],
-            bannerDetails: {
-                team: ["Brandon Choi", "Mai Moua Vang"],
-                overview: [
-                    "Finding resources for financial struggles, food insecurity, and mental health assistance has been difficult for the city of Sacramento ever since the start of COVID-19.",
-                ],
-                objective: [
-                    "Improving the user experience of finding resources and COVID relief-related assistance for the city of Sacramento.",
-                ],
-                "my role": [
-                    "ideation",
-                    "prototyping",
-                    "illustration",
-                    "branding",
-                    "documentation",
-                ],
-            },
-            color: "#EEC878",
-            id: "auxilium-case",
+
+        description: "36-HR HACKATHON • PROTOTYPING • DESIGN",
+        date: "FEB 2021 - MAR 2021",
+        title: "auxilium",
+        tools: [<div className="tools-item">{figma_svg}</div>],
+        bannerDetails: {
+            team: ["Brandon Choi", "Mai Moua Vang"],
+            overview: [
+                "Finding resources for financial struggles, food insecurity, and mental health assistance has been difficult for the city of Sacramento ever since the start of COVID-19.",
+            ],
+            objective: [
+                "Improving the user experience of finding resources and COVID relief-related assistance for the city of Sacramento.",
+            ],
+            "my role": [
+                "ideation",
+                "prototyping",
+                "illustration",
+                "branding",
+                "documentation",
+            ],
         },
+        color: "#EEC878",
+        id: "auxilium-case",
+        enabled: true,
+
         path: "auxilium",
         preview: auxilium_preview,
-        color: "#EEC878",
         case: <AuxiliumCase />,
-        enabled: true,
     },
     {
-        className: "",
         titleStyle: {
             width: "68.8rem",
             height: "9.4rem",
@@ -96,35 +94,34 @@ const contentMap = [
             fontSize: "7.2rem",
             lineHeight: "9.4rem",
         },
-        caseDetails: {
-            description: "14-DAY DESIGN SPRINT • UX RESEARCH • DESIGN",
-            date: "MAY 2021",
-            title: "when2meet redesign",
-            tools: [],
-            bannerDetails: {
-                team: ["Brandon Choi", "Mai Moua Vang"],
-                overview: [
-                    "Finding resources for financial struggles, food insecurity, and mental health assistance has been difficult for the city of Sacramento ever since the start of COVID-19.",
-                ],
-                objective: [
-                    "Improving the user experience of finding resources and COVID relief-related assistance for the city of Sacramento.",
-                ],
-                "my role": [
-                    "ideation",
-                    "prototyping",
-                    "illustration",
-                    "branding",
-                    "documentation",
-                ],
-            },
-            color: "#769E5D",
-            id: "auxilium-case",
+
+        description: "14-DAY DESIGN SPRINT • UX RESEARCH • DESIGN",
+        date: "MAY 2021",
+        title: "when2meet redesign",
+        tools: [<div className="tools-item">{figma_svg}</div>],
+        bannerDetails: {
+            team: ["Brandon Choi", "Mai Moua Vang"],
+            overview: [
+                "Finding resources for financial struggles, food insecurity, and mental health assistance has been difficult for the city of Sacramento ever since the start of COVID-19.",
+            ],
+            objective: [
+                "Improving the user experience of finding resources and COVID relief-related assistance for the city of Sacramento.",
+            ],
+            "my role": [
+                "ideation",
+                "prototyping",
+                "illustration",
+                "branding",
+                "documentation",
+            ],
         },
+        color: "#769E5D",
+        id: "when2meet-case",
+        enabled: true,
+
         path: "when2meet",
         preview: when2meet_preview,
-        color: "#769E5D",
         case: <AuxiliumCase />,
-        enabled: false,
     },
 ];
 
@@ -150,9 +147,11 @@ function Work() {
     );
     useLayoutEffect(() => {
         if (active) setActive(!active);
+    }, []);
+    useLayoutEffect(() => {
         if (location.pathname === path)
             history.push(`${url}/${contentMap[0].path}`);
-    }, []);
+    }, [location.pathname]);
 
     return (
         <div id="work">
@@ -168,8 +167,9 @@ function Work() {
                         path={`${url}/${contentMap[currentIndex].path}/case`}
                     >
                         <CaseContentWrapper
-                            caseDetails={contentMap[currentIndex].caseDetails}
+                            caseDetails={contentMap[currentIndex]}
                             beforeAndAfter={beforeAndAfter}
+                            key={contentMap[currentIndex].path}
                         >
                             {contentMap[currentIndex].case}
                         </CaseContentWrapper>
@@ -193,9 +193,8 @@ function WorkPreview({ currentIndex }) {
 }
 
 function WorkDate({ currentIndex }) {
-    const { date, title } = contentMap[currentIndex].caseDetails;
+    const { date, title } = contentMap[currentIndex];
     const active = useRecoilValue(work_state_atom);
-    // console.log(contentMap[currentIndex].caseDetails);
     return (
         <AnimatePresence>
             <motion.div
@@ -211,7 +210,7 @@ function WorkDate({ currentIndex }) {
     );
 }
 function WorkSideDescription({ currentIndex }) {
-    const { description, title } = contentMap[currentIndex].caseDetails;
+    const { description, title } = contentMap[currentIndex];
     const active = useRecoilValue(work_state_atom);
     return (
         <AnimatePresence>
@@ -229,8 +228,8 @@ function WorkSideDescription({ currentIndex }) {
 }
 
 function WorkTitle({ currentIndex }) {
-    const { caseDetails, titleStyle } = contentMap[currentIndex];
-    const { title } = caseDetails;
+    const { title, titleStyle } = contentMap[currentIndex];
+
     const active = useRecoilValue(work_state_atom);
 
     const initialAnim = {
@@ -272,7 +271,6 @@ function WorkNavigation({ currentIndex }) {
         () => getBeforeAndAfter(contentMap, currentIndex),
         [currentIndex]
     );
-    // console.log(beforeAndAfter);
     const [counter, setCounter] = useState(0);
     const beforeRef = useRef(null);
     const afterRef = useRef(null);
@@ -312,7 +310,7 @@ function WorkNavigation({ currentIndex }) {
                                     <div className="icon">{left_arrow_svg}</div>
                                 )}
                                 {(index ? "next up: " : "back to: ") +
-                                    item.caseDetails.title}
+                                    item.title}
                                 {index === 1 && (
                                     <div className="icon">
                                         {right_arrow_svg}
@@ -332,9 +330,7 @@ const work_state_atom = atom({
 });
 
 function WorkPreviewWindow({ currentIndex, ...props }) {
-    const { caseDetails, preview, color, path, enabled } =
-        contentMap[currentIndex];
-    const { title } = caseDetails;
+    const { title, enabled, preview, color, path } = contentMap[currentIndex];
     const setMouse = useSetRecoilState(mousePartialState_atom);
     const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
     const [active, setActive] = useRecoilState(work_state_atom);
@@ -343,10 +339,9 @@ function WorkPreviewWindow({ currentIndex, ...props }) {
 
     const variants = {
         initialAnim: {
-            opacity: 0,
+            outline: `solid ${active ? color : "#000"} 0.3rem`,
         },
         beforeTransition: {
-            opacity: 1,
             outline: `solid ${active ? color : "#000"} 0.3rem`,
             width: "88.9rem",
             height: "48.2rem",
@@ -365,8 +360,8 @@ function WorkPreviewWindow({ currentIndex, ...props }) {
         shiftTransition: {
             width: "106rem",
             height: "42.5rem",
-            left: "65.5rem",
-            top: "21rem",
+            left: "66.05499877929688rem",
+            top: "20.96999969482422rem",
             outline: `solid ${active ? color : "#000"} 0rem`,
             transition: {
                 duration: 1,
@@ -410,42 +405,64 @@ function WorkPreviewWindow({ currentIndex, ...props }) {
             workOverlayControls.start("beforeTransition");
         }
     }, [active, currentIndex]);
-
     return (
-        <AnimatePresence>
-            <motion.div
-                key={title}
-                variants={variants}
-                initial={"initialAnim"}
-                animate={workOverlayControls}
-                exit={"exitAnim"}
-                className="preview-window"
-                // style={{
-                //     outline: `solid ${active ? color : "#000"} 3rem`,
-                // }}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onClick={handleClick}
-            >
-                <img src={preview} alt={"preview image for " + title} />
-                <motion.div
-                    className="preview-overlay"
+        <motion.div
+            variants={variants}
+            initial={"initialAnim"}
+            animate={workOverlayControls}
+            className="preview-window"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleClick}
+        >
+            <AnimatePresence>
+                <motion.img
+                    key={title}
+                    src={preview}
+                    alt={"preview image for " + title}
                     initial={{
-                        backgroundColor: color,
+                        scale: 1.4,
+                        opacity: 0,
+                        // zIndex: 1,
                     }}
                     animate={{
-                        height: active ? "100%" : "0%",
+                        scale: 1,
+                        opacity: 1,
                         transition: {
-                            duration: 0.4,
+                            delay: 0.05,
+                            // duration: 0.3,
                         },
+                        // zIndex: 2,
+                    }}
+                    exit={{
+                        // zIndex: 3,
+                        scale: 0.6,
+                        opacity: 0,
                     }}
                     transition={{
-                        duration: 0.4,
-                        ease: [0.41, 0.91, 0.46, 1],
+                        duration: 0.28,
+                        ease: [0.07, 0.7, 0.55, 1],
                     }}
                 />
-            </motion.div>
-        </AnimatePresence>
+            </AnimatePresence>
+            <motion.div
+                key={title}
+                className="preview-overlay"
+                initial={{
+                    backgroundColor: color,
+                }}
+                animate={{
+                    height: active ? "100%" : "0%",
+                    transition: {
+                        duration: 0.3,
+                    },
+                }}
+                transition={{
+                    duration: 0.3,
+                    ease: [0.41, 0.91, 0.46, 1],
+                }}
+            />
+        </motion.div>
     );
 }
 

@@ -16,6 +16,10 @@ import {
     rnd_graphic2_svg,
     rnd_graphic_svg,
     rnd_info1_svg,
+    rnd_arrow2_svg,
+    rnd_arrow3_svg,
+    rnd_arrow4_svg,
+    rnd_bracket_svg,
 } from "./assets";
 import auxilium_mockup from "../../../../../../assets/auxilium/auxilium_mockup_400.jpg";
 import rndfig1 from "../../../../../../assets/auxilium/rndfig1.png";
@@ -131,7 +135,7 @@ const slideData = [
         imgsrc: presentation1,
         description: (
             <>
-                <b>figure 1:</b> auxilium - header image
+                <b>figure 1</b>: auxilium - header image
             </>
         ),
     },
@@ -139,7 +143,7 @@ const slideData = [
         imgsrc: presentation2,
         description: (
             <>
-                <b>figure 2:</b> about the team
+                <b>figure 2</b>: about the team
             </>
         ),
     },
@@ -147,7 +151,7 @@ const slideData = [
         imgsrc: presentation3,
         description: (
             <>
-                <b>figure 3:</b> our thought process
+                <b>figure 3</b>: our thought process
             </>
         ),
     },
@@ -155,7 +159,7 @@ const slideData = [
         imgsrc: presentation4,
         description: (
             <>
-                <b>figure 4:</b> brand introduction
+                <b>figure 4</b>: brand introduction
             </>
         ),
     },
@@ -163,7 +167,7 @@ const slideData = [
         imgsrc: presentation5,
         description: (
             <>
-                <b>figure 5:</b> lo/mid-fidelity prototype
+                <b>figure 5</b>: lo/mid-fidelity prototype
             </>
         ),
     },
@@ -171,7 +175,7 @@ const slideData = [
         imgsrc: presentation6,
         description: (
             <>
-                <b>figure 6:</b> hi-fidelity prototype
+                <b>figure 6</b>: hi-fidelity prototype
             </>
         ),
     },
@@ -179,7 +183,7 @@ const slideData = [
         imgsrc: presentation7,
         description: (
             <>
-                <b>figure 7:</b> design system & typography
+                <b>figure 7</b>: design system & typography
             </>
         ),
     },
@@ -187,7 +191,7 @@ const slideData = [
         imgsrc: presentation8,
         description: (
             <>
-                <b>figure 8:</b> logo design & brand name
+                <b>figure 8</b>: logo design & brand name
             </>
         ),
     },
@@ -195,7 +199,7 @@ const slideData = [
         imgsrc: presentation9,
         description: (
             <>
-                <b>figure 9:</b> full-stack programming brief
+                <b>figure 9</b>: full-stack programming brief
             </>
         ),
     },
@@ -300,7 +304,7 @@ function AuxiliumRnD2() {
                     scrollableParentSelector=".ScrollbarsCustom-Scroller"
                     animateOnce
                 >
-                    <div className="title">let’s get prototyping</div>
+                    <div className="title">let’s get prototyping.</div>
                 </ScrollAnimation>{" "}
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -339,8 +343,32 @@ function AuxiliumRnD2() {
                     <img src={rndfig3} alt="figure" />
                 </div>
                 <div className="figure">
-                    <b>figure 2</b>: <i> from mid-fi to hi-fi</i>— search
-                    results page
+                    <b>figure 2</b>:<i> {"\u00A0"}from mid-fi to hi-fi</i>—
+                    search results page
+                </div>
+                <div className="rnd2-arrow2">{rnd_arrow2_svg}</div>
+                <div className="floating-text1">
+                    implemented “hashtags” so that users looking for specific
+                    events / giveaways can
+                    <b> refine their search according to their needs</b>
+                </div>
+                <div className="rnd2-arrow3">{rnd_arrow3_svg}</div>
+                <div className="floating-text2">
+                    designed event cards - users can
+                    <b> locate & distinguish events easily</b>
+                </div>
+                <div className="rnd2-arrow4">{rnd_arrow4_svg}</div>
+                <div className="floating-text3">
+                    <b>drop-down menu </b>
+                    allows easy navigation for refining search; users can easily
+                    switch from searching for online events to other types of
+                    events
+                </div>
+                <div className="rnd2-bracket">{rnd_bracket_svg}</div>
+                <div className="floating-text4">
+                    incorporation of warm-toned color palette consisting of
+                    yellows to convey a
+                    <b> friendly, all-welcoming semiotic effect</b>
                 </div>
             </div>
         </>
@@ -357,7 +385,7 @@ function AuxiliumRnD() {
                     scrollableParentSelector=".ScrollbarsCustom-Scroller"
                     animateOnce
                 >
-                    <div className="title">user research & personae</div>
+                    <div className="title">user research & personae.</div>
                 </ScrollAnimation>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -400,7 +428,7 @@ function AuxiliumRnD() {
             <div className="rnd-bubble2 text">
                 Oftentimes, our team would organize events with hundreds of care
                 packages and masks to give out. But our events usually
-                <b>end up not reaching a big group of people</b>, because it’s
+                <b> end up not reaching a big group of people</b>, because it’s
                 hard to outreach different communities with just the word of
                 mouth.
             </div>
@@ -538,7 +566,7 @@ function AuxiliumObjective() {
                     scrollableParentSelector=".ScrollbarsCustom-Scroller"
                     animateOnce
                 >
-                    <div className="title">accessibility for all</div>
+                    <div className="title">accessibility for all.</div>
                 </ScrollAnimation>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -548,10 +576,11 @@ function AuxiliumObjective() {
                     <div className="body">
                         We decided that a platform that
                         <b>
+                            {" "}
                             selectively shows charitable events, giveaways, and
-                            other covid-related assistance and
+                            other covid-related assistance and help{" "}
                         </b>
-                        help is needed.
+                        is needed.
                     </div>
                 </ScrollAnimation>
             </div>
@@ -625,7 +654,7 @@ function AuxiliumProblem() {
                     isn’t an{" "}
                     <b>
                         effective way for organizations and non-profits to
-                        advertise their events .
+                        advertise their events.
                     </b>
                     <br />
                     <br />

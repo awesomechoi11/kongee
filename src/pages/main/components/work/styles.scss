@@ -9,6 +9,11 @@
         overflow: hidden;
         // transition: outline 400ms;
         cursor: pointer;
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
         .preview-overlay {
             position: absolute;
             bottom: 0;
@@ -100,6 +105,9 @@
 
                 .icon {
                     height: 3.9rem;
+                    svg {
+                        height: 100%;
+                    }
                 }
             }
         }

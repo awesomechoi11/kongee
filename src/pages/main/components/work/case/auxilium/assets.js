@@ -1,3 +1,115 @@
+export const rnd_arrow4_svg = (
+    <svg
+        width="74"
+        height="44"
+        viewBox="0 0 74 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <ellipse
+            rx="6.99339"
+            ry="6.98118"
+            transform="matrix(-0.861102 -0.508432 0.511188 -0.859469 9.59073 10.2963)"
+            fill="#A7704C"
+        />
+        <path
+            d="M72.0269 36.2197C73.0386 35.7732 73.4977 34.593 73.0523 33.5837L65.7934 17.1364C65.348 16.1271 64.1667 15.6709 63.1549 16.1175C62.1431 16.564 61.684 17.7442 62.1295 18.7535L68.5818 33.3733L53.926 39.8415C52.9143 40.288 52.4552 41.4682 52.9006 42.4775C53.3461 43.4868 54.5274 43.943 55.5391 43.4964L72.0269 36.2197ZM8.57496 12.3434L70.4952 36.2562L71.9454 32.5283L10.0251 8.61556L8.57496 12.3434Z"
+            fill="#A7704C"
+        />
+    </svg>
+);
+export const rnd_bracket_svg = (
+    <svg
+        width="35"
+        height="279"
+        viewBox="0 0 35 279"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M35 139.31V139.31C25.7663 139.31 18.2809 146.796 18.2809 156.03L18.2809 264.311C18.2809 270.938 12.9083 276.311 6.2809 276.311H4"
+            stroke="#A7704C"
+            stroke-width="4"
+        />
+        <path
+            d="M35 139.31V139.31C25.8689 139.31 18.4667 131.908 18.4667 122.777L18.4667 14.3101C18.4667 7.68264 13.0941 2.31006 6.46667 2.31006H4"
+            stroke="#A7704C"
+            stroke-width="4"
+        />
+        <path d="M4 2.31055L0 2.31055" stroke="#A7704C" stroke-width="4" />
+        <path d="M4 276.311H0" stroke="#A7704C" stroke-width="4" />
+    </svg>
+);
+export const rnd_arrow3_svg = (
+    <svg
+        width="212"
+        height="100"
+        viewBox="0 0 212 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <circle
+            cx="203"
+            cy="90.0825"
+            r="7"
+            fill="#A7704C"
+            stroke="#A7704C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M2 10.0825L59 10.0825C73.9539 10.0825 81.4308 10.0825 87 13.2979C90.6485 15.4043 93.6782 18.4341 95.7846 22.0825C99 27.6517 99 35.1287 99 50.0825V50.0825C99 65.0364 99 72.5133 102.215 78.0825C104.322 81.731 107.352 84.7607 111 86.8671C116.569 90.0825 124.046 90.0825 139 90.0825H196"
+            stroke="#A7704C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M10 18.0825L2 10.0825L10 2.08252"
+            stroke="#A7704C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
+);
+export const rnd_arrow2_svg = (
+    <svg
+        width="326"
+        height="54"
+        viewBox="0 0 326 54"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M315.397 3.39594V3.39594C315.397 19.0008 315.397 26.8032 311.907 32.5464C309.908 35.8346 307.149 38.5941 303.861 40.5923C298.117 44.0825 290.315 44.0825 274.71 44.0825H16"
+            stroke="#A7704C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M323.397 10.0825L315.397 2.08252L307.397 10.0825"
+            stroke="#A7704C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <circle
+            cx="9"
+            cy="44.0825"
+            r="7"
+            transform="rotate(180 9 44.0825)"
+            fill="#A7704C"
+            stroke="#A7704C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
+);
+
 export const rnd_graphic_svg = (
     <svg
         width="750"
