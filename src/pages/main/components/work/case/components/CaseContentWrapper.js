@@ -4,6 +4,7 @@ import {
     Component,
     createRef,
     useLayoutEffect,
+    useState,
 } from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Scrollbar } from "react-scrollbars-custom";
@@ -19,8 +20,9 @@ import CaseBanner from "./CaseBanner";
 import CaseFooter from "./CaseFooter";
 import "./styles.scss";
 import { SpringSystem } from "rebound";
-import { motion } from "framer-motion";
-
+import { AnimateSharedLayout, motion } from "framer-motion";
+import GravityButton from "../../../../../../components/GravityButton";
+import clsx from "clsx";
 export default function CaseContentWrapper({
     children,
     caseDetails,
@@ -30,7 +32,9 @@ export default function CaseContentWrapper({
     const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
     const setOverride = useSetRecoilState(override_mouse_atom);
     const [caseState, setCaseState] = useRecoilState(case_atom);
+    const [ready, setReady] = useState(false);
     useLayoutEffect(() => {
+        console.log("casewrapperrender");
         setMouse({
             animState: "default",
         });
@@ -47,24 +51,39 @@ export default function CaseContentWrapper({
             top: 0,
             enabled: true,
             count: -1,
+            currentMarker: false,
         });
+        setReady(true);
     }, []);
     const setMousePosition = useResetRecoilState(
         forceRefresh_global_mouse_position_selector
     );
     const scrollRef = useRef(null);
     useEffect(() => {
-        console.log(caseState);
-        if (scrollRef && caseState.count) {
+        if (scrollRef && caseState.count > 0 && ready) {
+            console.log("set scroll");
             scrollRef.current.scrollTop(caseState.top);
         }
-    }, [caseState]);
+    }, [caseState, ready]);
+    function scrollToTargetAdjusted(query) {
+        var element = document.querySelector(query);
+        var headerOffset = 50;
+        var elementPosition = element.getBoundingClientRect().top;
+        var offsetPosition = elementPosition - headerOffset;
+
+        document.querySelector(".ScrollbarsCustom-Scroller").scrollBy({
+            top: offsetPosition,
+            behavior: "smooth",
+        });
+    }
+    console.log(caseState);
     return (
         <SpringScrollbars
             id={caseDetails.id}
             onScroll={() => {
                 setMousePosition();
             }}
+            className="case-wrapper"
             ref={scrollRef}
             noScrollX={true}
             noScrollY={!caseState.enabled}
@@ -76,7 +95,80 @@ export default function CaseContentWrapper({
                 )}
             >
                 <CaseBanner caseDetails={caseDetails} />
-                <motion.div className="case-children">{children}</motion.div>
+                <motion.div className="case-children">
+                    {children}
+                    <div className="case-overview">
+                        <div className="inner">
+                            <AnimateSharedLayout>
+                                {caseDetails.overviewMarkers &&
+                                    caseDetails.overviewMarkers.map((data) => {
+                                        const markerID =
+                                            typeof data === "string"
+                                                ? data
+                                                : data.id;
+                                        const markerText =
+                                            typeof data === "string"
+                                                ? data
+                                                : data.text;
+
+                                        return (
+                                            <GravityButton
+                                                enterPadding={[0, 0]}
+                                                leavePadding={[0, 0]}
+                                                itemDim={[41, 21]}
+                                                key={markerID}
+                                                className="item"
+                                                preventLocalCounter
+                                                onClick={() => {
+                                                    scrollToTargetAdjusted(
+                                                        `#${markerID}`
+                                                    );
+                                                    // document
+                                                    //     .getElementById(
+                                                    //         markerID
+                                                    //     )
+                                                    //     .scrollIntoView({
+                                                    //         behavior: "smooth",
+                                                    //         block: "start",
+                                                    //     });
+                                                }}
+                                            >
+                                                {caseState.currentMarker &&
+                                                    caseState.currentMarker ===
+                                                        markerID && (
+                                                        <motion.span
+                                                            className="marker"
+                                                            layoutId="currentMarker"
+                                                        >
+                                                            •
+                                                        </motion.span>
+                                                    )}
+                                                <motion.span
+                                                    animate={{
+                                                        x:
+                                                            caseState.currentMarker &&
+                                                            caseState.currentMarker ===
+                                                                markerID
+                                                                ? "1rem"
+                                                                : "0rem",
+                                                    }}
+                                                    className={clsx(
+                                                        "text",
+                                                        caseState.currentMarker &&
+                                                            caseState.currentMarker ===
+                                                                markerID &&
+                                                            "active"
+                                                    )}
+                                                >
+                                                    {markerText}
+                                                </motion.span>
+                                            </GravityButton>
+                                        );
+                                    })}
+                            </AnimateSharedLayout>
+                        </div>
+                    </div>
+                </motion.div>
                 <CaseFooter
                     caseDetails={caseDetails}
                     beforeAndAfter={beforeAndAfter}

@@ -30,6 +30,66 @@
     font-size: 2.2rem;
     line-height: 2.9rem;
 }
+.case-wrapper {
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+    height: 100vh;
+    position: relative;
+    background: #ffffff;
+    box-sizing: border-box;
+    .case-overview {
+        position: sticky;
+        left: 5rem;
+        top: 23rem;
+        width: 10rem;
+
+        text-transform: uppercase;
+        .header {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.8rem;
+            line-height: 2.7rem;
+            /* identical to box height */
+
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.8rem;
+        }
+        .item {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 1.8rem;
+            line-height: 2.7rem;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            position: relative;
+            .circle {
+                display: block;
+                position: absolute;
+            }
+            .text {
+                position: relative;
+                pointer-events: none;
+                display: block;
+                &.active {
+                    transform: translateX(1rem);
+                }
+            }
+            .marker {
+                position: absolute;
+            }
+        }
+    }
+}
 
 .footer-outer {
     height: 104rem;

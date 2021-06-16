@@ -10,6 +10,7 @@ export const case_atom = atom({
         backgroundColor: "#fff",
         top: 0,
         enabled: true,
+        currentMarker: false,
         count: 0, // so it refires even if same top value
     }, // default value (aka initial value)
 });

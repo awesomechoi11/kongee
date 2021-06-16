@@ -1,14 +1,14 @@
 import { useLayoutEffect, useRef } from "react";
-import { useSetRecoilState } from "recoil";
+import { useResetRecoilState, useSetRecoilState } from "recoil";
 import ReactiveShape from "../../../../components/ReactiveShape";
-import { mousePartialState_atom } from "../../../../recoil/atoms";
+import {
+    forceRefresh_global_mouse_position_selector,
+    mousePartialState_atom,
+} from "../../../../recoil/atoms";
 import useLoadTracker from "../../../../utility/useLoadTracker";
 
 import "./styles.scss";
 
-import vsig from "../../../../assets/vsig.png";
-import sally_pic from "../../../../assets/aboutme_sally.png";
-import book_pic from "../../../../assets/book.png";
 import {
     linkedin_thin_svg,
     insta_thin_svg,
@@ -18,8 +18,13 @@ import {
 import GravityButton from "../../../../components/GravityButton";
 import UniversalFooter from "../UniversalFooter";
 
+const vsig = "https://cdn.brandon-choi.info/kongee/assets/vsig.png";
+const sally_pic =
+    "https://cdn.brandon-choi.info/kongee/assets/aboutme_sally.png";
+const book_pic = "https://cdn.brandon-choi.info/kongee/assets/book.png";
+
 function About() {
-    const [loading, progress] = useLoadTracker({
+    useLoadTracker({
         sally_pic,
         book_pic,
     });
@@ -33,9 +38,17 @@ function About() {
                 animState: "default",
             }),
     });
-
+    const setMousePosition = useResetRecoilState(
+        forceRefresh_global_mouse_position_selector
+    );
     return (
-        <div className="scrollhere" id="about-wrapper">
+        <div
+            className="scrollhere"
+            id="about-wrapper"
+            onScroll={() => {
+                setMousePosition();
+            }}
+        >
             <div id="about">
                 <ReactiveShape
                     lerpValue={0.01}
@@ -174,7 +187,14 @@ function About() {
                             using the boundless potential of technology and
                             design. In the past, I’ve won{" "}
                             <b>
-                                <u>multiple hackathons</u>
+                                <u>
+                                    <a
+                                        href="https://devpost.com/kongee"
+                                        target="_blank"
+                                    >
+                                        multiple hackathons
+                                    </a>
+                                </u>
                             </b>{" "}
                             by creating websites with a theme of inclusion,
                             environmental science, and more.
@@ -185,10 +205,17 @@ function About() {
                     <div className="item">
                         <div className="title">EDUCATION</div>
                         <div className="body">
-                            I’m currently a third-year Design major at
-                            University of California, Davis. After undergrad, I
-                            plan on working as a full-time designer to further
-                            my exploration in UX/UI.
+                            I’m currently a third-year Design major at{" "}
+                            <u>
+                                <a
+                                    href="https://www.ucdavis.edu/majors/design"
+                                    target="_blank"
+                                >
+                                    University of California, Davis
+                                </a>
+                            </u>
+                            . After undergrad, I plan on working as a full-time
+                            designer to further my exploration in UX/UI.
                         </div>
                     </div>
                     <br />
@@ -230,7 +257,14 @@ function About() {
                             bake for my family in my free time. I also watch
                             lots of{" "}
                             <b>
-                                <u>dog videos</u>
+                                <u>
+                                    <a
+                                        href="https://www.youtube.com/watch?v=-xCQkiIM63Q"
+                                        target="_blank"
+                                    >
+                                        dog videos
+                                    </a>
+                                </u>
                             </b>
                             .
                         </div>
@@ -251,7 +285,14 @@ function About() {
                     <div className="right">
                         <div className="top">currently reading</div>
                         <div className="middle">
-                            the temperature of language
+                            <u>
+                                <a
+                                    href="https://www.amazon.com/temperature-Language-%EC%96%B8%EC%96%B4%EC%9D%98-%EC%98%A8%EB%8F%84/dp/B06XKQN1JJ"
+                                    target="_blank"
+                                >
+                                    the temperature of language
+                                </a>
+                            </u>
                         </div>
                         <div className="bottom">by Lee Ki Joo</div>
                     </div>
@@ -263,7 +304,14 @@ function About() {
                         <br />
                         my boyfriend, aka my best friend, who{" "}
                         <b>
-                            <u>programmed this website</u>
+                            <u>
+                                <a
+                                    href="https://brandon-choi.info"
+                                    target="_blank"
+                                >
+                                    programmed this website
+                                </a>
+                            </u>
                         </b>{" "}
                         and supported my coffee addiction <br />
                         my friends & colleagues, who always stayed beside me to
@@ -296,7 +344,7 @@ function About() {
                 </div>
             </div>
 
-            <UniversalFooter scrollableParentSelector={".scrollhere"} />
+            <UniversalFooter scrollableParentSelector={"#about-wrapper"} />
         </div>
     );
 }

@@ -13,30 +13,34 @@
 $inner-width: 152rem;
 $padding-width: 20rem;
 
-#auxilium-case,
-#when2meet-case {
-    height: 100vh;
-    position: relative;
-    background: #ffffff;
-    box-sizing: border-box;
-    img {
-        width: 100%;
-        height: 100%;
-    }
-    svg {
-        width: 100%;
-        height: 100%;
-    }
-    .case-children {
-        height: 1228.92rem;
+#auxilium-case {
+    ::selection {
+        background: black;
+        color: #eec878;
     }
 
+    .case-children {
+        height: 1211.92rem;
+    }
+    .case-children > * {
+        position: relative;
+        &.case-overview {
+            width: 15rem;
+            top: 104rem;
+            height: 1160rem;
+            position: absolute;
+            .inner {
+                position: sticky;
+                top: 23rem;
+            }
+        }
+    }
     .results2 {
         position: absolute;
         width: $inner-width;
         height: 66.962rem;
         left: $padding-width;
-        top: 1240.95rem;
+        top: 1230rem;
         .content {
             display: flex;
             justify-content: space-between;
@@ -124,9 +128,13 @@ $padding-width: 20rem;
     .results-visuals {
         position: absolute;
         width: $inner-width;
-        height: 133.222rem;
+        height: 110.222rem;
         left: $padding-width;
         top: 1108.334rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         .title {
             font-family: Poppins;
             font-style: normal;

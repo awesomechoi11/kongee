@@ -98,8 +98,16 @@ function FooterItem({ caseDetails, className }) {
         // hardcoded fun!
         if (inTransition) {
             // scroll to footer
+            console.log(
+                document.querySelector(".case-children").getBoundingClientRect()
+                    .bottom,
+                ((1294.2650024414062 * 10) / 1920) * document.body.clientWidth
+            );
+
             setCaseState({
-                top: ((1311.23 * 10) / 1920) * document.body.clientWidth,
+                top:
+                    document.querySelector(".case-children").clientHeight +
+                    document.querySelector(".banner-outer").clientHeight,
                 enabled: false,
                 count: caseState.count + 5,
             });
@@ -144,6 +152,15 @@ function FooterItem({ caseDetails, className }) {
         caseFooterControls.start(isAfter ? "after" : "before").then(() => {
             if (isAfter)
                 caseFooterControls.start("shiftTransition").then(() => {
+                    setCaseState({
+                        inTransition: false,
+                        selected: 0,
+                        backgroundColor: "#fff",
+                        top: 0,
+                        enabled: true,
+                        count: -1,
+                        currentMarker: false,
+                    });
                     history.push(`/work/${path}/case`);
                 });
         });

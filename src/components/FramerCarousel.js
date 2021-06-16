@@ -8,24 +8,25 @@ import "./FramerCarousel.scss";
 function Slide({ imgsrc, description, ...props }) {
     return (
         <>
-            <motion.div
-                key={imgsrc}
-                initial={{ x: 300, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -300, opacity: 0 }}
-                className="carousel-slide"
-                {...props}
-            >
-                <img src={imgsrc} alt={description} />
-            </motion.div>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="carousel-description"
-            >
-                {description}
-            </motion.div>
+            <div className="carousel-slide">
+                <motion.img
+                    src={imgsrc}
+                    alt={description.innerText}
+                    key={imgsrc}
+                    initial={{ x: 300, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: -300, opacity: 0 }}
+                />
+            </div>
+            <div className="carousel-description">
+                <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                >
+                    {description}
+                </motion.span>
+            </div>
         </>
     );
 }
@@ -38,6 +39,7 @@ export default function FramerCarousel({ slides, ...props }) {
         Object.values(slides).map((value, index) => [index, value.imgsrc])
     );
     const [loading, progress] = useLoadTracker(slidesObj, false);
+    const { imgsrc, description } = slides[page];
     return (
         <div className={clsx("carousel", props.className)}>
             <div className="carousel-controls">
@@ -87,9 +89,45 @@ export default function FramerCarousel({ slides, ...props }) {
                     }}
                 ></div>
             </div>
-            <AnimatePresence>
-                <Slide {...slides[page]} />
-            </AnimatePresence>
+            <div className="carousel-slide">
+                <AnimatePresence>
+                    <motion.img
+                        src={imgsrc}
+                        alt={description.innerText}
+                        key={imgsrc}
+                        initial={{ x: 300, opacity: 0 }}
+                        animate={{
+                            x: 0,
+                            opacity: 1,
+                            transition: {
+                                ease: [1, 1, 1, 1],
+                            },
+                        }}
+                        exit={{
+                            x: -300,
+                            opacity: 0,
+                            transition: {
+                                ease: [1, 1, 1, 1],
+                            },
+                        }}
+                    />
+                </AnimatePresence>
+            </div>
+            <div className="carousel-description">
+                <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        opacity: 1,
+                        transition: {
+                            ease: [1, 1, 1, 1],
+                        },
+                    }}
+                    exit={{ opacity: 0 }}
+                    key={imgsrc}
+                >
+                    {description}
+                </motion.span>
+            </div>
         </div>
     );
 }

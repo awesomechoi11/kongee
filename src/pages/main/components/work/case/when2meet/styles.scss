@@ -1,0 +1,506 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&display=swap");
+
+.TODO {
+    position: absolute;
+
+    left: 20rem;
+    width: 152rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .inner {
+        height: 45rem;
+        width: 45rem;
+        background-color: #769e5d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+#when2meet-case {
+    .case-children > * {
+        position: relative;
+        &.case-overview {
+            width: 15rem;
+            top: 104rem;
+            height: 1670rem;
+            position: absolute;
+            .inner {
+                position: sticky;
+                top: 23rem;
+            }
+        }
+    }
+    .crimson {
+        font-family: Crimson Text;
+        font-weight: bold;
+        font-size: 8rem;
+    }
+    .left .banner-details {
+        .title {
+            font-size: 7.7rem;
+            text-align: right;
+        }
+        .description {
+            font-size: 1.74rem;
+        }
+    }
+    .theme-color {
+        color: #769e5d;
+    }
+    ::selection {
+        background: black;
+        color: #769e5d;
+    }
+
+    #lofi-midfi {
+        position: relative;
+        height: 217.6rem;
+        .label {
+            position: absolute;
+            top: 14.2rem;
+            left: 30.6rem;
+            width: 123.8rem;
+        }
+        .figures {
+            position: absolute;
+            width: 152rem;
+            top: 59.5rem;
+            left: 20rem;
+            .img-wrapper {
+                width: 152.1rem;
+                margin-bottom: 6.3rem;
+            }
+            .description {
+                text-align: center;
+                font-size: 2.4rem;
+            }
+            .figure1 {
+            }
+            .caption {
+                margin: 10.7rem 0;
+                text-align: center;
+                font-size: 2.2rem;
+            }
+        }
+    }
+
+    #hifi {
+        .part1 {
+            position: relative;
+            width: 192rem;
+            height: 269rem;
+            .label {
+                position: absolute;
+                top: 12.8rem;
+                left: 30.6rem;
+            }
+            .mockup {
+                position: absolute;
+                top: 44rem;
+                overflow: hidden;
+                img {
+                    transform: scale(1.4);
+                }
+            }
+            .TODO {
+                top: 160rem;
+                height: 80rem;
+            }
+        }
+        .part2 {
+            position: relative;
+            width: 192rem;
+            height: 157rem;
+            .label {
+                position: absolute;
+                width: 130.7rem;
+                top: 12rem;
+                left: 30.6rem;
+            }
+            .floating1 {
+                position: absolute;
+
+                width: 26.2rem;
+                left: 111.4rem;
+                top: 70.8rem;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 1.4rem;
+                line-height: 2.1rem;
+                letter-spacing: 0.03em;
+                b {
+                    font-weight: 600;
+                }
+            }
+            .floating2 {
+                position: absolute;
+                width: 26.2rem;
+                left: 111.4rem;
+                top: 86.1rem;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 1.4rem;
+                line-height: 2.1rem;
+                letter-spacing: 0.03em;
+                b {
+                    font-weight: 600;
+                }
+            }
+            .graphic-guide {
+                position: absolute;
+                width: 86.6rem;
+                height: 94.1rem;
+                left: 19.8rem;
+                top: 51.3rem;
+            }
+            .graphic-types {
+                position: absolute;
+                width: 60.6rem;
+                height: 26.7rem;
+                left: 111.4rem;
+                top: 105.5rem;
+            }
+            .hifi-arrow {
+                position: absolute;
+                height: 11.6rem;
+                width: 6rem;
+                left: 139rem;
+                top: 89.7rem;
+            }
+        }
+    }
+
+    #takeaways {
+        position: relative;
+        width: 192rem;
+        height: 81.5rem;
+        .label {
+            position: absolute;
+            top: 12rem;
+            left: 30rem;
+            width: 84.4rem;
+        }
+        .graphic-background {
+            position: absolute;
+            left: 135.1rem;
+            top: 42.6rem;
+            .circle {
+                width: 30.7rem;
+                height: 30.7rem;
+                background: linear-gradient(
+                        237.87deg,
+                        #f3b61f 13.22%,
+                        rgba(255, 255, 255, 0) 60.67%
+                    ),
+                    #779d60;
+                border-radius: 100%;
+            }
+        }
+        .graphic {
+            position: absolute;
+        }
+        .graphic-person-sitting {
+            height: 31.8rem;
+            width: 22.2rem;
+            left: 121.2rem;
+            top: 46.1rem;
+        }
+        .graphic-person-sitting-bubble {
+            height: 4.9rem;
+            width: 6.1rem;
+            left: 133.6rem;
+            top: 41rem;
+        }
+        .graphic-person-standing-bubble {
+            height: 4.9rem;
+            width: 6.1rem;
+            left: 147rem;
+            top: 34.5rem;
+        }
+        .graphic-person-standing {
+            height: 41.2rem;
+            width: 28.3rem;
+            left: 143.7rem;
+            top: 36.6rem;
+        }
+    }
+
+    #rnd-ideation {
+        position: relative;
+        width: 192rem;
+        height: 298rem;
+        .label {
+            width: 130rem;
+        }
+        .part1 {
+            position: absolute;
+            top: 11.8rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8.7rem;
+            flex-direction: column;
+            .ideation-graphic {
+                width: 152rem;
+                height: 65rem;
+            }
+        }
+        .part2 {
+            position: absolute;
+            top: 154.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 10.9rem;
+            .TODO {
+                top: 50rem;
+                height: 89.6rem;
+            }
+        }
+    }
+
+    #rnd-user-research {
+        position: relative;
+        width: 192rem;
+        height: 405.5rem;
+
+        .TODO {
+            top: 100rem;
+            height: 100rem;
+        }
+
+        .persona {
+            position: absolute;
+
+            &.persona-1 {
+                top: 272.7rem;
+            }
+            &.persona-2 {
+                top: 338.8rem;
+            }
+
+            left: 20rem;
+            height: 58rem;
+            width: 152rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            .divider {
+                width: 1rem;
+                height: 52rem;
+                background: #4a4b94;
+                border-radius: 2rem;
+            }
+            .left {
+                .headshot {
+                    width: 25.6rem;
+                    height: 25.6rem;
+                }
+
+                .description {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-size: 2rem;
+                    line-height: 3rem;
+                }
+            }
+            .right {
+                display: flex;
+                gap: 3rem;
+                .column {
+                    .green {
+                        color: #779d60;
+                    }
+                    .question {
+                        width: 23rem;
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 2.3rem;
+                        line-height: 3.4rem;
+                        text-align: center;
+                        margin-bottom: 5.2rem;
+                    }
+                    .item {
+                        width: 20.2rem;
+                        padding: 1.6rem 2.4rem;
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 1.4rem;
+                        line-height: 2.1rem;
+                        border-radius: 2rem;
+                        border: solid black 0.2rem;
+                        margin-bottom: 1.7rem;
+                    }
+                }
+            }
+        }
+
+        .label2 {
+            position: absolute;
+            top: 226rem;
+            left: 25.8rem;
+            width: 140rem;
+        }
+
+        .label {
+            position: absolute;
+            top: 15rem;
+            left: 25.8rem;
+            width: 140rem;
+        }
+        .comment {
+            text-align: center;
+        }
+        .statistics-disclaimer {
+            font-size: 1.8rem;
+            text-align: right;
+            margin-bottom: 7.3rem;
+            margin-top: 5.3rem;
+        }
+        .statistics {
+            display: flex;
+            gap: 16.7rem;
+            justify-content: center;
+            align-items: top;
+            margin-top: 3.8rem;
+
+            .item {
+                .number {
+                    font-family: Apparel;
+                    font-weight: 900;
+                    font-size: 7.2rem;
+                    .animated {
+                        display: inline;
+                    }
+                }
+                .description {
+                    width: 35.6rem;
+
+                    font-family: Apparel;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 1.8rem;
+                    line-height: 2.4rem;
+                }
+            }
+        }
+    }
+
+    #rnd-initial {
+        position: relative;
+        width: 192rem;
+        height: 90rem;
+        .label {
+            position: absolute;
+            left: 25.8rem;
+            top: 20.2rem;
+            width: 107.3rem;
+        }
+        .process-line {
+            position: absolute;
+            top: 71.8rem;
+            left: 27.1rem;
+            display: flex;
+            gap: 2.67rem;
+            align-items: center;
+
+            .item {
+                padding: 0.9rem 1.7rem;
+                border: 0.2rem solid #f3b61f;
+                border-radius: 0.8rem;
+                display: inline;
+                margin: 0;
+                font-size: 1.4rem;
+            }
+            .arrow {
+                width: 4rem;
+                height: 1rem;
+            }
+        }
+        .graphic-background {
+            position: absolute;
+            left: 134rem;
+            top: 17rem;
+
+            .inner {
+                width: 24.5rem;
+                height: 24.5rem;
+
+                background: linear-gradient(
+                        82.07deg,
+                        #f3b61f 2%,
+                        rgba(255, 255, 255, 0) 97.67%
+                    ),
+                    #4a4b94;
+                transform: rotate(-103.82deg);
+            }
+        }
+        .graphic-plant {
+            position: absolute;
+            width: 20.4rem;
+            height: 42.6rem;
+            top: 22.6rem;
+            left: 148.6rem;
+        }
+    }
+
+    #overview {
+        width: 192rem;
+        height: 210rem;
+        .label {
+            position: absolute;
+            left: 30rem;
+            top: 3.7rem;
+        }
+        .TODO {
+            top: 98rem;
+            height: 100rem;
+        }
+        .graphic-background {
+            position: absolute;
+            left: 38.8rem;
+            top: 20.8rem;
+
+            .inner {
+                width: 38.3rem;
+                height: 38.3rem;
+                background: linear-gradient(
+                        82.07deg,
+                        #f3b61f 2%,
+                        rgba(255, 255, 255, 0) 97.67%
+                    ),
+                    #4a4b94;
+                transform: rotate(-103.82deg);
+            }
+        }
+        .graphic-person-sitting {
+            position: absolute;
+            left: 43.2rem;
+            top: 34.4rem;
+        }
+        .graphic-person-standing {
+            position: absolute;
+            top: 28rem;
+            left: 27.7rem;
+        }
+        .body {
+            position: absolute;
+            width: 71.2rem;
+            height: 20.3rem;
+            left: 93rem;
+            top: 35.4rem;
+        }
+    }
+}

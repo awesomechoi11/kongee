@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
 export default function CaseBanner({ caseDetails }) {
-    const { title, bannerDetails, date, description, tools } = caseDetails;
+    const { title, bannerDetails, date, description, tools, color } =
+        caseDetails;
     const variants = {
         hidden: {
             opacity: 0,
@@ -29,7 +30,12 @@ export default function CaseBanner({ caseDetails }) {
                         <div className="tools">{tools}</div>
                     </motion.div>
                 </div>
-                <div className="right">
+                <div
+                    className="right"
+                    style={{
+                        backgroundColor: color,
+                    }}
+                >
                     <motion.div
                         variants={variants}
                         initial="hidden"

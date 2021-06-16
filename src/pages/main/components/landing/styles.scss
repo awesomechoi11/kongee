@@ -36,6 +36,41 @@
             font-weight: 700;
             font-size: 3rem;
         }
+        .view-work {
+            width: 18rem;
+            height: 4rem;
+            cursor: pointer;
+            .inner {
+                width: 18rem;
+                height: 4rem;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 1.6rem;
+                line-height: 2.4rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                outline: 0.2rem solid black;
+                outline-offset: -0.2rem;
+                span {
+                    color: white;
+                    text-transform: uppercase;
+                    mix-blend-mode: difference;
+                }
+            }
+            .background {
+                position: absolute;
+                height: 4rem;
+                width: 0;
+                background-color: black;
+                transition: width 420ms;
+            }
+            &:hover .background {
+                width: 18rem;
+            }
+        }
     }
 }
 

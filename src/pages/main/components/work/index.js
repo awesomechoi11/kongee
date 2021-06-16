@@ -16,8 +16,6 @@ import "./styles.scss";
 import useLoadTracker from "../../../../utility/useLoadTracker";
 import GravityButton from "../../../../components/GravityButton";
 import { left_arrow_svg, right_arrow_svg } from "../../../../assets/svg";
-import auxilium_preview from "../../../../assets/auxilium/auxilium_preview.jpg";
-import when2meet_preview from "../../../../assets/when2meet_preview.png";
 
 import {
     atom,
@@ -30,8 +28,14 @@ import {
     mouse_wrapper_atom,
 } from "../../../../recoil/atoms";
 import AuxiliumCase from "./case/auxilium";
+import When2meetCase from "./case/when2meet";
 import CaseContentWrapper from "./case/components/CaseContentWrapper";
 import { figma_svg } from "../../../../assets/tools";
+
+const auxilium_preview =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/auxilium_preview.jpg";
+const when2meet_preview =
+    "https://cdn.brandon-choi.info/kongee/assets/when2meet_preview.png";
 
 function getBeforeAndAfter(Arr, index) {
     const length = Arr.length;
@@ -77,6 +81,14 @@ const contentMap = [
                 "documentation",
             ],
         },
+        overviewMarkers: [
+            "overview",
+            "problem",
+            "objective",
+            "approach",
+            "r&d",
+            "results",
+        ],
         color: "#EEC878",
         id: "auxilium-case",
         enabled: true,
@@ -94,7 +106,30 @@ const contentMap = [
             fontSize: "7.2rem",
             lineHeight: "9.4rem",
         },
-
+        overviewMarkers: [
+            "overview",
+            {
+                id: "rnd-initial",
+                text: "R&D Initial",
+            },
+            {
+                id: "rnd-user-research",
+                text: "user research",
+            },
+            {
+                id: "rnd-ideation",
+                text: "Ideation",
+            },
+            {
+                id: "lofi-midfi",
+                text: "LO/ MID-FI",
+            },
+            {
+                id: "hifi",
+                text: "hi-fi",
+            },
+            "takeaways",
+        ],
         description: "14-DAY DESIGN SPRINT • UX RESEARCH • DESIGN",
         date: "MAY 2021",
         title: "when2meet redesign",
@@ -121,7 +156,7 @@ const contentMap = [
 
         path: "when2meet",
         preview: when2meet_preview,
-        case: <AuxiliumCase />,
+        case: <When2meetCase />,
     },
 ];
 

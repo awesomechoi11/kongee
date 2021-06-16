@@ -137,6 +137,7 @@ export default function ReactiveShape({
                     scrollableParent.current;
             }
             // previous bool ensures all variables are avaialable for visibility check
+
             if (
                 enabled &&
                 getVisibility(elem.current, scrollableParent.current).inViewport

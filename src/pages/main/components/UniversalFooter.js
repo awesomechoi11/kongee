@@ -1,14 +1,21 @@
 import { useHistory } from "react-router";
 import { useSetRecoilState } from "recoil";
-import vsig from "../../../assets/footer/vsig_white.png";
 import ReactiveShape from "../../../components/ReactiveShape";
-import { mousePartialState_atom } from "../../../recoil/atoms";
+import {
+    mousePartialState_atom,
+    mouse_wrapper_atom,
+    override_mouse_atom,
+} from "../../../recoil/atoms";
 import {
     linkedin_svg,
     instagram_svg,
     mail_svg,
     file_svg,
 } from "../../../assets/socialMediaIcons";
+import vec2 from "gl-vec2";
+
+const vsig =
+    "https://cdn.brandon-choi.info/kongee/assets/footer/vsig_white.png";
 
 export default function UniversalFooter({
     scrollableParentSelector = ".ScrollbarsCustom-Scroller",
@@ -18,10 +25,8 @@ export default function UniversalFooter({
             <Signature scrollableParentSelector={scrollableParentSelector} />
             <CoolShapes scrollableParentSelector={scrollableParentSelector} />
             <SiteMap scrollableParentSelector={scrollableParentSelector} />
-            <FancyLine scrollableParentSelector={scrollableParentSelector} />
-            <QuoteNSocials
-                scrollableParentSelector={scrollableParentSelector}
-            />
+            <FancyLine />
+            <QuoteNSocials />
         </div>
     );
 }
@@ -36,11 +41,52 @@ function FancyLine() {
 
 function QuoteNSocials() {
     const setMousePartial = useSetRecoilState(mousePartialState_atom);
+    const setOverride = useSetRecoilState(override_mouse_atom);
+    const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
+
     return (
         <div className="quote-n-socials">
             <div className="quote">
-                Designed with lots and lots of Philtered Soul by Sally (Hyunji)
-                Kim. CRAFTED BY BRANDON CHOI.
+                Designed with lots and lots of{" "}
+                <span
+                    onMouseMove={(e) => {
+                        const position = [e.clientX, e.clientY];
+                        const shiftedPos = vec2.add([], position, [0, -350]);
+                        setOverride({
+                            position: shiftedPos,
+                            enabled: true,
+                        });
+                    }}
+                    onMouseEnter={() => {
+                        setMousePartial({
+                            animState: "philz",
+                        });
+                        setMouseWrapper({
+                            mixBlendMode: "normal",
+                        });
+                    }}
+                    onMouseLeave={() => {
+                        setMousePartial({
+                            animState: "default",
+                        });
+                        setOverride({
+                            enabled: false,
+                            position: [0, 0],
+                        });
+                        setMouseWrapper({
+                            mixBlendMode: "difference",
+                        });
+                    }}
+                >
+                    <u>Philtered Soul</u>
+                </span>{" "}
+                by Sally (Hyunji) Kim. CRAFTED BY{" "}
+                <u>
+                    <a href="https://brandon-choi.info" target="_blank">
+                        BRANDON CHOI
+                    </a>
+                </u>
+                .
             </div>
             <div className="socials">
                 <div

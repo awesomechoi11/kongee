@@ -3,7 +3,6 @@ import { mousePartialState_atom } from "../../../../recoil/atoms";
 import useLoadTracker from "../../../../utility/useLoadTracker";
 import "./styles.scss";
 
-import vsig from "../../../../assets/vsig.png";
 import {
     linkedin_svg,
     instagram_svg,
@@ -13,6 +12,9 @@ import {
 import { motion } from "framer-motion";
 import GravityButton from "../../../../components/GravityButton";
 import ReactiveShape from "../../../../components/ReactiveShape";
+import { useHistory } from "react-router-dom";
+
+const vsig = "https://cdn.brandon-choi.info/kongee/assets/vsig.png";
 
 function Landing() {
     useLoadTracker({
@@ -28,7 +30,7 @@ function Landing() {
                 backgroundColor: "#fff",
             }),
     });
-
+    let history = useHistory();
     return (
         <motion.div id="landing">
             <img alt="vertical signature" src={vsig} id="vertical_signature" />
@@ -47,6 +49,17 @@ function Landing() {
                         </span>
                     </div>
                     <div className="desc">ux/ui & product designer</div>
+                    <div
+                        className="view-work"
+                        onClick={() => {
+                            history.push("/work");
+                        }}
+                    >
+                        <div className="background"></div>
+                        <div className="inner">
+                            <span>view work {">"}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -11,6 +11,10 @@ import {
 import lerp from "../../utility/lerp";
 import "./styles.scss";
 import fastequal from "fast-deep-equal";
+
+const philz_png =
+    "https://cdn.brandon-choi.info/kongee/assets/sallizzle_w_philz.png";
+
 const mouseAnimStates = {
     default: {
         width: "2rem",
@@ -74,6 +78,13 @@ const mouseAnimStates = {
         borderRadius: "100%",
         backgroundColor: "#000",
     },
+    philz: {
+        width: "42rem",
+        height: "54rem",
+        opacity: 1,
+        backgroundColor: "#0000",
+        borderRadius: "0",
+    },
     none: {},
     custom: {},
 };
@@ -94,7 +105,6 @@ export default function Mouse() {
             if (override.enabled) {
                 mousePosition.current = override.position;
             }
-            // console.log("force", mousePosition.current);
             setGlobalMousePosition({
                 default: mousePosition.current,
                 lerped: lerpedMousePosition.current,
@@ -240,6 +250,12 @@ export default function Mouse() {
                 )}
                 {mouseState.animState === "right" && (
                     <span className="arrow">{right_svg}</span>
+                )}
+                {mouseState.animState === "philz" && (
+                    <span className="philz">
+                        <img src={philz_png} />
+                        <div className="philz-bg" />
+                    </span>
                 )}
             </motion.div>
         </motion.div>

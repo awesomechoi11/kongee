@@ -21,35 +21,61 @@ import {
     rnd_arrow4_svg,
     rnd_bracket_svg,
 } from "./assets";
-import auxilium_mockup from "../../../../../../assets/auxilium/auxilium_mockup_400.jpg";
-import rndfig1 from "../../../../../../assets/auxilium/rndfig1.png";
-import rndfig2 from "../../../../../../assets/auxilium/rndfig2.png";
-import rndfig3 from "../../../../../../assets/auxilium/rndfig3.png";
-import results2 from "../../../../../../assets/auxilium/results2_graphic.png";
-
-import screenshot1 from "../../../../../../assets/auxilium/screenshots/1.png";
-import screenshot2 from "../../../../../../assets/auxilium/screenshots/2.png";
-import screenshot3 from "../../../../../../assets/auxilium/screenshots/3.png";
-import screenshot4 from "../../../../../../assets/auxilium/screenshots/4.png";
-import screenshot5 from "../../../../../../assets/auxilium/screenshots/5.png";
-import screenshot6 from "../../../../../../assets/auxilium/screenshots/6.png";
-import screenshot7 from "../../../../../../assets/auxilium/screenshots/7.png";
-import screenshot8 from "../../../../../../assets/auxilium/screenshots/8.png";
-import screenshot9 from "../../../../../../assets/auxilium/screenshots/9.png";
-import screenshot10 from "../../../../../../assets/auxilium/screenshots/10.png";
-
-import presentation1 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium1.png";
-import presentation2 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium2.png";
-import presentation3 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium3.png";
-import presentation4 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium4.png";
-import presentation5 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium5.png";
-import presentation6 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium6.png";
-import presentation7 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium7.png";
-import presentation8 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium8.png";
-import presentation9 from "../../../../../../assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium9.png";
-
 import ReactiveShape from "../../../../../../components/ReactiveShape";
 import FramerCarousel from "../../../../../../components/FramerCarousel";
+import { useSetRecoilState } from "recoil";
+import { case_selector } from "../../../../../../recoil/case_atoms";
+
+const auxilium_mockup =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/auxilium_mockup_400.jpg";
+const rndfig1 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/rndfig1.png";
+const rndfig2 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/rndfig2.png";
+const rndfig3 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/rndfig3.png";
+const results2 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/results2_graphic.png";
+
+const screenshot1 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/1.png";
+const screenshot2 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/2.png";
+const screenshot3 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/3.png";
+const screenshot4 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/4.png";
+const screenshot5 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/5.png";
+const screenshot6 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/6.png";
+const screenshot7 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/7.png";
+const screenshot8 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/8.png";
+const screenshot9 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/9.png";
+const screenshot10 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/screenshots/10.png";
+
+const presentation1 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium1.png";
+const presentation2 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium2.png";
+const presentation3 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium3.png";
+const presentation4 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium4.png";
+const presentation5 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium5.png";
+const presentation6 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium6.png";
+const presentation7 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium7.png";
+const presentation8 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium8.png";
+const presentation9 =
+    "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium9.png";
 
 const variants = {
     hidden: {
@@ -63,24 +89,39 @@ const variants = {
     },
 };
 export default function AuxiliumCase() {
+    const setCaseState = useSetRecoilState(case_selector);
+    function handleMouseEnter(markerID) {
+        setCaseState({
+            currentMarker: markerID,
+        });
+    }
+    console.log("aux case");
     return (
         <>
-            <AuxiliumOverview />
-            <AuxiliumProblem />
-            <AuxiliumObjective />
-            <AuxiliumApproach />
-            <AuxiliumRnD />
-            <AuxiliumRnD2 />
-            <AuxiliumResults />
-            <AuxiliumResults2 />
+            <AuxiliumOverview
+                onMouseEnter={() => handleMouseEnter("overview")}
+            />
+            <AuxiliumProblem onMouseEnter={() => handleMouseEnter("problem")} />
+            <AuxiliumObjective
+                onMouseEnter={() => handleMouseEnter("objective")}
+            />
+            <AuxiliumApproach
+                onMouseEnter={() => handleMouseEnter("approach")}
+            />
+            <AuxiliumRnD onMouseEnter={() => handleMouseEnter("r&d")} />
+            <AuxiliumRnD2 onMouseEnter={() => handleMouseEnter("r&d")} />
+            <AuxiliumResults onMouseEnter={() => handleMouseEnter("results")} />
+            <AuxiliumResults2
+                onMouseEnter={() => handleMouseEnter("results")}
+            />
         </>
     );
 }
 
-function AuxiliumResults2() {
+function AuxiliumResults2(props) {
     return (
         <>
-            <div className="results2">
+            <div {...props} className="results2">
                 <div className="header">RESULTS</div>
                 <div className="title">our takeaways</div>
                 <div className="content">
@@ -205,7 +246,7 @@ const slideData = [
     },
 ];
 
-function AuxiliumResults() {
+function AuxiliumResults(props) {
     function Item({ src, title }) {
         return (
             <div className="item">
@@ -223,7 +264,7 @@ function AuxiliumResults() {
 
     return (
         <>
-            <div className="results">
+            <div className="results" id="results" {...props}>
                 <div className="header">results</div>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -294,10 +335,10 @@ function AuxiliumResults() {
     );
 }
 
-function AuxiliumRnD2() {
+function AuxiliumRnD2(props) {
     return (
         <>
-            <div className="rnd2">
+            <div {...props} className="rnd2">
                 <div className="header">research & development</div>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -375,10 +416,10 @@ function AuxiliumRnD2() {
     );
 }
 
-function AuxiliumRnD() {
+function AuxiliumRnD(props) {
     return (
         <>
-            <div className="rnd">
+            <div className="rnd" id="r&d" {...props}>
                 <div className="header">research & development</div>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -456,10 +497,10 @@ function AuxiliumRnD() {
     );
 }
 
-function AuxiliumApproach() {
+function AuxiliumApproach(props) {
     return (
         <>
-            <div className="approach">
+            <div className="approach" {...props} id="approach">
                 <div className="header">approach</div>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -556,10 +597,10 @@ function AuxiliumApproach() {
     );
 }
 
-function AuxiliumObjective() {
+function AuxiliumObjective(props) {
     return (
         <>
-            <div className="objective">
+            <div id="objective" {...props} className="objective">
                 <div className="header">objective</div>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -624,9 +665,9 @@ function AuxiliumObjective() {
     );
 }
 
-function AuxiliumProblem() {
+function AuxiliumProblem(props) {
     return (
-        <div className="problem">
+        <div className="problem" id="problem" {...props}>
             <div className="header">problem</div>
             <ScrollAnimation
                 animateIn="fadeIn"
@@ -667,7 +708,7 @@ function AuxiliumProblem() {
     );
 }
 
-function AuxiliumOverview() {
+function AuxiliumOverview(props) {
     return (
         <>
             <motion.div
@@ -675,6 +716,8 @@ function AuxiliumOverview() {
                 initial="hidden"
                 animate="visible"
                 className="overview"
+                id="overview"
+                {...props}
             >
                 <ScrollAnimation
                     animateIn="fadeIn"
