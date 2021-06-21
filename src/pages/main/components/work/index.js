@@ -86,7 +86,10 @@ const contentMap = [
             "problem",
             "objective",
             "approach",
-            "r&d",
+            {
+                id: "rnd",
+                text: "R&D",
+            },
             "results",
         ],
         color: "#EEC878",

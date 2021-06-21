@@ -124,7 +124,7 @@ function QuoteNSocials() {
                             animState: "big",
                         });
                         setTimeout(() => {
-                            console.log(123);
+                            // console.log(123);
                             window.open(
                                 "https://www.instagram.com/kongee_illust/",
                                 "_blank"

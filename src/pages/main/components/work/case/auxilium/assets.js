@@ -29,15 +29,15 @@ export const rnd_bracket_svg = (
         <path
             d="M35 139.31V139.31C25.7663 139.31 18.2809 146.796 18.2809 156.03L18.2809 264.311C18.2809 270.938 12.9083 276.311 6.2809 276.311H4"
             stroke="#A7704C"
-            stroke-width="4"
+            strokeWidth="4"
         />
         <path
             d="M35 139.31V139.31C25.8689 139.31 18.4667 131.908 18.4667 122.777L18.4667 14.3101C18.4667 7.68264 13.0941 2.31006 6.46667 2.31006H4"
             stroke="#A7704C"
-            stroke-width="4"
+            strokeWidth="4"
         />
-        <path d="M4 2.31055L0 2.31055" stroke="#A7704C" stroke-width="4" />
-        <path d="M4 276.311H0" stroke="#A7704C" stroke-width="4" />
+        <path d="M4 2.31055L0 2.31055" stroke="#A7704C" strokeWidth="4" />
+        <path d="M4 276.311H0" stroke="#A7704C" strokeWidth="4" />
     </svg>
 );
 export const rnd_arrow3_svg = (
@@ -54,23 +54,23 @@ export const rnd_arrow3_svg = (
             r="7"
             fill="#A7704C"
             stroke="#A7704C"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
         <path
             d="M2 10.0825L59 10.0825C73.9539 10.0825 81.4308 10.0825 87 13.2979C90.6485 15.4043 93.6782 18.4341 95.7846 22.0825C99 27.6517 99 35.1287 99 50.0825V50.0825C99 65.0364 99 72.5133 102.215 78.0825C104.322 81.731 107.352 84.7607 111 86.8671C116.569 90.0825 124.046 90.0825 139 90.0825H196"
             stroke="#A7704C"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
         <path
             d="M10 18.0825L2 10.0825L10 2.08252"
             stroke="#A7704C"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
     </svg>
 );
@@ -85,16 +85,16 @@ export const rnd_arrow2_svg = (
         <path
             d="M315.397 3.39594V3.39594C315.397 19.0008 315.397 26.8032 311.907 32.5464C309.908 35.8346 307.149 38.5941 303.861 40.5923C298.117 44.0825 290.315 44.0825 274.71 44.0825H16"
             stroke="#A7704C"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
         <path
             d="M323.397 10.0825L315.397 2.08252L307.397 10.0825"
             stroke="#A7704C"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
         <circle
             cx="9"
@@ -103,9 +103,9 @@ export const rnd_arrow2_svg = (
             transform="rotate(180 9 44.0825)"
             fill="#A7704C"
             stroke="#A7704C"
-            stroke-width="4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
     </svg>
 );
@@ -122,13 +122,13 @@ export const rnd_graphic_svg = (
             d="M743.03 1.96802H268.389C265.254 1.96802 262.713 4.45337 262.713 7.51922V376.674C262.713 379.74 265.254 382.225 268.389 382.225H743.03C746.165 382.225 748.707 379.74 748.707 376.674V7.51922C748.707 4.45337 746.165 1.96802 743.03 1.96802Z"
             fill="#F3F6F4"
             stroke="#433D43"
-            stroke-width="2"
+            strokeWidth="2"
             stroke-miterlimit="10"
         />
         <path
             d="M262.713 38.051H748.706"
             stroke="#433D43"
-            stroke-width="2"
+            strokeWidth="2"
             stroke-miterlimit="10"
         />
         <path
@@ -171,13 +171,13 @@ export const rnd_graphic_svg = (
             d="M481.795 311.74H7.15357C4.01879 311.74 1.47754 314.226 1.47754 317.291V616.647C1.47754 619.712 4.01879 622.198 7.15357 622.198H481.795C484.93 622.198 487.471 619.712 487.471 616.647V317.291C487.471 314.226 484.93 311.74 481.795 311.74Z"
             fill="#F3F6F4"
             stroke="#433D43"
-            stroke-width="2"
+            strokeWidth="2"
             stroke-miterlimit="10"
         />
         <path
             d="M1.47754 341.2H487.471"
             stroke="#433D43"
-            stroke-width="2"
+            strokeWidth="2"
             stroke-miterlimit="10"
         />
         <path
@@ -847,15 +847,15 @@ export const link_svg = (
                 d="M8.40564 11.717C8.76352 12.1955 9.2201 12.5913 9.74443 12.8778C10.2688 13.1643 10.8486 13.3346 11.4445 13.3773C12.0405 13.42 12.6386 13.334 13.1984 13.1252C13.7582 12.9163 14.2666 12.5896 14.689 12.167L17.189 9.66701C17.948 8.88117 18.3679 7.82866 18.3584 6.73617C18.349 5.64369 17.9107 4.59864 17.1382 3.8261C16.3657 3.05357 15.3206 2.61536 14.2281 2.60587C13.1357 2.59638 12.0831 3.01635 11.2973 3.77535L9.86397 5.20035"
                 stroke="#111111"
                 strokeWidth="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
             />
             <path
                 d="M11.7391 10.0503C11.3812 9.57188 10.9246 9.176 10.4003 8.88953C9.87598 8.60307 9.29618 8.43272 8.70022 8.39004C8.10427 8.34736 7.50611 8.43335 6.94631 8.64217C6.38651 8.85099 5.87817 9.17776 5.45577 9.60032L2.95577 12.1003C2.19677 12.8862 1.7768 13.9387 1.78629 15.0312C1.79578 16.1236 2.23399 17.1687 3.00652 17.9412C3.77906 18.7138 4.82411 19.152 5.91659 19.1615C7.00908 19.171 8.06159 18.751 8.84743 17.992L10.2724 16.567"
                 stroke="#111111"
                 strokeWidth="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
             />
         </g>
         <defs>

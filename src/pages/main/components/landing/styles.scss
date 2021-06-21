@@ -67,8 +67,21 @@
                 background-color: black;
                 transition: width 420ms;
             }
-            &:hover .background {
-                width: 18rem;
+            .arrow {
+                display: inline-block;
+                transition: all 220ms;
+                width: 0rem;
+                margin-left: 0.5rem;
+                opacity: 0;
+            }
+            &:hover {
+                .background {
+                    width: 18rem;
+                }
+                .arrow {
+                    width: 1rem;
+                    opacity: 1;
+                }
             }
         }
     }

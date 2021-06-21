@@ -25,6 +25,8 @@ import ReactiveShape from "../../../../../../components/ReactiveShape";
 import FramerCarousel from "../../../../../../components/FramerCarousel";
 import { useSetRecoilState } from "recoil";
 import { case_selector } from "../../../../../../recoil/case_atoms";
+import CaseItem from "../components/CaseItems";
+import CaseSection from "../components/CaseSection";
 
 const auxilium_mockup =
     "https://cdn.brandon-choi.info/kongee/assets/auxilium/auxilium_mockup_400.jpg";
@@ -89,39 +91,229 @@ const variants = {
     },
 };
 export default function AuxiliumCase() {
-    const setCaseState = useSetRecoilState(case_selector);
-    function handleMouseEnter(markerID) {
-        setCaseState({
-            currentMarker: markerID,
-        });
-    }
-    console.log("aux case");
     return (
         <>
-            <AuxiliumOverview
-                onMouseEnter={() => handleMouseEnter("overview")}
-            />
-            <AuxiliumProblem onMouseEnter={() => handleMouseEnter("problem")} />
-            <AuxiliumObjective
-                onMouseEnter={() => handleMouseEnter("objective")}
-            />
-            <AuxiliumApproach
-                onMouseEnter={() => handleMouseEnter("approach")}
-            />
-            <AuxiliumRnD onMouseEnter={() => handleMouseEnter("r&d")} />
-            <AuxiliumRnD2 onMouseEnter={() => handleMouseEnter("r&d")} />
-            <AuxiliumResults onMouseEnter={() => handleMouseEnter("results")} />
-            <AuxiliumResults2
-                onMouseEnter={() => handleMouseEnter("results")}
-            />
+            <AuxiliumOverview />
+            <AuxiliumProblem />
+            <AuxiliumObjective />
+            <AuxiliumApproach />
+            <AuxiliumRnD />
+            <AuxiliumResults />
         </>
     );
 }
 
-function AuxiliumResults2(props) {
+const slideData = [
+    {
+        key: "slide1",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation1}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 1</b>: auxilium - header image
+            </>
+        ),
+    },
+    {
+        key: "slide2",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation2}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 2</b>: about the team
+            </>
+        ),
+    },
+    {
+        key: "slide3",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation3}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 3</b>: our thought process
+            </>
+        ),
+    },
+    {
+        key: "slide4",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation4}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 4</b>: brand introduction
+            </>
+        ),
+    },
+    {
+        key: "slide5",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation5}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 5</b>: lo/mid-fidelity prototype
+            </>
+        ),
+    },
+    {
+        key: "slide6",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation6}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 6</b>: hi-fidelity prototype
+            </>
+        ),
+    },
+    {
+        key: "slide7",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation7}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 7</b>: design system & typography
+            </>
+        ),
+    },
+    {
+        key: "slide8",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation8}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 8</b>: logo design & brand name
+            </>
+        ),
+    },
+    {
+        key: "slide9",
+        SlideComponent: (props) => (
+            <motion.img
+                src={presentation9}
+                alt={"slide component"}
+                {...props}
+            />
+        ),
+        description: (
+            <>
+                <b>figure 9</b>: full-stack programming brief
+            </>
+        ),
+    },
+];
+
+function AuxiliumResults() {
+    function Item({ src, title }) {
+        return (
+            <div className="item">
+                <ScrollAnimation
+                    animateIn="fadeIn"
+                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                    animateOnce
+                >
+                    <img src={src} alt={title} />
+                    <div className="title">{title}</div>
+                </ScrollAnimation>
+            </div>
+        );
+    }
+
     return (
-        <>
-            <div {...props} className="results2">
+        <CaseSection id="results">
+            <div className="label">
+                <CaseItem className="header">results</CaseItem>
+                <CaseItem className="title">introducing auxilium.</CaseItem>
+                <CaseItem className="body">
+                    Auxilium is a stand-alone website that shows
+                    <b> free resources and services </b>
+                    from non-profits organizations for
+                    <b> COVID-related assistance. </b>
+                    <br />
+                    <br />
+                    As a<b> participant </b>, you can pick up free resources
+                    from physical locations within your county or attend online
+                    events hosted by any non-profit organizations. As an
+                    <b> event host </b>, you can post events held safely
+                    in-person or online that supports their local community on
+                    behalf of their organization.
+                </CaseItem>
+            </div>
+            <div className="results-mockup">
+                <Parallax y={[-40, 20]}>
+                    <img src={auxilium_mockup} alt="auxilium mockup" />
+                </Parallax>
+            </div>
+            <div className="results-screenshots">
+                <div className="title">WEBSITE SCREENSHOTS</div>
+                <div className="screenshots">
+                    <div className="column">
+                        <Item src={screenshot1} title="LANDING PAGE" />
+                        <Item src={screenshot2} title="ABOUT THE CREATORS" />
+                        <Item src={screenshot3} title="ORGANIZATION SIGN-UP" />
+                        <Item src={screenshot4} title="ORGANIZATION SIGN-UP" />
+                    </div>
+                    <div className="column">
+                        <Item src={screenshot5} title="SEARCH PAGE" />
+                        <Item
+                            src={screenshot6}
+                            title="FILTERED SEARCH RESULT PAGE"
+                        />
+                        <Item
+                            src={screenshot7}
+                            title="EVENT RESULT W/ GOOGLE API"
+                        />
+                    </div>
+                    <div className="column">
+                        <Item src={screenshot8} title="NEW EVENT PAGE" />
+                        <Item src={screenshot9} title="CONFIRM EVENT PAGE" />
+                        <Item src={screenshot10} title="IND. EVENT PAGE" />
+                    </div>
+                </div>
+            </div>
+            <div className="results-visuals">
+                <div className="title">PRESENTATION VISUALS</div>
+                <FramerCarousel slides={slideData} type="captioned" />
+            </div>
+            <div className="results2">
                 <div className="header">RESULTS</div>
                 <div className="title">our takeaways</div>
                 <div className="content">
@@ -168,177 +360,77 @@ function AuxiliumResults2(props) {
                     </div>
                 </div>
             </div>
-        </>
-    );
-}
-const slideData = [
-    {
-        imgsrc: presentation1,
-        description: (
-            <>
-                <b>figure 1</b>: auxilium - header image
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation2,
-        description: (
-            <>
-                <b>figure 2</b>: about the team
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation3,
-        description: (
-            <>
-                <b>figure 3</b>: our thought process
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation4,
-        description: (
-            <>
-                <b>figure 4</b>: brand introduction
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation5,
-        description: (
-            <>
-                <b>figure 5</b>: lo/mid-fidelity prototype
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation6,
-        description: (
-            <>
-                <b>figure 6</b>: hi-fidelity prototype
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation7,
-        description: (
-            <>
-                <b>figure 7</b>: design system & typography
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation8,
-        description: (
-            <>
-                <b>figure 8</b>: logo design & brand name
-            </>
-        ),
-    },
-    {
-        imgsrc: presentation9,
-        description: (
-            <>
-                <b>figure 9</b>: full-stack programming brief
-            </>
-        ),
-    },
-];
-
-function AuxiliumResults(props) {
-    function Item({ src, title }) {
-        return (
-            <div className="item">
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <img src={src} alt={title} />
-                    <div className="title">{title}</div>
-                </ScrollAnimation>
-            </div>
-        );
-    }
-
-    return (
-        <>
-            <div className="results" id="results" {...props}>
-                <div className="header">results</div>
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="title">introducing auxilium.</div>
-                </ScrollAnimation>{" "}
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="body">
-                        Auxilium is a stand-alone website that shows
-                        <b> free resources and services </b>
-                        from non-profits organizations for
-                        <b> COVID-related assistance. </b>
-                        <br />
-                        <br />
-                        As a<b> participant </b>, you can pick up free resources
-                        from physical locations within your county or attend
-                        online events hosted by any non-profit organizations. As
-                        an
-                        <b> event host </b>, you can post events held safely
-                        in-person or online that supports their local community
-                        on behalf of their organization.
-                    </div>
-                </ScrollAnimation>
-            </div>
-            <div className="results-mockup">
-                <Parallax y={[-40, 20]}>
-                    <img src={auxilium_mockup} alt="auxilium mockup" />
-                </Parallax>
-            </div>
-            <div className="results-screenshots">
-                <div className="title">WEBSITE SCREENSHOTS</div>
-                <div className="screenshots">
-                    <div className="column">
-                        <Item src={screenshot1} title="LANDING PAGE" />
-                        <Item src={screenshot2} title="ABOUT THE CREATORS" />
-                        <Item src={screenshot3} title="ORGANIZATION SIGN-UP" />
-                        <Item src={screenshot4} title="ORGANIZATION SIGN-UP" />
-                    </div>
-                    <div className="column">
-                        <Item src={screenshot5} title="SEARCH PAGE" />
-                        <Item
-                            src={screenshot6}
-                            title="FILTERED SEARCH RESULT PAGE"
-                        />
-                        <Item
-                            src={screenshot7}
-                            title="EVENT RESULT W/ GOOGLE API"
-                        />
-                    </div>
-                    <div className="column">
-                        <Item src={screenshot8} title="NEW EVENT PAGE" />
-                        <Item src={screenshot9} title="CONFIRM EVENT PAGE" />
-                        <Item src={screenshot10} title="IND. EVENT PAGE" />
-                    </div>
-                </div>
-            </div>
-            <div className="results-visuals">
-                <div className="title">PRESENTATION VISUALS</div>
-                <FramerCarousel slides={slideData} />
-            </div>
-        </>
+        </CaseSection>
     );
 }
 
-function AuxiliumRnD2(props) {
+function AuxiliumRnD() {
     return (
-        <>
-            <div {...props} className="rnd2">
+        <CaseSection id="rnd">
+            <div className="label">
+                <CaseItem className="header">RESEARCH & DEVELOPMENT</CaseItem>
+                <CaseItem className="title">user research & personae.</CaseItem>
+                <CaseItem className="body">
+                    After discussing various ideas for the theme, we decided to
+                    create a website to bring light to the abundance of support
+                    offered for COVID-19 relief. Some themes explored during our
+                    design process include <b>inclusivity</b>, <b>empathy</b>,
+                    and <b>accessibility</b>.
+                    <br />
+                    <br />
+                    We generated two <b>user personas</b> to visualize the
+                    potential pain points that may occur:
+                </CaseItem>
+            </div>
+
+            <div className="rnd-heart">
+                <ScrollAnimation
+                    animateIn="fadeIn zoomIn"
+                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                    animateOnce
+                >
+                    <div className="bob">{rnd_graphic2_svg}</div>
+                </ScrollAnimation>
+            </div>
+            <div className="rnd-graphic">{rnd_graphic_svg}</div>
+            <div className="rnd-bubble1">{rnd_info1_svg}</div>
+            <div className="rnd-bubble1 text">
+                The pandemic left my family and others in our town without jobs
+                or a guarantee of food on the table. I’ve heard of events of
+                charities donating food, but I’ve
+                <b> never been able to find the address </b>or
+                <b> how long the events last for.</b>
+            </div>
+            <div className="rnd-bubble2">{rnd_info1_svg}</div>
+            <div className="rnd-bubble2 text">
+                Oftentimes, our team would organize events with hundreds of care
+                packages and masks to give out. But our events usually
+                <b> end up not reaching a big group of people</b>, because it’s
+                hard to outreach different communities with just the word of
+                mouth.
+            </div>
+            <div className="rnd-sarah">
+                <b>NAME:</b> Sarah H. <br />
+                <br />
+                <b>AGE:</b> 29, pursuing a Ph. D. in Environmental Science
+                <br />
+                <br />
+                <b>OCCUPATION:</b> Founder of AllGiving, a COVID-relief
+                non-profit organization
+            </div>
+            <div className="rnd-francesca">
+                <b>NAME:</b> Francesca K. <br />
+                <br />
+                <b>AGE:</b> 19
+                <br />
+                <br />
+                <b>OCCUPATION:</b> None; dropped out of college to look after
+                her younger siblings and earn money for family
+            </div>
+            <div className="rnd-arrow1">{rnd_arrow_svg}</div>
+            <div className="rnd-arrow2">{rnd_arrow_svg}</div>
+
+            <div className="rnd2">
                 <div className="header">research & development</div>
                 <ScrollAnimation
                     animateIn="fadeIn"
@@ -412,110 +504,17 @@ function AuxiliumRnD2(props) {
                     <b> friendly, all-welcoming semiotic effect</b>
                 </div>
             </div>
-        </>
-    );
-}
-
-function AuxiliumRnD(props) {
-    return (
-        <>
-            <div className="rnd" id="r&d" {...props}>
-                <div className="header">research & development</div>
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="title">user research & personae.</div>
-                </ScrollAnimation>
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="body">
-                        After discussing various ideas for the theme, we decided
-                        to create a website to bring light to the abundance of
-                        support offered for COVID-19 relief. Some themes
-                        explored during our design process include{" "}
-                        <b>inclusivity</b>, <b>empathy</b>, and{" "}
-                        <b>accessibility</b>.
-                        <br />
-                        <br />
-                        We generated two <b>user personas</b> to visualize the
-                        potential pain points that may occur:
-                    </div>
-                </ScrollAnimation>
-            </div>
-            <div className="rnd-heart">
-                <ScrollAnimation
-                    animateIn="fadeIn zoomIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="bob">{rnd_graphic2_svg}</div>
-                </ScrollAnimation>
-            </div>
-            <div className="rnd-graphic">{rnd_graphic_svg}</div>
-            <div className="rnd-bubble1">{rnd_info1_svg}</div>
-            <div className="rnd-bubble1 text">
-                The pandemic left my family and others in our town without jobs
-                or a guarantee of food on the table. I’ve heard of events of
-                charities donating food, but I’ve
-                <b> never been able to find the address </b>or
-                <b> how long the events last for.</b>
-            </div>
-            <div className="rnd-bubble2">{rnd_info1_svg}</div>
-            <div className="rnd-bubble2 text">
-                Oftentimes, our team would organize events with hundreds of care
-                packages and masks to give out. But our events usually
-                <b> end up not reaching a big group of people</b>, because it’s
-                hard to outreach different communities with just the word of
-                mouth.
-            </div>
-            <div className="rnd-sarah">
-                <b>NAME:</b> Sarah H. <br />
-                <br />
-                <b>AGE:</b> 29, pursuing a Ph. D. in Environmental Science
-                <br />
-                <br />
-                <b>OCCUPATION:</b> Founder of AllGiving, a COVID-relief
-                non-profit organization
-            </div>
-            <div className="rnd-francesca">
-                <b>NAME:</b> Francesca K. <br />
-                <br />
-                <b>AGE:</b> 19
-                <br />
-                <br />
-                <b>OCCUPATION:</b> None; dropped out of college to look after
-                her younger siblings and earn money for family
-            </div>
-            <div className="rnd-arrow1">{rnd_arrow_svg}</div>
-            <div className="rnd-arrow2">{rnd_arrow_svg}</div>
-        </>
+        </CaseSection>
     );
 }
 
 function AuxiliumApproach(props) {
     return (
-        <>
-            <div className="approach" {...props} id="approach">
-                <div className="header">approach</div>
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="title">human-centered design process.</div>
-                </ScrollAnimation>
-            </div>
-            <div className="approach-body body">
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
+        <CaseSection id="approach">
+            <div className="label">
+                <CaseItem className="header">approach</CaseItem>
+                <CaseItem className="title">human-centered design.</CaseItem>
+                <CaseItem className="body">
                     Each part of this project was executed with{" "}
                     <b>careful consideration to our potential users.</b> With
                     auxilium, our brand name, meaning{" "}
@@ -526,7 +525,7 @@ function AuxiliumApproach(props) {
                     mindset — whether that be by thinking from the users’
                     perspective, or talking to people that have been affected by
                     COVID-19.
-                </ScrollAnimation>
+                </CaseItem>
             </div>
             <Parallax y={[100, -100]} className="approach-circle">
                 <ScrollAnimation
@@ -538,7 +537,7 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.09}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        noOffset
+                        nooffset
                     >
                         {approach_circle_svg}
                     </ReactiveShape>
@@ -554,7 +553,7 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.005}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        noOffset
+                        nooffset
                     >
                         {approach_ring_svg}
                     </ReactiveShape>
@@ -570,7 +569,7 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.01}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        noOffset
+                        nooffset
                     >
                         {approach_line_2_svg}
                     </ReactiveShape>
@@ -587,43 +586,31 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.02}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        noOffset
+                        nooffset
                     >
                         {approach_line_1_svg}
                     </ReactiveShape>
                 </ScrollAnimation>
             </Parallax>
-        </>
+        </CaseSection>
     );
 }
 
-function AuxiliumObjective(props) {
+function AuxiliumObjective() {
     return (
-        <>
-            <div id="objective" {...props} className="objective">
-                <div className="header">objective</div>
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="title">accessibility for all.</div>
-                </ScrollAnimation>
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="body">
-                        We decided that a platform that
-                        <b>
-                            {" "}
-                            selectively shows charitable events, giveaways, and
-                            other covid-related assistance and help{" "}
-                        </b>
-                        is needed.
-                    </div>
-                </ScrollAnimation>
+        <CaseSection id="objective">
+            <div className="label">
+                <CaseItem className="header">objective</CaseItem>
+                <CaseItem className="title">accessibility for all.</CaseItem>
+                <CaseItem className="body">
+                    We decided that a platform that
+                    <b>
+                        {" "}
+                        selectively shows charitable events, giveaways, and
+                        other covid-related assistance and help{" "}
+                    </b>
+                    is needed.
+                </CaseItem>
             </div>
             <Parallax y={[-20, 20]} className="objective-bigball">
                 <ScrollAnimation
@@ -636,7 +623,7 @@ function AuxiliumObjective(props) {
                         lerpValue={0.005}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
                         className="circle"
-                        noOffset
+                        nooffset
                     />
                 </ScrollAnimation>
             </Parallax>
@@ -650,7 +637,7 @@ function AuxiliumObjective(props) {
                         lerpValue={0.018}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
                         className=" circle"
-                        noOffset
+                        nooffset
                     />
                 </ScrollAnimation>
             </Parallax>
@@ -661,122 +648,92 @@ function AuxiliumObjective(props) {
             >
                 {objective_graphic1_svg}
             </ReactiveShape>
-        </>
+        </CaseSection>
     );
 }
 
-function AuxiliumProblem(props) {
+function AuxiliumProblem() {
     return (
-        <div className="problem" id="problem" {...props}>
-            <div className="header">problem</div>
-            <ScrollAnimation
-                animateIn="fadeIn"
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                animateOnce
-            >
-                <div className="title">
-                    communities are struggling from the impacts of COVID-19.
-                </div>
-            </ScrollAnimation>
-            <ScrollAnimation
-                animateIn="fadeIn"
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                animateOnce
-            >
-                <div className="body">
-                    Among others around the world, the community of people in
-                    Sacramento were drastically impacted by the pandemic. With
-                    the theme of hackathon in mind, we decided to center our
-                    project toward catering to the <b> people of Sacramento.</b>
-                    <br />
-                    <br />
-                    Though there is an abundance of resources and help
-                    available, people cannot find them easily, because there
-                    isn’t an{" "}
-                    <b>
-                        effective way for organizations and non-profits to
-                        advertise their events.
-                    </b>
-                    <br />
-                    <br />
-                    So, we wondered: <b>how might we </b>
-                    improve the user experience for finding COVID-related
-                    support?
-                </div>
-            </ScrollAnimation>
-        </div>
+        <CaseSection id="problem">
+            <CaseItem className="header">problem</CaseItem>
+            <CaseItem className="title">
+                communities are struggling from the impacts of COVID-19.
+            </CaseItem>
+
+            <CaseItem className="body">
+                Among others around the world, the community of people in
+                Sacramento were drastically impacted by the pandemic. With the
+                theme of hackathon in mind, we decided to center our project
+                toward catering to the <b> people of Sacramento.</b>
+                <br />
+                <br />
+                Though there is an abundance of resources and help available,
+                people cannot find them easily, because there isn’t an{" "}
+                <b>
+                    effective way for organizations and non-profits to advertise
+                    their events.
+                </b>
+                <br />
+                <br />
+                So, we wondered: <b>how might we </b>
+                improve the user experience for finding COVID-related support?
+            </CaseItem>
+        </CaseSection>
     );
 }
 
-function AuxiliumOverview(props) {
+function AuxiliumOverview() {
     return (
-        <>
-            <motion.div
-                variants={variants}
-                initial="hidden"
-                animate="visible"
-                className="overview"
-                id="overview"
-                {...props}
-            >
-                <ScrollAnimation
-                    animateIn="fadeIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <div className="header">overview</div>
-                    <div className="title">our inspiration</div>
-                    <div className="body">
-                        Needless to say, <b>the COVID-19 pandemic</b> has made
-                        life a lot harder for all of us (i.e. people losing
-                        jobs, people can’t socialize in public, and people are
-                        dying). Nonprofits are giving free stuff away and
-                        hosting online events in lieu of COVID, but people
-                        aren’t aware of them. Social media can promote free
-                        stuff and giveaway events from nonprofits, but it’s hard
-                        for these posts to effectively reach the right audience{" "}
-                        <b>because they are buried under social posts.</b>
-                    </div>
-                </ScrollAnimation>
-            </motion.div>
-            <Parallax y={[-20, 20]} className="overview-bigball">
-                <ScrollAnimation
-                    animateIn="bounceIn zoomIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    delay={150}
-                    animateOnce
-                >
-                    <ReactiveShape
-                        lerpValue={0.005}
+        <CaseSection id="overview">
+            <div className="label">
+                <CaseItem className="header">overview</CaseItem>
+                <CaseItem className="title">our inspiration</CaseItem>
+                <CaseItem className="body">
+                    Needless to say, <b>the COVID-19 pandemic</b> has made life
+                    a lot harder for all of us (i.e. people losing jobs, people
+                    can’t socialize in public, and people are dying). Nonprofits
+                    are giving free stuff away and hosting online events in lieu
+                    of COVID, but people aren’t aware of them.
+                </CaseItem>
+                <Parallax y={[-20, 20]} className="overview-bigball">
+                    <ScrollAnimation
+                        animateIn="bounceIn zoomIn"
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        className="circle"
-                        noOffset
-                    />
-                </ScrollAnimation>
-            </Parallax>
+                        delay={150}
+                        animateOnce
+                    >
+                        <ReactiveShape
+                            lerpValue={0.005}
+                            scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                            className="circle"
+                            nooffset
+                        />
+                    </ScrollAnimation>
+                </Parallax>
 
-            <Parallax y={[40, -40]} className="overview-smallball">
-                <ScrollAnimation
-                    animateIn="fadeIn zoomIn"
-                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    animateOnce
-                >
-                    <ReactiveShape
-                        lerpValue={0.018}
+                <Parallax y={[40, -40]} className="overview-smallball">
+                    <ScrollAnimation
+                        animateIn="fadeIn zoomIn"
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        className=" circle"
-                        noOffset
-                    />
-                </ScrollAnimation>
-            </Parallax>
+                        animateOnce
+                    >
+                        <ReactiveShape
+                            lerpValue={0.018}
+                            scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                            className=" circle"
+                            nooffset
+                        />
+                    </ScrollAnimation>
+                </Parallax>
 
-            <ReactiveShape
-                lerpValue={0.01}
-                scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                className="overview-graphic"
-            >
-                {overview_graphic_svg}
-            </ReactiveShape>
-        </>
+                <ReactiveShape
+                    lerpValue={0.01}
+                    scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                    className="overview-graphic"
+                >
+                    {overview_graphic_svg}
+                </ReactiveShape>
+            </div>
+        </CaseSection>
     );
 }

@@ -27,3 +27,11 @@ export const case_selector = selector({
     },
     get: ({ get }) => get(case_atom),
 });
+
+export const case_overlay_atom = atom({
+    key: "case_overlay_atom", // unique ID (with respect to other atoms/selectors)
+    default: {
+        layoutId: "uwu",
+    },
+    // default value (aka initial value)
+});

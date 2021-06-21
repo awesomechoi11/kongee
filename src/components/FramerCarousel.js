@@ -1,50 +1,84 @@
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { mousePartialState_atom, mouse_wrapper_atom } from "../recoil/atoms";
-import useLoadTracker from "../utility/useLoadTracker";
+// import useLoadTracker from "../utility/useLoadTracker";
 import "./FramerCarousel.scss";
-function Slide({ imgsrc, description, ...props }) {
-    return (
-        <>
-            <div className="carousel-slide">
-                <motion.img
-                    src={imgsrc}
-                    alt={description.innerText}
-                    key={imgsrc}
-                    initial={{ x: 300, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -300, opacity: 0 }}
-                />
-            </div>
-            <div className="carousel-description">
-                <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                >
-                    {description}
-                </motion.span>
-            </div>
-        </>
-    );
-}
+
+const leftArrow_svg = (
+    <svg
+        width="25"
+        height="80"
+        viewBox="0 0 25 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M22 1.83887L3.49999 40.003L22 78.1671"
+            stroke="black"
+            strokeWidth="5"
+        />
+    </svg>
+);
+const rightArrow_svg = (
+    <svg
+        width="25"
+        height="80"
+        viewBox="0 0 25 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M3 78.167L21.5 40.0029L3.00001 1.83873"
+            stroke="black"
+            strokeWidth="5"
+        />
+    </svg>
+);
 
 export default function FramerCarousel({ slides, ...props }) {
     const [page, setPage] = useState(0);
+    const [direction, setDirection] = useState("left");
     const setMouse = useSetRecoilState(mousePartialState_atom);
     const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
     const slidesObj = Object.fromEntries(
         Object.values(slides).map((value, index) => [index, value.imgsrc])
     );
-    const [loading, progress] = useLoadTracker(slidesObj, false);
-    const { imgsrc, description } = slides[page];
+
+    // useLoadTracker(slidesObj, false);
+    const { key, SlideComponent, description } = slides[page];
     return (
         <div className={clsx("carousel", props.className)}>
-            <div className="carousel-controls">
+            <div className="carousel-dots">
+                <AnimateSharedLayout>
+                    {slides.map((obj, index) => {
+                        return (
+                            <div
+                                className={clsx(
+                                    "dot",
+                                    page === index && "selected"
+                                )}
+                                onClick={() => {
+                                    setPage(index);
+                                }}
+                                key={index}
+                            >
+                                {page === index && (
+                                    <motion.div
+                                        layoutId="border-circle"
+                                        className="border-circle"
+                                    />
+                                )}
+                            </div>
+                        );
+                    })}
+                </AnimateSharedLayout>
+            </div>
+
+            <div className={clsx("carousel-slide", "slide-" + (page + 1))}>
                 <div
-                    className="left"
+                    className="carousel-controls left"
                     onClick={() => {
                         setPage((slides.length + page - 1) % slides.length);
                     }}
@@ -55,6 +89,7 @@ export default function FramerCarousel({ slides, ...props }) {
                         setMouseWrapper({
                             mixBlendMode: "normal",
                         });
+                        setDirection("left");
                     }}
                     onMouseLeave={() => {
                         setMouse({
@@ -64,10 +99,11 @@ export default function FramerCarousel({ slides, ...props }) {
                             mixBlendMode: "difference",
                         });
                     }}
-                ></div>
-                <div className="middle"></div>
+                >
+                    <div className="arrow">{leftArrow_svg}</div>
+                </div>
                 <div
-                    className="right"
+                    className="carousel-controls right"
                     onClick={() => {
                         setPage((page + 1) % slides.length);
                     }}
@@ -78,6 +114,7 @@ export default function FramerCarousel({ slides, ...props }) {
                         setMouseWrapper({
                             mixBlendMode: "normal",
                         });
+                        setDirection("right");
                     }}
                     onMouseLeave={() => {
                         setMouse({
@@ -87,15 +124,17 @@ export default function FramerCarousel({ slides, ...props }) {
                             mixBlendMode: "difference",
                         });
                     }}
-                ></div>
-            </div>
-            <div className="carousel-slide">
+                >
+                    <div className="arrow">{rightArrow_svg}</div>
+                </div>
+
                 <AnimatePresence>
-                    <motion.img
-                        src={imgsrc}
-                        alt={description.innerText}
-                        key={imgsrc}
-                        initial={{ x: 300, opacity: 0 }}
+                    <SlideComponent
+                        key={key}
+                        initial={{
+                            x: 300 * (direction === "left" ? -1 : 1),
+                            opacity: 0,
+                        }}
                         animate={{
                             x: 0,
                             opacity: 1,
@@ -104,12 +143,16 @@ export default function FramerCarousel({ slides, ...props }) {
                             },
                         }}
                         exit={{
-                            x: -300,
+                            x: -300 * (direction === "left" ? -1 : 1),
                             opacity: 0,
                             transition: {
                                 ease: [1, 1, 1, 1],
                             },
                         }}
+                        className={clsx(
+                            "slide-component-" + (page + 1),
+                            "slide-component"
+                        )}
                     />
                 </AnimatePresence>
             </div>
@@ -123,7 +166,7 @@ export default function FramerCarousel({ slides, ...props }) {
                         },
                     }}
                     exit={{ opacity: 0 }}
-                    key={imgsrc}
+                    key={key}
                 >
                     {description}
                 </motion.span>

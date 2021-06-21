@@ -98,11 +98,11 @@ function FooterItem({ caseDetails, className }) {
         // hardcoded fun!
         if (inTransition) {
             // scroll to footer
-            console.log(
-                document.querySelector(".case-children").getBoundingClientRect()
-                    .bottom,
-                ((1294.2650024414062 * 10) / 1920) * document.body.clientWidth
-            );
+            // console.log(
+            //     document.querySelector(".case-children").getBoundingClientRect()
+            //         .bottom,
+            //     ((1294.2650024414062 * 10) / 1920) * document.body.clientWidth
+            // );
 
             setCaseState({
                 top:

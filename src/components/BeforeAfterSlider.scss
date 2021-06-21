@@ -1,0 +1,50 @@
+.beforeAfterSlider {
+    &.container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .content,
+    .after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .before {
+        height: 100%;
+    }
+    .content {
+        overflow: hidden;
+        width: 50%;
+    }
+
+    .afterWrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        overflow: hidden;
+    }
+
+    .handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 2rem;
+
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+
+        .inner {
+            background: black;
+            width: 2rem;
+            height: 100%;
+            transition: width 220ms;
+            &.dragging {
+                width: 0;
+            }
+        }
+    }
+}

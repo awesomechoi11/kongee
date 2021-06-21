@@ -248,7 +248,7 @@ function Main() {
 }
 
 function SuspenseFallback({ name }) {
-    console.log("suspense loading");
+    // console.log("suspense loading");
     const setLoading = useSetRecoilState(loading_atom);
     useLayoutEffect(() => {
         setLoading({

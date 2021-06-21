@@ -11,15 +11,16 @@ function LoadingOverlay() {
         <AnimatePresence>
             {overlayOn && (
                 <motion.div
-                    initial={false}
+                    initial={{
+                        opacity: 0,
+                    }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{
-                        delay: 1,
                         duration: 0.3,
                     }}
                     id="loadingOverlay"
-                ></motion.div>
+                />
             )}
         </AnimatePresence>
     );

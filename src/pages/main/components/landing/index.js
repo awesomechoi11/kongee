@@ -1,5 +1,9 @@
 import { useSetRecoilState } from "recoil";
-import { mousePartialState_atom } from "../../../../recoil/atoms";
+import {
+    loading_atom,
+    mousePartialState_atom,
+    transition_atom,
+} from "../../../../recoil/atoms";
 import useLoadTracker from "../../../../utility/useLoadTracker";
 import "./styles.scss";
 
@@ -21,7 +25,7 @@ function Landing() {
         vsig,
     });
     const setMouse = useSetRecoilState(mousePartialState_atom);
-
+    const setTransition = useSetRecoilState(transition_atom);
     const sizeEvents = (animState) => ({
         onMouseEnter: () => setMouse(animState),
         onMouseLeave: () =>
@@ -44,6 +48,10 @@ function Landing() {
                             {...sizeEvents({
                                 animState: "big",
                             })}
+                            onClick={() => {
+                                window.location.href =
+                                    "mailto:hello@kongee.info";
+                            }}
                         >
                             hello@kongee.info
                         </span>
@@ -52,12 +60,16 @@ function Landing() {
                     <div
                         className="view-work"
                         onClick={() => {
-                            history.push("/work");
+                            setTransition(true);
+                            setTimeout(() => {
+                                history.push("/work");
+                            }, 300);
                         }}
                     >
                         <div className="background"></div>
                         <div className="inner">
-                            <span>view work {">"}</span>
+                            <span>view work </span>
+                            <span className="arrow">{">"}</span>
                         </div>
                     </div>
                 </div>
@@ -109,7 +121,7 @@ function Landing() {
                             animState: "big",
                         });
                         setTimeout(() => {
-                            console.log(123);
+                            // console.log(123);
                             window.open(
                                 "https://www.instagram.com/kongee_illust/",
                                 "_blank"

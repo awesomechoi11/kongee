@@ -13,7 +13,7 @@ export default function InteractiveElement({
         let localprops = {
             lerpValue: 0.04,
             scrollableParentSelector: ".ScrollbarsCustom-Scroller",
-            noOffset: true,
+            nooffset: true,
             ...(withReactiveShape === "boolean" ? {} : withReactiveShape),
         };
 

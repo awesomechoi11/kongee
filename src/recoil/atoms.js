@@ -67,15 +67,6 @@ export const global_mouse_position_selector = selector({
     },
 });
 
-export const main_atom = atom({
-    key: "main_atom", // unique ID (with respect to other atoms/selectors)
-    default: {
-        state: "loading",
-        loading: true,
-        progress: 0,
-    }, // default value (aka initial value)
-});
-
 export const loading_atom = atom({
     key: "loading_atom", // unique ID (with respect to other atoms/selectors)
     default: {

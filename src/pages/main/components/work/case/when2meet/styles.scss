@@ -19,9 +19,32 @@
     }
 }
 
+.body-2 {
+    //styleName: body 2;
+    font-family: Apparel;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.heading-4 {
+    //styleName: heading 4;
+    font-family: Apparel;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
 #when2meet-case {
     .case-children > * {
         position: relative;
+        margin-bottom: 19.4rem;
         &.case-overview {
             width: 15rem;
             top: 104rem;
@@ -54,33 +77,36 @@
         background: black;
         color: #769e5d;
     }
-
+    .mini-scroller {
+        overflow: hidden;
+        overflow-y: scroll;
+    }
     #lofi-midfi {
         position: relative;
-        height: 217.6rem;
+        height: 186.2rem;
+        > * {
+            left: 30rem;
+        }
         .label {
             position: absolute;
             top: 14.2rem;
-            left: 30.6rem;
             width: 123.8rem;
         }
         .figures {
             position: absolute;
-            width: 152rem;
+            width: 132rem;
             top: 59.5rem;
-            left: 20rem;
             .img-wrapper {
-                width: 152.1rem;
+                width: 132rem;
                 margin-bottom: 6.3rem;
+                cursor: pointer;
             }
             .description {
                 text-align: center;
                 font-size: 2.4rem;
             }
-            .figure1 {
-            }
             .caption {
-                margin: 10.7rem 0;
+                margin: 6rem 0;
                 text-align: center;
                 font-size: 2.2rem;
             }
@@ -91,29 +117,78 @@
         .part1 {
             position: relative;
             width: 192rem;
-            height: 269rem;
+            height: 273rem;
             .label {
                 position: absolute;
-                top: 12.8rem;
                 left: 30.6rem;
             }
             .mockup {
                 position: absolute;
-                top: 44rem;
+                top: 31.2rem;
                 overflow: hidden;
                 img {
                     transform: scale(1.4);
                 }
             }
-            .TODO {
-                top: 160rem;
-                height: 80rem;
+            .hifi-carousel {
+                position: absolute;
+                top: 152.6rem;
+                left: 30rem;
+                width: 132rem;
+                .hifi-caption {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 2.4rem;
+                    line-height: 3.6rem;
+                }
+                .carousel-slide {
+                    transition: height 350ms;
+                    width: 100%;
+                    transition-timing-function: cubic-bezier(
+                        0.51,
+                        0.6,
+                        0.28,
+                        1
+                    );
+                    &.slide-1 {
+                        height: 77.6rem;
+                    }
+                    &.slide-2 {
+                        height: 80.7rem;
+                    }
+                    &.slide-3 {
+                        height: 74.8rem;
+                        .slide-3-navbar {
+                            width: 100%;
+                            position: sticky;
+                            top: 0;
+                            z-index: 1;
+                        }
+                        .content {
+                            position: relative;
+                            top: -0.4rem;
+                        }
+                    }
+                    &.slide-4 {
+                        height: 77.6rem;
+                    }
+                    &.slide-5 {
+                        height: 77.6rem;
+                    }
+                    &.slide-6 {
+                        height: 103.2rem;
+                    }
+                    &.slide-7 {
+                        height: 101.8rem;
+                    }
+                }
             }
         }
         .part2 {
             position: relative;
             width: 192rem;
-            height: 157rem;
+            height: 132rem;
             .label {
                 position: absolute;
                 width: 130.7rem;
@@ -153,15 +228,13 @@
             }
             .graphic-guide {
                 position: absolute;
-                width: 86.6rem;
-                height: 94.1rem;
-                left: 19.8rem;
-                top: 51.3rem;
+                width: 73.6rem;
+                left: 30rem;
+                top: 60.3rem;
             }
             .graphic-types {
                 position: absolute;
-                width: 60.6rem;
-                height: 26.7rem;
+                width: 50rem;
                 left: 111.4rem;
                 top: 105.5rem;
             }
@@ -179,16 +252,17 @@
         position: relative;
         width: 192rem;
         height: 81.5rem;
+        margin-bottom: 0;
         .label {
             position: absolute;
-            top: 12rem;
+            top: 0rem;
             left: 30rem;
             width: 84.4rem;
         }
         .graphic-background {
             position: absolute;
             left: 135.1rem;
-            top: 42.6rem;
+            top: 30.6rem;
             .circle {
                 width: 30.7rem;
                 height: 30.7rem;
@@ -208,61 +282,65 @@
             height: 31.8rem;
             width: 22.2rem;
             left: 121.2rem;
-            top: 46.1rem;
+            top: 34.1rem;
         }
         .graphic-person-sitting-bubble {
             height: 4.9rem;
             width: 6.1rem;
             left: 133.6rem;
-            top: 41rem;
+            top: 29rem;
         }
         .graphic-person-standing-bubble {
             height: 4.9rem;
             width: 6.1rem;
             left: 147rem;
-            top: 34.5rem;
+            top: 22.5rem;
         }
         .graphic-person-standing {
             height: 41.2rem;
             width: 28.3rem;
             left: 143.7rem;
-            top: 36.6rem;
+            top: 24.6rem;
         }
     }
 
     #rnd-ideation {
         position: relative;
         width: 192rem;
-        height: 298rem;
+        height: 257rem;
         .label {
             width: 130rem;
         }
         .part1 {
-            position: absolute;
-            top: 11.8rem;
+            position: relative;
+            top: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8.7rem;
+            gap: 10rem;
             flex-direction: column;
+            margin-bottom: 19.4rem;
             .ideation-graphic {
-                width: 152rem;
-                height: 65rem;
+                width: 132rem;
             }
         }
         .part2 {
-            position: absolute;
-            top: 154.5rem;
+            position: relative;
             width: 100%;
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
+
             gap: 10.9rem;
-            .TODO {
-                top: 50rem;
-                height: 89.6rem;
+
+            .ideation-carousel {
+                width: 132rem;
+                .carousel-slide {
+                    width: 100%;
+                    height: 77.8rem;
+                }
             }
         }
     }
@@ -270,21 +348,117 @@
     #rnd-user-research {
         position: relative;
         width: 192rem;
-        height: 405.5rem;
+        height: 351.3rem;
 
-        .TODO {
-            top: 100rem;
-            height: 100rem;
+        .user-research-carousel {
+            position: absolute;
+            width: 132rem;
+            left: 30rem;
+            top: 68.9rem;
+            border-radius: 0px;
+
+            .carousel-slide {
+                width: 100%;
+                transition: height 350ms;
+                transition-timing-function: cubic-bezier(0.51, 0.6, 0.28, 1);
+                &.slide-1 {
+                    height: 80.2rem;
+                }
+                .slide-component-1 {
+                    height: 80rem;
+                    .content-wrapper {
+                        width: 132rem;
+                        height: 80.2rem;
+                    }
+                    .pain-point {
+                        position: absolute;
+                        &.a {
+                            width: 54.2rem;
+                            top: 0.8rem;
+                            left: 9.5rem;
+                        }
+                        &.b {
+                            width: 41.5rem;
+                            top: 24.9rem;
+                            right: 9.5rem;
+                        }
+                        &.c {
+                            top: 53.4rem;
+                            left: 9.5rem;
+                            width: 49.4rem;
+                        }
+                    }
+
+                    .research-bubble {
+                        position: absolute;
+                        .inner-text {
+                            position: absolute;
+                            color: white;
+                            top: 2.4rem;
+                            bottom: 2.4rem;
+                            left: 5.6rem;
+                            right: 4.8rem;
+                            font-family: Poppins;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 1.4rem;
+                            line-height: 2.1rem;
+                        }
+                        &.a {
+                            height: 13.2rem;
+                            width: 37.9rem;
+                            left: 37.3rem;
+                            top: 12.7rem;
+                        }
+                        &.b {
+                            height: 11.1rem;
+                            width: 37.8rem;
+                            left: 56.7rem;
+                            top: 36.2rem;
+                        }
+                        &.c {
+                            height: 9rem;
+                            width: 37.9rem;
+                            left: 37.4rem;
+                            top: 65rem;
+                        }
+                    }
+
+                    .bitmoji {
+                        position: absolute;
+                        width: 23.3rem;
+                        height: 23.3rem;
+                        &.a {
+                            left: 14rem;
+                            top: 7.3rem;
+                        }
+                        &.b {
+                            left: 96.5rem;
+                            top: 29.6rem;
+                        }
+                        &.c {
+                            left: 14.1rem;
+                            top: 56.9rem;
+                        }
+                    }
+                }
+                &.slide-2 {
+                    height: 89.7rem;
+                }
+                .slide-component-2 {
+                    width: 109rem;
+                }
+            }
         }
 
         .persona {
             position: absolute;
 
             &.persona-1 {
-                top: 272.7rem;
+                top: 226.6rem;
             }
             &.persona-2 {
-                top: 338.8rem;
+                top: 292.6rem;
             }
 
             left: 20rem;
@@ -349,32 +523,37 @@
 
         .label2 {
             position: absolute;
-            top: 226rem;
-            left: 25.8rem;
-            width: 140rem;
+            top: 185.5rem;
+            left: 30rem;
+            width: 132rem;
         }
 
         .label {
             position: absolute;
-            top: 15rem;
-            left: 25.8rem;
-            width: 140rem;
+            top: 0;
+            left: 30rem;
+            width: 132rem;
+        }
+        .body {
+            width: 98.1rem;
         }
         .comment {
-            text-align: center;
+            text-align: left;
+            width: 80.1rem;
+            margin-bottom: 6rem;
         }
         .statistics-disclaimer {
             font-size: 1.8rem;
             text-align: right;
-            margin-bottom: 7.3rem;
-            margin-top: 5.3rem;
+            margin-bottom: 2.6rem;
+            margin-top: 5.4rem;
         }
         .statistics {
             display: flex;
-            gap: 16.7rem;
+            gap: 12.7rem;
             justify-content: center;
             align-items: top;
-            margin-top: 3.8rem;
+            margin-top: 3.9rem;
 
             .item {
                 .number {
@@ -401,16 +580,16 @@
     #rnd-initial {
         position: relative;
         width: 192rem;
-        height: 90rem;
+        height: 63.1rem;
         .label {
             position: absolute;
-            left: 25.8rem;
-            top: 20.2rem;
-            width: 107.3rem;
+            left: 30rem;
+            top: 5.7rem;
+            width: 83.5rem;
         }
         .process-line {
             position: absolute;
-            top: 71.8rem;
+            bottom: 2.6rem;
             left: 27.1rem;
             display: flex;
             gap: 2.67rem;
@@ -422,7 +601,7 @@
                 border-radius: 0.8rem;
                 display: inline;
                 margin: 0;
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             .arrow {
                 width: 4rem;
@@ -431,8 +610,8 @@
         }
         .graphic-background {
             position: absolute;
-            left: 134rem;
-            top: 17rem;
+            left: 125rem;
+            top: 6.3rem;
 
             .inner {
                 width: 24.5rem;
@@ -451,23 +630,22 @@
             position: absolute;
             width: 20.4rem;
             height: 42.6rem;
-            top: 22.6rem;
-            left: 148.6rem;
+            top: 8.1rem;
+            left: 139.6rem;
         }
     }
 
     #overview {
         width: 192rem;
-        height: 210rem;
+        height: 194.3rem;
+        margin-bottom: 19.4rem;
+
         .label {
             position: absolute;
             left: 30rem;
             top: 3.7rem;
         }
-        .TODO {
-            top: 98rem;
-            height: 100rem;
-        }
+
         .graphic-background {
             position: absolute;
             left: 38.8rem;
@@ -489,11 +667,56 @@
             position: absolute;
             left: 43.2rem;
             top: 34.4rem;
+            width: 27.1rem;
         }
         .graphic-person-standing {
             position: absolute;
             top: 28rem;
             left: 27.7rem;
+            width: 21rem;
+        }
+        .overview-carousel {
+            width: 132rem;
+            position: absolute;
+            left: 30rem;
+            top: 92.2rem;
+            .carousel-slide {
+                width: 100%;
+                height: 77.63rem;
+                transition: height 350ms;
+                transition-timing-function: cubic-bezier(0.51, 0.6, 0.28, 1);
+                &.slide-1 {
+                    height: 73.2rem;
+                }
+                &.slide-2 {
+                    height: 77.6rem;
+                }
+                &.slide-3 {
+                    height: 74.7rem;
+                    .slide-3-navbar {
+                        width: 100%;
+                        position: sticky;
+                        top: 0;
+                        z-index: 1;
+                    }
+                    .content {
+                        position: relative;
+                        top: -0.5rem;
+                    }
+                }
+                &.slide-4 {
+                    height: 77.6rem;
+                }
+                &.slide-5 {
+                    height: 77.5rem;
+                }
+                &.slide-6 {
+                    height: 103.1rem;
+                }
+                &.slide-7 {
+                    height: 101.8rem;
+                }
+            }
         }
         .body {
             position: absolute;

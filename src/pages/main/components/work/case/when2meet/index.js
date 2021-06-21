@@ -1,10 +1,19 @@
-import "./styles.scss";
+import { useEffect, useState } from "react";
+import ScrollAnimation from "react-animate-on-scroll";
+import { useSetRecoilState } from "recoil";
+import FramerCarousel from "../../../../../../components/FramerCarousel";
 import InteractiveElement from "../../../../../../components/InteractiveElement";
+import { case_selector } from "../../../../../../recoil/case_atoms";
+import lerp from "../../../../../../utility/lerp";
 import CaseItem from "../components/CaseItems";
+import BeforeAfterSlider from "../../../../../../components/BeforeAfterSlider";
 import {
     hifi_arrow_svg,
     overview_person_sitting_svg,
     overview_person_standing_svg,
+    research_bubble_1,
+    research_bubble_2,
+    research_bubble_3,
     rnd_initial_arrow_svg,
     rnd_initial_svg,
     takeaways_sitting_bubble_svg,
@@ -12,12 +21,10 @@ import {
     takeaways_standing_bubble_svg,
     takeaways_standing_svg,
 } from "./assets";
-import { useEffect, useState } from "react";
-import lerp from "../../../../../../utility/lerp";
-import ScrollAnimation from "react-animate-on-scroll";
-
-import { case_selector } from "../../../../../../recoil/case_atoms";
-import { useSetRecoilState } from "recoil";
+import "./styles.scss";
+import { motion } from "framer-motion";
+import clsx from "clsx";
+import ExpandableImage from "../../../../../../components/ExpandableImage";
 
 const persona1 =
     "https://cdn.brandon-choi.info/kongee/assets/when2meet/persona1.png";
@@ -36,24 +43,30 @@ const lofi_graphic2 =
 const mockup =
     "https://cdn.brandon-choi.info/kongee/assets/when2meet/when2meet mockup.png";
 
+const cdnPrefix = "https://cdn.brandon-choi.info/kongee/assets/when2meet";
+
 export default function When2meetCase() {
     const setCaseState = useSetRecoilState(case_selector);
-    function handleMouseEnter(e) {
-        if (e.target.id) {
+    function handleMouseEnter(id) {
+        if (id) {
             setCaseState({
-                currentMarker: e.target.id,
+                currentMarker: id,
             });
         }
     }
     return (
         <>
-            <Overview onMouseEnter={handleMouseEnter} />
-            <RndInitial onMouseEnter={handleMouseEnter} />
-            <RndUserResearch onMouseEnter={handleMouseEnter} />
-            <RndIdeation onMouseEnter={handleMouseEnter} />
-            <LoFiMidFi onMouseEnter={handleMouseEnter} />
-            <HiFi onMouseEnter={handleMouseEnter} />
-            <Takeaways onMouseEnter={handleMouseEnter} />
+            <Overview onMouseEnter={() => handleMouseEnter("overview")} />
+            <RndInitial onMouseEnter={() => handleMouseEnter("rnd-initial")} />
+            <RndUserResearch
+                onMouseEnter={() => handleMouseEnter("rnd-user-research")}
+            />
+            <RndIdeation
+                onMouseEnter={() => handleMouseEnter("rnd-ideation")}
+            />
+            <LoFiMidFi onMouseEnter={() => handleMouseEnter("lofi-midfi")} />
+            <HiFi onMouseEnter={() => handleMouseEnter("hifi")} />
+            <Takeaways onMouseEnter={() => handleMouseEnter("takeaways")} />
         </>
     );
 }
@@ -86,9 +99,13 @@ function LoFiMidFi(props) {
             </div>
             <div className="figures">
                 <div className="figure1">
-                    <div className="img-wrapper">
-                        <img src={lofi_graphic} />
-                    </div>
+                    <ExpandableImage
+                        className="img-wrapper"
+                        layoutId={"lofi-img1"}
+                        imgProps={{
+                            src: lofi_graphic,
+                        }}
+                    />
                     <div className="description">
                         <b>figure 1</b>: lo-fi sketches by sally, anthony, &
                         kathryn
@@ -113,6 +130,129 @@ function LoFiMidFi(props) {
 }
 
 function HiFi(props) {
+    const overview_navbar_Slide3 = `${cdnPrefix}/overview/navbar.png`;
+
+    const overview_after_Slide1 = `${cdnPrefix}/overview/after/slide1.png`;
+    const overview_after_Slide2 = `${cdnPrefix}/overview/after/slide2.png`;
+    const overview_after_Slide3 = `${cdnPrefix}/overview/after/slide3.png`;
+    const overview_after_Slide4 = `${cdnPrefix}/overview/after/slide4.png`;
+    const overview_after_Slide5 = `${cdnPrefix}/overview/after/slide5.png`;
+    const overview_after_Slide6 = `${cdnPrefix}/overview/after/slide6.png`;
+    const overview_after_Slide7 = `${cdnPrefix}/overview/after/slide7.png`;
+
+    const slideData = [
+        {
+            key: "hifi1",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide1} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">
+                        EVENT HOST & ATTENDEE: LANDING PAGE
+                    </span>
+                </>
+            ),
+        },
+        {
+            key: "hifi2",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide2} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">
+                        EVENT HOST & ATTENDEE: “HOW IT WORKS” PAGE
+                    </span>
+                </>
+            ),
+        },
+        {
+            key: "hifi3",
+            SlideComponent: ({ className, ...props }) => (
+                <motion.div
+                    {...props}
+                    className={clsx(className, "mini-scroller")}
+                >
+                    <img
+                        src={overview_navbar_Slide3}
+                        className="slide-3-navbar"
+                    />
+                    <img src={overview_after_Slide3} className="content" />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">
+                        EVENT HOST: “CREATE A NEW EVENT” PAGE
+                    </span>
+                </>
+            ),
+        },
+        {
+            key: "hifi4",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide4} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">EVENT HOST: DASHBOARD</span>
+                </>
+            ),
+        },
+        {
+            key: "hifi5",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide5} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">
+                        EVENT ATTENDEE: “SIGN IN” PAGE
+                    </span>
+                </>
+            ),
+        },
+        {
+            key: "hifi6",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide6} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">
+                        EVENT ATTENDEE: EVENT PAGE (BEFORE INPUT)
+                    </span>
+                </>
+            ),
+        },
+        {
+            key: "hifi7",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide7} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <span className="hifi-caption">
+                        EVENT ATTENDEE: EVENT PAGE (AFTER INPUT)
+                    </span>
+                </>
+            ),
+        },
+    ];
+
     return (
         <div {...props} id="hifi">
             <div className="part1">
@@ -132,9 +272,11 @@ function HiFi(props) {
                 >
                     <img src={mockup} />
                 </InteractiveElement>
-                <div className="TODO">
-                    <div className="inner title">coming soon</div>
-                </div>
+                <FramerCarousel
+                    slides={slideData}
+                    type="captioned"
+                    className="hifi-carousel"
+                />{" "}
             </div>
             <div className="part2">
                 <div className="label">
@@ -155,6 +297,13 @@ function HiFi(props) {
                         <b> different types of colorblindness</b>, and
                         appropriate fonts to
                         <b> accommodate users with learning disabilities</b>.
+                        <br />
+                        <br />
+                        The font used for the redesign (century gothic) as well
+                        as the color palette solves
+                        <b> a critical pain point </b>
+                        while catering to our biggest goal for the redesign:
+                        <b> inclusivity</b>.
                     </CaseItem>
                 </div>
                 <div className="graphic-guide">
@@ -213,6 +362,29 @@ function Takeaways(props) {
                         <li>
                             Compromising our design to find the balance between
                             <b> usability </b>& aesthetic appeal
+                        </li>
+                    </ul>
+                    <br />
+                    What can we improve for a future project?
+                    <br />
+                    <br />
+                    <ul>
+                        <li>
+                            Creating a<b> design standard page </b>
+                            before any actual design to ensure
+                            <b> consistency </b>
+                            within the resulting user interface
+                        </li>
+                        <li>
+                            Conducting
+                            <b>user testing </b>
+                            before each prototype phase (lo-mid-hi) to maximize
+                            user feedback after each phase
+                        </li>
+                        <li>
+                            Better
+                            <b> documentation </b>
+                            to keep track of all the work that was completed
                         </li>
                     </ul>
                 </CaseItem>
@@ -282,6 +454,52 @@ function Takeaways(props) {
 }
 
 function RndIdeation(props) {
+    const ideation_Slide1 = `${cdnPrefix}/ideation/sally userflow map.png`;
+    const ideation_Slide2 = `${cdnPrefix}/ideation/anthony userflow map.png`;
+    const ideation_Slide3 = `${cdnPrefix}/ideation/kat userflow map.png`;
+
+    const slideData = [
+        {
+            key: "ideation1",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={ideation_Slide1} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 1</b>: Sally’s user flow map
+                </>
+            ),
+        },
+        {
+            key: "ideation2",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={ideation_Slide2} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 2</b>: Anthony’s user flow map
+                </>
+            ),
+        },
+        {
+            key: "ideation3",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={ideation_Slide3} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 3</b>: Kathryn’s user flow map
+                </>
+            ),
+        },
+    ];
+
     return (
         <div {...props} id="rnd-ideation">
             <div className="part1">
@@ -332,15 +550,126 @@ function RndIdeation(props) {
                         their availability, etc.):
                     </CaseItem>
                 </div>
-                <div className="TODO">
-                    <div className="inner title">coming soon</div>
-                </div>{" "}
+                <FramerCarousel
+                    slides={slideData}
+                    type="captioned"
+                    className="ideation-carousel"
+                />
             </div>
         </div>
     );
 }
 
 function RndUserResearch(props) {
+    const research_Slide1_bot = `${cdnPrefix}/userresearch/slide1_bot.png`;
+    const research_Slide1_top = `${cdnPrefix}/userresearch/slide1_top.png`;
+    const research_Slide1_mid = `${cdnPrefix}/userresearch/slide1_middle.png`;
+    const research_Slide2 = `${cdnPrefix}/userresearch/slide2.png`;
+
+    function BitmojiTestimony() {
+        return (
+            <div className="content-wrapper">
+                <motion.div
+                    className="pain-point a"
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <span className="heading-4">Pain Point #1: </span>
+                    <span className="body-2">
+                        The outdated interface and lack of instructions make the
+                        website very confusing for first-time and returning
+                        users alike
+                    </span>
+                </motion.div>
+                <motion.div className="bitmoji a">
+                    <img src={research_Slide1_top} />
+                </motion.div>
+                <motion.div className="research-bubble a">
+                    <div className="inner-text">
+                        “[The current When2Meet] does the bare minimum, nothing
+                        more. The interface is very outdated and not appealing.”
+                    </div>
+                    {research_bubble_1}
+                </motion.div>
+
+                <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="pain-point b"
+                >
+                    <span className="heading-4">Pain Point #2: </span>
+                    <span className="body-2">
+                        For event attendees, completing the task of inputting
+                        their availability is inconvenient
+                    </span>
+                </motion.div>
+                <motion.div className="bitmoji b">
+                    <img src={research_Slide1_mid} />
+                </motion.div>
+                <motion.div className="research-bubble b">
+                    <div className="inner-text">
+                        “There’s some precision involved in selecting the times
+                        you’re available, so it takes some coordination.”
+                    </div>
+                    {research_bubble_2}
+                </motion.div>
+
+                <motion.div
+                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="pain-point c"
+                >
+                    <span className="heading-4">Pain Point #3: </span>
+                    <span className="body-2">
+                        Event hosts and attendees alike cannot go back to the
+                        event page if they lose the link
+                    </span>
+                </motion.div>
+                <motion.div className="bitmoji c">
+                    <img src={research_Slide1_bot} />
+                </motion.div>
+                <motion.div className="research-bubble c">
+                    <div className="inner-text">
+                        “If you lose the link, its probably gone forever.”
+                    </div>
+                    {research_bubble_3}
+                </motion.div>
+            </div>
+        );
+    }
+
+    const slideData = [
+        {
+            key: "research1",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <BitmojiTestimony />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 1</b>: pain points & user testimony
+                </>
+            ),
+        },
+        {
+            key: "research2",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={research_Slide2} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 2</b>: virtual affinity mapping & votes
+                </>
+            ),
+        },
+    ];
+
     function CountUpAnimation({ number, ...props }) {
         const [count, setCount] = useState(0);
         const [started, setStarted] = useState(false);
@@ -437,9 +766,12 @@ function RndUserResearch(props) {
                 </div>
             </div>
 
-            <div className="TODO">
-                <div className="inner title">coming soon</div>
-            </div>
+            <FramerCarousel
+                slides={slideData}
+                type="captioned"
+                className="user-research-carousel"
+            />
+
             <div className="label2">
                 <CaseItem className="header">
                     RESEARCH & DEVELOPMENT {">"} USER RESEARCH
@@ -684,6 +1016,136 @@ function RndInitial(props) {
 }
 
 function Overview(props) {
+    const overview_navbar_Slide3 = `${cdnPrefix}/overview/navbar.png`;
+
+    const overview_after_Slide1 = `${cdnPrefix}/overview/after/slide1.png`;
+    const overview_after_Slide2 = `${cdnPrefix}/overview/after/slide2.png`;
+    const overview_after_Slide3 = `${cdnPrefix}/overview/after/slide3.png`;
+    const overview_after_Slide4 = `${cdnPrefix}/overview/after/slide4.png`;
+    const overview_after_Slide5 = `${cdnPrefix}/overview/after/slide5.png`;
+    const overview_after_Slide6 = `${cdnPrefix}/overview/after/slide6.png`;
+    const overview_after_Slide7 = `${cdnPrefix}/overview/after/slide7.png`;
+
+    const overview_before_Slide1 = `${cdnPrefix}/overview/before/slide1.png`;
+    const overview_before_Slide5 = `${cdnPrefix}/overview/before/slide5.png`;
+    const overview_before_Slide6 = `${cdnPrefix}/overview/before/slide6.png`;
+    const overview_before_Slide7 = `${cdnPrefix}/overview/before/slide7.png`;
+
+    const slideData = [
+        {
+            key: "slide1",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <BeforeAfterSlider
+                        before={overview_before_Slide1}
+                        after={overview_after_Slide1}
+                    />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 1</b>: redesigned — landing page
+                </>
+            ),
+        },
+        {
+            key: "slide2",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide2} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 2</b>: new — “how it works” page
+                </>
+            ),
+        },
+        {
+            key: "slide3",
+            SlideComponent: ({ className, ...props }) => (
+                <motion.div
+                    {...props}
+                    className={clsx(className, "mini-scroller")}
+                >
+                    <img
+                        src={overview_navbar_Slide3}
+                        className="slide-3-navbar"
+                    />
+                    <img src={overview_after_Slide3} className="content" />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 3</b>: new — event host, “create a new event” page
+                </>
+            ),
+        },
+        {
+            key: "slide4",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <img src={overview_after_Slide4} />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 4</b>: new — event host, dashboard
+                </>
+            ),
+        },
+        {
+            key: "slide5",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <BeforeAfterSlider
+                        before={overview_before_Slide5}
+                        after={overview_after_Slide5}
+                    />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 5</b>: redesigned — event attendee, “sign in” page
+                </>
+            ),
+        },
+        {
+            key: "slide6",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <BeforeAfterSlider
+                        before={overview_before_Slide6}
+                        after={overview_after_Slide6}
+                    />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 6</b>: redesigned — event attendee, event page
+                    (before input)
+                </>
+            ),
+        },
+        {
+            key: "slide7",
+            SlideComponent: (props) => (
+                <motion.div {...props}>
+                    <BeforeAfterSlider
+                        before={overview_before_Slide7}
+                        after={overview_after_Slide7}
+                    />
+                </motion.div>
+            ),
+            description: (
+                <>
+                    <b>figure 7</b>: redesigned — event attendee, event page
+                    (after input)
+                </>
+            ),
+        },
+    ];
+
     return (
         <div {...props} id="overview">
             <div className="label">
@@ -731,9 +1193,11 @@ function Overview(props) {
                 <b> better cater to the needs of the users</b>, using
                 human-centered design mindset.
             </CaseItem>
-            <div className="TODO">
-                <div className="inner title">coming soon</div>
-            </div>{" "}
+            <FramerCarousel
+                slides={slideData}
+                type="captioned"
+                className="overview-carousel"
+            />
         </div>
     );
 }

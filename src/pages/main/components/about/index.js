@@ -54,13 +54,13 @@ function About() {
                     lerpValue={0.01}
                     scrollableParentSelector={"#about-wrapper"}
                     className="square2"
-                    noOffset
+                    nooffset
                 />
                 <ReactiveShape
                     lerpValue={0.007}
                     scrollableParentSelector={"#about-wrapper"}
                     className="square"
-                    noOffset
+                    nooffset
                 >
                     <img alt="profile_picture" src={sally_pic} />
                 </ReactiveShape>
@@ -68,7 +68,7 @@ function About() {
                     lerpValue={0.005}
                     scrollableParentSelector={"#about-wrapper"}
                     className="about-me"
-                    noOffset
+                    nooffset
                 >
                     about me.
                 </ReactiveShape>
@@ -112,7 +112,7 @@ function About() {
                                         animState: "big",
                                     });
                                     setTimeout(() => {
-                                        console.log(123);
+                                        // console.log(123);
                                         window.open(
                                             "https://www.instagram.com/kongee_illust/",
                                             "_blank"
@@ -325,19 +325,19 @@ function About() {
                     lerpValue={0.007}
                     scrollableParentSelector={"#about-wrapper"}
                     className="circle1"
-                    noOffset
+                    nooffset
                 />
                 <ReactiveShape
                     lerpValue={0.02}
                     scrollableParentSelector={"#about-wrapper"}
                     className="circle2"
-                    noOffset
+                    nooffset
                 />
                 <ReactiveShape
                     lerpValue={-0.01}
                     scrollableParentSelector={"#about-wrapper"}
                     className="circle3"
-                    noOffset
+                    nooffset
                 />
                 <div className="vsig">
                     <img src={vsig} alt="vertical signature" />

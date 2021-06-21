@@ -15,6 +15,14 @@ import fastequal from "fast-deep-equal";
 const philz_png =
     "https://cdn.brandon-choi.info/kongee/assets/sallizzle_w_philz.png";
 
+const bigIcon = {
+    width: "12.5rem",
+    height: "12.5rem",
+    opacity: 1,
+    borderRadius: "100%",
+    backgroundColor: "#000",
+};
+
 const mouseAnimStates = {
     default: {
         width: "2rem",
@@ -64,20 +72,11 @@ const mouseAnimStates = {
         borderRadius: "100%",
         backgroundColor: "#000",
     },
-    left: {
-        width: "12.5rem",
-        height: "12.5rem",
-        opacity: 1,
-        borderRadius: "100%",
-        backgroundColor: "#000",
-    },
-    right: {
-        width: "12.5rem",
-        height: "12.5rem",
-        opacity: 1,
-        borderRadius: "100%",
-        backgroundColor: "#000",
-    },
+    left: bigIcon,
+    right: bigIcon,
+    expand: bigIcon,
+    swipe: bigIcon,
+    close: bigIcon,
     philz: {
         width: "42rem",
         height: "54rem",
@@ -228,35 +227,64 @@ export default function Mouse() {
         if (mouse_wrapper_value) mousePositionControls.set(mouse_wrapper_value);
     }, [mouse_wrapper_value]);
 
+    const mouseExtraComponent = {
+        left: <span className="arrow">{left_svg}</span>,
+        right: <span className="arrow">{right_svg}</span>,
+        philz: (
+            <span className="philz">
+                <img src={philz_png} />
+                <div className="philz-bg" />
+            </span>
+        ),
+        workHoverNotEnabled: (
+            <span>
+                coming
+                <br />
+                soon
+            </span>
+        ),
+        workHover: (
+            <span>
+                learn
+                <br />
+                more
+            </span>
+        ),
+        expand: <span className="expand">{expand_svg}</span>,
+        swipe: (
+            <motion.span
+                key="swipe"
+                className="expand swipe"
+                initial={{
+                    rotate: "-180deg",
+                }}
+                animate={{
+                    rotate: "0deg",
+                }}
+            >
+                {swipe_svg}
+            </motion.span>
+        ),
+        close: (
+            <motion.span
+                key="close"
+                className="expand"
+                initial={{
+                    rotate: "-180deg",
+                }}
+                animate={{
+                    rotate: "0deg",
+                }}
+            >
+                {close_svg}
+            </motion.span>
+        ),
+    };
+
     return (
         <motion.div id="mouse-wrapper" animate={mousePositionControls}>
             <motion.div className="mouse-inner" animate={animControls}>
-                {mouseState.animState === "workHover" && (
-                    <span>
-                        learn
-                        <br />
-                        more
-                    </span>
-                )}
-                {mouseState.animState === "workHoverNotEnabled" && (
-                    <span>
-                        coming
-                        <br />
-                        soon
-                    </span>
-                )}
-                {mouseState.animState === "left" && (
-                    <span className="arrow">{left_svg}</span>
-                )}
-                {mouseState.animState === "right" && (
-                    <span className="arrow">{right_svg}</span>
-                )}
-                {mouseState.animState === "philz" && (
-                    <span className="philz">
-                        <img src={philz_png} />
-                        <div className="philz-bg" />
-                    </span>
-                )}
+                {mouseExtraComponent[mouseState.animState]}
             </motion.div>
         </motion.div>
     );
@@ -272,16 +300,16 @@ const right_svg = (
         <path
             d="M10.4167 25H39.5833"
             stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
         <path
             d="M25 10.4165L39.5833 24.9998L25 39.5832"
             stroke="white"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         />
     </svg>
 );
@@ -296,16 +324,91 @@ const left_svg = (
         <path
             d="M39.5833 25H10.4167"
             stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <path
+            d="M25 39.5832L10.4167 24.9998L25 10.4165"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+    </svg>
+);
+const expand_svg = (
+    <svg
+        width="53"
+        height="53"
+        viewBox="0 0 53 53"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M24.3309 41.8741C33.9038 41.8741 41.6642 34.142 41.6642 24.6038C41.6642 15.0657 33.9038 7.3335 24.3309 7.3335C14.758 7.3335 6.99756 15.0657 6.99756 24.6038C6.99756 34.142 14.758 41.8741 24.3309 41.8741Z"
+            stroke="white"
             stroke-width="3"
             stroke-linecap="round"
             stroke-linejoin="round"
         />
         <path
-            d="M25 39.5832L10.4167 24.9998L25 10.4165"
+            d="M45.9975 46.192L36.5725 36.8013"
             stroke="white"
             stroke-width="3"
             stroke-linecap="round"
             stroke-linejoin="round"
+        />
+        <path
+            d="M24.3308 18.1274V31.0802"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+        <path
+            d="M17.8308 24.6035H30.8308"
+            stroke="white"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+    </svg>
+);
+const swipe_svg = (
+    <svg
+        width="106"
+        height="106"
+        viewBox="0 0 106 106"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M3 53L16.5 39.5M3 53L16.5 66.5M3 53H103M103 53L89.5 39.5M103 53L89.5 66.5"
+            stroke="white"
+            stroke-width="4"
+            stroke-linecap="square"
+        />
+        <path
+            d="M53 3L66.5 16.5M53 3L39.5 16.5M53 3L53 103M53 103L66.5 89.5M53 103L39.5 89.5"
+            stroke="white"
+            stroke-width="4"
+            stroke-linecap="square"
+        />
+    </svg>
+);
+const close_svg = (
+    <svg
+        width="54"
+        height="54"
+        viewBox="0 0 54 54"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M6.42054 1.64645L6.06699 1.29289L5.71343 1.64645L1.64645 5.71343L1.29289 6.06699L1.64645 6.42054L22.2259 27L1.64645 47.5795L1.29289 47.933L1.64645 48.2866L5.71343 52.3535L6.06699 52.7071L6.42054 52.3535L27 31.7741L47.5795 52.3535L47.933 52.7071L48.2866 52.3535L52.3535 48.2866L52.7071 47.933L52.3535 47.5795L31.7741 27L52.3535 6.42054L52.7177 6.05643L52.343 5.70319L48.1564 1.75582L47.8032 1.42276L47.4598 1.76606L27 22.2259L6.42054 1.64645Z"
+            fill="white"
+            stroke="black"
         />
     </svg>
 );

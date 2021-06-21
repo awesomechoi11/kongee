@@ -8,14 +8,22 @@ import {
 } from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Scrollbar } from "react-scrollbars-custom";
-import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
+import {
+    useRecoilState,
+    useRecoilValue,
+    useResetRecoilState,
+    useSetRecoilState,
+} from "recoil";
 import {
     forceRefresh_global_mouse_position_selector,
     mousePartialState_atom,
     mouse_wrapper_atom,
     override_mouse_atom,
 } from "../../../../../../recoil/atoms";
-import { case_atom } from "../../../../../../recoil/case_atoms";
+import {
+    case_atom,
+    case_overlay_atom,
+} from "../../../../../../recoil/case_atoms";
 import CaseBanner from "./CaseBanner";
 import CaseFooter from "./CaseFooter";
 import "./styles.scss";
@@ -28,13 +36,15 @@ export default function CaseContentWrapper({
     caseDetails,
     beforeAndAfter,
 }) {
+    const setOverlay = useSetRecoilState(case_overlay_atom);
     const setMouse = useSetRecoilState(mousePartialState_atom);
     const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
     const setOverride = useSetRecoilState(override_mouse_atom);
     const [caseState, setCaseState] = useRecoilState(case_atom);
     const [ready, setReady] = useState(false);
+
     useLayoutEffect(() => {
-        console.log("casewrapperrender");
+        // console.log("casewrapperrender");
         setMouse({
             animState: "default",
         });
@@ -53,15 +63,19 @@ export default function CaseContentWrapper({
             count: -1,
             currentMarker: false,
         });
+        setOverlay({
+            layoutId: "uwu",
+        });
         setReady(true);
     }, []);
+
     const setMousePosition = useResetRecoilState(
         forceRefresh_global_mouse_position_selector
     );
     const scrollRef = useRef(null);
     useEffect(() => {
         if (scrollRef && caseState.count > 0 && ready) {
-            console.log("set scroll");
+            // console.log("set scroll");
             scrollRef.current.scrollTop(caseState.top);
         }
     }, [caseState, ready]);
@@ -76,7 +90,7 @@ export default function CaseContentWrapper({
             behavior: "smooth",
         });
     }
-    console.log(caseState);
+
     return (
         <SpringScrollbars
             id={caseDetails.id}
@@ -96,7 +110,10 @@ export default function CaseContentWrapper({
             >
                 <CaseBanner caseDetails={caseDetails} />
                 <motion.div className="case-children">
-                    {children}
+                    <AnimateSharedLayout>
+                        <ImageOverlay />
+                        {children}
+                    </AnimateSharedLayout>
                     <div className="case-overview">
                         <div className="inner">
                             <AnimateSharedLayout>
@@ -175,6 +192,82 @@ export default function CaseContentWrapper({
                 />
             </ParallaxProvider>
         </SpringScrollbars>
+    );
+}
+
+function ImageOverlay() {
+    const [caseOverlay, setCaseOverlay] = useRecoilState(case_overlay_atom);
+    const setMouse = useSetRecoilState(mousePartialState_atom);
+    const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
+    const containerRef = useRef(null);
+    const { layoutId, ...imgProps } = caseOverlay;
+    const [big, setBig] = useState(1);
+    const active = layoutId !== "uwu";
+    return (
+        <motion.div
+            style={{
+                pointerEvents: active ? "all" : "none",
+            }}
+            animate={{
+                background: active ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0)",
+            }}
+            onClick={(e) => {
+                e.stopPropagation();
+                setCaseOverlay({
+                    layoutId: "uwu",
+                });
+                setMouse({
+                    animState: "default",
+                });
+                setMouseWrapper({
+                    mixBlendMode: "difference",
+                });
+            }}
+            id="image-overlay"
+            ref={containerRef}
+        >
+            {active && (
+                <motion.span
+                    layoutId={layoutId}
+                    drag
+                    dragConstraints={containerRef}
+                    dragTransition={{
+                        power: 0.1,
+                    }}
+                    animate={{
+                        scale: big,
+                    }}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                    }}
+                    onMouseEnter={() => {
+                        setMouse({
+                            animState: "swipe",
+                        });
+                        setMouseWrapper({
+                            mixBlendMode: "normal",
+                        });
+                    }}
+                    onMouseLeave={() => {
+                        setMouse({
+                            animState: "close",
+                        });
+                        setMouseWrapper({
+                            mixBlendMode: "normal",
+                        });
+                    }}
+                    onWheel={(e) => {
+                        const sign = Math.sign(e.deltaY);
+                        const newBig = big - sign * 0.1;
+                        if (newBig > 0.5) {
+                            setBig(newBig);
+                        }
+                    }}
+                >
+                    <motion.img alt="overlay" {...imgProps} />
+                </motion.span>
+            )}
+        </motion.div>
     );
 }
 

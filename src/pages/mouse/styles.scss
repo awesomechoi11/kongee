@@ -47,5 +47,13 @@
                     1.2rem 1.2rem 0 0.5rem black;
             }
         }
+        .expand {
+            width: 5.2rem;
+            height: 5.2rem;
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 }
