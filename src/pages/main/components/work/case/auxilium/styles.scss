@@ -81,16 +81,21 @@ $padding-width: 30rem;
 
         .results-screenshots {
             position: absolute;
+
             width: 152rem;
             height: 133.222rem;
             top: 161.1rem;
-
+            > .title {
+                left: -10rem;
+                position: relative;
+            }
             .title {
                 font-family: Poppins;
                 font-style: normal;
                 font-weight: 600;
                 font-size: 2.4rem;
                 line-height: 3.6rem;
+
                 /* identical to box height */
 
                 display: flex;
@@ -98,6 +103,8 @@ $padding-width: 30rem;
                 letter-spacing: 0.2rem;
             }
             .screenshots {
+                position: relative;
+                left: -10rem;
                 display: flex;
                 justify-content: space-between;
                 .column {
@@ -169,19 +176,21 @@ $padding-width: 30rem;
                 font-size: 1.6rem;
                 line-height: 2.4rem;
             }
-
+            .body {
+                margin-bottom: 10rem;
+            }
             .floating-text1 {
                 width: 22.521rem;
                 height: 12.615rem;
                 left: -7.2rem;
-                top: 166rem;
+                top: 176rem;
                 text-align: right;
                 @include floatingtext;
             }
             .floating-text2 {
                 @include floatingtext;
                 left: 120.6rem;
-                top: 191rem;
+                top: 201rem;
                 width: 21.212rem;
                 height: 7.374rem;
             }
@@ -191,27 +200,26 @@ $padding-width: 30rem;
                 width: 22.96rem;
                 height: 14.348rem;
                 left: -6.4rem;
-                top: 217rem;
+                top: 227rem;
             }
             .floating-text4 {
                 @include floatingtext;
                 width: 20.212rem;
                 height: 14.348rem;
                 left: 120.6rem;
-                top: 242rem;
+                top: 252rem;
             }
             .rnd2-arrow2 {
-                // top: 4848.09px;
                 position: absolute;
                 width: 36rem;
                 height: 8rem;
                 left: 17.6rem;
-                top: 166rem;
+                top: 176rem;
             }
             .rnd2-arrow3 {
                 position: absolute;
                 left: 95.6rem;
-                top: 184rem;
+                top: 194rem;
                 width: 23rem;
                 height: 11rem;
             }
@@ -220,14 +228,14 @@ $padding-width: 30rem;
                 width: 8rem;
                 height: 5rem;
                 left: 18.6rem;
-                top: 220rem;
+                top: 230rem;
             }
             .rnd2-bracket {
                 position: absolute;
                 width: 4rem;
                 height: 29rem;
                 left: 113.6rem;
-                top: 234rem;
+                top: 244rem;
             }
 
             .rnd2-fig1 {
@@ -239,7 +247,7 @@ $padding-width: 30rem;
                 font-style: normal;
                 font-size: 2.4rem;
                 line-height: 3.1rem;
-                > img {
+                img {
                     width: 111rem;
                     height: 75rem;
                     margin: 11.7rem 0 3.2rem 0;

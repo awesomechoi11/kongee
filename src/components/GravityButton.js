@@ -8,6 +8,7 @@ import {
 import { rectToCenter } from "../utility/elemCenter";
 import lerp from "../utility/lerp";
 import vec2 from "gl-vec2";
+import clsx from "clsx";
 
 export default function GravityButton({
     enterPadding,
@@ -69,6 +70,18 @@ export default function GravityButton({
         }
     }, [localCounter]);
 
+    useEffect(() => {
+        return () => {
+            setOverride({
+                enabled: false,
+                position: [0, 0],
+            });
+            setMouse({
+                animState: "default",
+            });
+        };
+    }, []);
+
     // paddingDimension is the addition of itemDimension and given padding values
     const paddingDimension = useMemo(
         () =>
@@ -85,7 +98,6 @@ export default function GravityButton({
             ),
         [paddingDimension, itemDimension]
     );
-
     function handleOnClick(e) {
         if (!preventLocalCounter) setLocalCounter(1);
         if (onClick) onClick(e);
@@ -123,10 +135,10 @@ export default function GravityButton({
     return (
         <div {...props} onClick={handleOnClick} ref={ref}>
             <span
-                className="circle"
+                className={clsx(shape)}
                 style={{
-                    width: paddingDimension[0],
-                    height: paddingDimension[1],
+                    width: paddingDimension[0] + "px",
+                    height: paddingDimension[1] + "px",
                     transform: `translate(${translate[0]}px,${translate[1]}px)`,
                 }}
                 onMouseLeave={handleMouseLeave}

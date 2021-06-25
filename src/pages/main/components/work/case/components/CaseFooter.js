@@ -49,12 +49,10 @@ function FooterItem({ caseDetails, className }) {
             },
         },
         shiftTransition: {
-            width: `${106}rem`,
-            height: `${42.5}rem`,
-            // x: 660.5499877929688
-            // y: 209.6999969482422
-            x: "66.05499877929688rem",
-            y: "20.96999969482422rem",
+            width: "97.7rem",
+            height: "42.6rem",
+            x: "74.3rem",
+            y: "20.9rem",
             transition: {
                 duration: 1,
                 ease: [0.41, 0.91, 0.46, 1],

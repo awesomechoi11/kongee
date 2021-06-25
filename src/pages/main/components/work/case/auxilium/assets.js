@@ -123,13 +123,13 @@ export const rnd_graphic_svg = (
             fill="#F3F6F4"
             stroke="#433D43"
             strokeWidth="2"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
         />
         <path
             d="M262.713 38.051H748.706"
             stroke="#433D43"
             strokeWidth="2"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
         />
         <path
             d="M393.557 118.469C393.557 118.469 396.919 167.665 406.379 192.559C411.675 206.494 429.217 262.307 452.733 233.268C477.071 203.215 491.738 188.802 491.738 188.802L433.813 137.972L393.557 118.469Z"
@@ -172,13 +172,13 @@ export const rnd_graphic_svg = (
             fill="#F3F6F4"
             stroke="#433D43"
             strokeWidth="2"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
         />
         <path
             d="M1.47754 341.2H487.471"
             stroke="#433D43"
             strokeWidth="2"
-            stroke-miterlimit="10"
+            strokeMiterlimit="10"
         />
         <path
             d="M388.317 417.598L387.593 416.372C386.809 415.044 385.073 414.589 383.716 415.356L376.909 419.199C375.551 419.966 375.086 421.664 375.87 422.991L376.594 424.217C377.377 425.545 379.113 426 380.47 425.233L387.278 421.389C388.635 420.623 389.1 418.925 388.317 417.598Z"
@@ -345,9 +345,9 @@ export const rnd_info1_svg = (
                 width="293"
                 height="299"
                 filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
+                colorInterpolationFilters="sRGB"
             >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feColorMatrix
                     in="SourceAlpha"
                     type="matrix"

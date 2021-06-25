@@ -35,7 +35,9 @@ import { figma_svg } from "../../../../assets/tools";
 const auxilium_preview =
     "https://cdn.brandon-choi.info/kongee/assets/auxilium/auxilium_preview.jpg";
 const when2meet_preview =
-    "https://cdn.brandon-choi.info/kongee/assets/when2meet_preview.png";
+    "https://cdn.brandon-choi.info/kongee/assets/when2meet/when2meet_preview.png";
+const bridge_preview =
+    "https://cdn.brandon-choi.info/kongee/assets/bridge/bridge_preview.png";
 
 function getBeforeAndAfter(Arr, index) {
     const length = Arr.length;
@@ -47,6 +49,37 @@ function getBeforeAndAfter(Arr, index) {
         }
         return Arr[value];
     });
+}
+
+function MouseLabel({ labelValue, ...props }) {
+    const setMouse = useSetRecoilState(mousePartialState_atom);
+    const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
+
+    return (
+        <div
+            className="tools-item"
+            {...props}
+            onMouseEnter={() => {
+                setMouseWrapper({
+                    mixBlendMode: "normal",
+                });
+                setMouse({
+                    animState: "text",
+                    text: labelValue,
+                });
+            }}
+            onMouseLeave={() => {
+                setMouse({
+                    animState: "default",
+                });
+                setMouseWrapper({
+                    mixBlendMode: "difference",
+                });
+            }}
+        >
+            {props.children}
+        </div>
+    );
 }
 
 const contentMap = [
@@ -64,7 +97,7 @@ const contentMap = [
         description: "36-HR HACKATHON • PROTOTYPING • DESIGN",
         date: "FEB 2021 - MAR 2021",
         title: "auxilium",
-        tools: [<div className="tools-item">{figma_svg}</div>],
+        tools: [<MouseLabel labelValue="figma">{figma_svg}</MouseLabel>],
         bannerDetails: {
             team: ["Brandon Choi", "Mai Moua Vang"],
             overview: [
@@ -74,9 +107,8 @@ const contentMap = [
                 "Improving the user experience of finding resources and COVID relief-related assistance for the city of Sacramento.",
             ],
             "my role": [
-                "ideation",
-                "prototyping",
-                "illustration",
+                "ui design lead",
+                "ux research",
                 "branding",
                 "documentation",
             ],
@@ -136,7 +168,7 @@ const contentMap = [
         description: "14-DAY DESIGN SPRINT • UX RESEARCH • DESIGN",
         date: "MAY 2021",
         title: "when2meet redesign",
-        tools: [<div className="tools-item">{figma_svg}</div>],
+        tools: [<MouseLabel labelValue="figma">{figma_svg}</MouseLabel>],
         bannerDetails: {
             team: ["Brandon Choi", "Mai Moua Vang"],
             overview: [
@@ -160,6 +192,55 @@ const contentMap = [
         path: "when2meet",
         preview: when2meet_preview,
         case: <When2meetCase />,
+    },
+    {
+        titleStyle: {
+            // top is calculated by subtracting from max
+            width: "36.5rem",
+            height: "15.7rem",
+            top: "0rem",
+            left: "0rem",
+            fontSize: "12rem",
+            lineHeight: "15.7rem",
+        },
+
+        description: "7-DAY DESIGN SPRINT • UI DESIGN • RESEARCH",
+        date: "JUN 2021",
+        title: "bridge",
+        tools: [<MouseLabel labelValue="figma">{figma_svg}</MouseLabel>],
+        bannerDetails: {
+            team: ["Brandon Choi", "Mai Moua Vang"],
+            overview: [
+                "Finding resources for financial struggles, food insecurity, and mental health assistance has been difficult for the city of Sacramento ever since the start of COVID-19.",
+            ],
+            objective: [
+                "Improving the user experience of finding resources and COVID relief-related assistance for the city of Sacramento.",
+            ],
+            "my role": [
+                "ui design lead",
+                "ux research",
+                "branding",
+                "documentation",
+            ],
+        },
+        overviewMarkers: [
+            "overview",
+            "problem",
+            "objective",
+            "approach",
+            {
+                id: "rnd",
+                text: "R&D",
+            },
+            "results",
+        ],
+        color: "#C6B4D3",
+        id: "bridge-case",
+        enabled: false,
+
+        path: "bridge",
+        preview: bridge_preview,
+        case: <AuxiliumCase />,
     },
 ];
 
@@ -187,7 +268,12 @@ function Work() {
         if (active) setActive(!active);
     }, []);
     useLayoutEffect(() => {
-        if (location.pathname === path)
+        if (
+            location.pathname === path ||
+            (location.pathname ===
+                `/work/${contentMap[currentIndex].path}/case` &&
+                !contentMap[currentIndex].enabled)
+        )
             history.push(`${url}/${contentMap[0].path}`);
     }, [location.pathname]);
 
@@ -396,10 +482,10 @@ function WorkPreviewWindow({ currentIndex, ...props }) {
             },
         },
         shiftTransition: {
-            width: "106rem",
-            height: "42.5rem",
-            left: "66.05499877929688rem",
-            top: "20.96999969482422rem",
+            width: "97.7rem",
+            height: "42.6rem",
+            left: "74.3rem",
+            top: "20.9rem",
             outline: `solid ${active ? color : "#000"} 0rem`,
             transition: {
                 duration: 1,

@@ -5,6 +5,7 @@ import {
     mousePartialState_atom,
     mouse_wrapper_atom,
     override_mouse_atom,
+    transition_atom,
 } from "../../../recoil/atoms";
 import {
     linkedin_svg,
@@ -184,7 +185,7 @@ function Signature() {
     return (
         <div className="signature">
             <div className="left">
-                <img src={vsig} />
+                <img alt='' src={vsig} alt='' />
             </div>
             <div className="right">
                 <div className="top">Sally (Hyunji) Kim</div>
@@ -227,6 +228,8 @@ function CoolShapes({ scrollableParentSelector }) {
 function SiteMap() {
     const history = useHistory();
     const setMousePartial = useSetRecoilState(mousePartialState_atom);
+    const setTransition = useSetRecoilState(transition_atom);
+
     const sitemapData = [
         {
             title: "home",
@@ -246,7 +249,7 @@ function SiteMap() {
         },
         {
             title: "resume",
-            path: "/resume",
+            path: "https://drive.google.com/file/d/1lBze_fJYSSC9Tt10XBATOCQvFrS1Ec99/view?usp=sharing",
         },
     ];
     return (
@@ -256,7 +259,20 @@ function SiteMap() {
                     <span
                         className="item-inner"
                         onClick={() => {
-                            history.push(data.path);
+                            if (data.title === "resume") {
+                                window.open(
+                                    "https://drive.google.com/file/d/1lBze_fJYSSC9Tt10XBATOCQvFrS1Ec99/view?usp=sharing",
+                                    "_blank"
+                                );
+                                return;
+                            }
+                            setTransition({
+                                enabled: true,
+                                animate: true,
+                            });
+                            setTimeout(() => {
+                                history.push(data.path);
+                            }, 300);
                         }}
                         onMouseOver={() => {
                             setMousePartial({ animState: "icon" });

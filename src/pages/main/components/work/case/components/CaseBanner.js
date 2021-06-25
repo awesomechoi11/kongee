@@ -42,20 +42,29 @@ export default function CaseBanner({ caseDetails }) {
                         animate="visible"
                         className="banner-details"
                     >
-                        {Object.entries(bannerDetails).map(([key, value]) => {
-                            return (
-                                <div className="item" key={key}>
-                                    <div className="title">{key}</div>
-                                    <div
-                                        className={clsx("body", "body-" + key)}
-                                    >
-                                        {value.map((line, index) => (
-                                            <div key={key + index}>{line}</div>
-                                        ))}
+                        {Object.entries(bannerDetails).map(
+                            ([key, value], index1) => {
+                                return (
+                                    <div className="item" key={key + index1}>
+                                        <div className="title">{key}</div>
+                                        <div
+                                            className={clsx(
+                                                "body",
+                                                "body-" + key
+                                            )}
+                                        >
+                                            {value.map((line, index2) => (
+                                                <div
+                                                    key={key + index1 + index2}
+                                                >
+                                                    {line}
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            }
+                        )}
                     </motion.div>
                 </div>
             </div>

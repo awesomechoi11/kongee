@@ -22,7 +22,12 @@ const bigIcon = {
     borderRadius: "100%",
     backgroundColor: "#000",
 };
-
+const icon = {
+    width: "5.6rem",
+    height: "5.6rem",
+    opacity: 1,
+    borderRadius: "100%",
+};
 const mouseAnimStates = {
     default: {
         width: "2rem",
@@ -37,11 +42,20 @@ const mouseAnimStates = {
         opacity: 1,
         borderRadius: "100%",
     },
-    icon: {
-        width: "5.6rem",
-        height: "5.6rem",
-        opacity: 1,
-        borderRadius: "100%",
+    icon: icon,
+    landingSocial_LinkedIn: icon,
+    landingSocial_Instagram: icon,
+    landingSocial_mail: icon,
+    landingSocial_resume: icon,
+    aboutSocial_LinkedIn: icon,
+    aboutSocial_Instagram: icon,
+    aboutSocial_mail: icon,
+    aboutSocial_resume: icon,
+    text: {
+        width: "auto",
+        height: "auto",
+        borderRadius: "1.5rem",
+        backgroundColor: "#000",
     },
     zero: {
         width: 0,
@@ -89,6 +103,7 @@ const mouseAnimStates = {
 };
 
 export default function Mouse() {
+    //#region
     //global state for mouse interactions
     const mouseState = useRecoilValue(mouse_atom);
     const setGlobalMousePosition = useSetRecoilState(
@@ -134,6 +149,7 @@ export default function Mouse() {
     const animControls = useAnimation();
     // const animControls2 = useAnimation();
     // set mouse stuff
+
     useEffect(() => {
         const override = mouseOverrideCallback();
         if (override.enabled) {
@@ -226,13 +242,43 @@ export default function Mouse() {
     useEffect(() => {
         if (mouse_wrapper_value) mousePositionControls.set(mouse_wrapper_value);
     }, [mouse_wrapper_value]);
+    //#endregion
+
+    function LandingSocialText(props) {
+        const initial =
+            props.className === "aboutSocial-text"
+                ? {
+                      y: "-2rem",
+                  }
+                : {
+                      x: "-10rem",
+                  };
+
+        return (
+            <motion.span
+                initial={{
+                    opacity: 0,
+                    ...initial,
+                }}
+                animate={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                }}
+                className="landingSocial-text"
+                {...props}
+            >
+                {props.children}
+            </motion.span>
+        );
+    }
 
     const mouseExtraComponent = {
         left: <span className="arrow">{left_svg}</span>,
         right: <span className="arrow">{right_svg}</span>,
         philz: (
             <span className="philz">
-                <img src={philz_png} />
+                <img alt="" src={philz_png} />
                 <div className="philz-bg" />
             </span>
         ),
@@ -279,8 +325,34 @@ export default function Mouse() {
                 {close_svg}
             </motion.span>
         ),
+        landingSocial_LinkedIn: <LandingSocialText>LinkedIn</LandingSocialText>,
+        landingSocial_Instagram: (
+            <LandingSocialText>Instagram</LandingSocialText>
+        ),
+        landingSocial_mail: <LandingSocialText>E-Mail</LandingSocialText>,
+        landingSocial_resume: <LandingSocialText>Resume</LandingSocialText>,
+        aboutSocial_LinkedIn: (
+            <LandingSocialText className="aboutSocial-text">
+                LinkedIn
+            </LandingSocialText>
+        ),
+        aboutSocial_Instagram: (
+            <LandingSocialText className="aboutSocial-text">
+                Instagram
+            </LandingSocialText>
+        ),
+        aboutSocial_mail: (
+            <LandingSocialText className="aboutSocial-text">
+                E-Mail
+            </LandingSocialText>
+        ),
+        aboutSocial_resume: (
+            <LandingSocialText className="aboutSocial-text">
+                Resume
+            </LandingSocialText>
+        ),
+        text: <span className="text">{mouseState.text}</span>,
     };
-
     return (
         <motion.div id="mouse-wrapper" animate={mousePositionControls}>
             <motion.div className="mouse-inner" animate={animControls}>

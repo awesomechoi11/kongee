@@ -77,5 +77,13 @@ export const loading_atom = atom({
 
 export const transition_atom = atom({
     key: "transition_atom", // unique ID (with respect to other atoms/selectors)
-    default: true, // default value (aka initial value)
+    default: {
+        enabled: true,
+        animate: false,
+    }, // default value (aka initial value)
+});
+
+export const firstLoad_atom = atom({
+    key: "firstLoad_atom",
+    default: true,
 });

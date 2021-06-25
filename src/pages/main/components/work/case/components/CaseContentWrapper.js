@@ -10,7 +10,6 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import { Scrollbar } from "react-scrollbars-custom";
 import {
     useRecoilState,
-    useRecoilValue,
     useResetRecoilState,
     useSetRecoilState,
 } from "recoil";
@@ -67,6 +66,7 @@ export default function CaseContentWrapper({
             layoutId: "uwu",
         });
         setReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const setMousePosition = useResetRecoilState(
@@ -203,11 +203,15 @@ function ImageOverlay() {
     const { layoutId, ...imgProps } = caseOverlay;
     const [big, setBig] = useState(1);
     const active = layoutId !== "uwu";
+    useEffect(() => {
+        setBig(1);
+    }, [active]);
     return (
         <motion.div
             style={{
                 pointerEvents: active ? "all" : "none",
             }}
+            initial={false}
             animate={{
                 background: active ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0)",
             }}

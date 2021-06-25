@@ -3,7 +3,7 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { mousePartialState_atom, mouse_wrapper_atom } from "../recoil/atoms";
-// import useLoadTracker from "../utility/useLoadTracker";
+
 import "./FramerCarousel.scss";
 
 const leftArrow_svg = (
@@ -42,11 +42,7 @@ export default function FramerCarousel({ slides, ...props }) {
     const [direction, setDirection] = useState("left");
     const setMouse = useSetRecoilState(mousePartialState_atom);
     const setMouseWrapper = useSetRecoilState(mouse_wrapper_atom);
-    const slidesObj = Object.fromEntries(
-        Object.values(slides).map((value, index) => [index, value.imgsrc])
-    );
 
-    // useLoadTracker(slidesObj, false);
     const { key, SlideComponent, description } = slides[page];
     return (
         <div className={clsx("carousel", props.className)}>
@@ -62,7 +58,7 @@ export default function FramerCarousel({ slides, ...props }) {
                                 onClick={() => {
                                     setPage(index);
                                 }}
-                                key={index}
+                                key={"dot-"+ index}
                             >
                                 {page === index && (
                                     <motion.div

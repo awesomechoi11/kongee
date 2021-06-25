@@ -25,7 +25,11 @@ function withTransitionSetter(WrappedComponent) {
         const setTransition = useSetRecoilState(transition_atom);
 
         useEffect(() => {
-            setTransition(false);
+            setTransition({
+                enabled: false,
+                animate: true,
+            });
+            setTimeout(() => {}, 0);
         }, []);
         return <WrappedComponent />;
     };
@@ -58,7 +62,7 @@ const routeMap = [
         name: "playground",
         path: "/playground",
         component: withTransitionSetter(
-            React.lazy(() => import("./components/about"))
+            React.lazy(() => import("./components/playground"))
         ),
         children: "PLAYGROUND",
         onNavbar: "right",
@@ -87,7 +91,10 @@ function Navbar() {
                     (pageData, index) =>
                         pageData.onNavbar === "left" &&
                         location.pathname !== "/" && (
-                            <NavButton key={index} path={pageData.path}>
+                            <NavButton
+                                key={"left" + pageData.path + index}
+                                path={pageData.path}
+                            >
                                 {pageData.children}
                             </NavButton>
                         )
@@ -97,7 +104,10 @@ function Navbar() {
                 {routeMap.map(
                     (pageData, index) =>
                         pageData.onNavbar === "right" && (
-                            <NavButton key={index} path={pageData.path}>
+                            <NavButton
+                                key={"right" + pageData.path + index}
+                                path={pageData.path}
+                            >
                                 {pageData.children}
                             </NavButton>
                         )
@@ -173,17 +183,19 @@ function NavButton(props) {
                     transition: { duration: 0.6 },
                 });
 
-                // free the mouse
-                setOverride({
-                    enabled: false,
-                    position: elemCenter,
-                });
-
                 //set mouse to normal
                 setMousePartial({ animState: "default" });
 
                 //show real overlay
-                setTransition(true);
+                setTransition({
+                    enabled: true,
+                    animate: false,
+                });
+                // free the mouse
+                setOverride({
+                    enabled: false,
+                    position: [0, 0],
+                });
 
                 setTimeout(() => {
                     history.push(props.path);
@@ -226,7 +238,7 @@ function Main() {
                     {routeMap.map((pageData, index) => (
                         <Route
                             exact={pageData.exact}
-                            key={index}
+                            key={"page" + index}
                             path={pageData.path}
                         >
                             <Suspense
@@ -256,7 +268,7 @@ function SuspenseFallback({ name }) {
             progress: 0,
         });
     }, []);
-    return <div> {name} loading... </div>;
+    return <div> </div>;
 }
 
 export default Main;

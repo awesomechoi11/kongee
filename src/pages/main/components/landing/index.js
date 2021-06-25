@@ -60,7 +60,10 @@ function Landing() {
                     <div
                         className="view-work"
                         onClick={() => {
-                            setTransition(true);
+                            setTransition({
+                                enabled: true,
+                                animate: true,
+                            });
                             setTimeout(() => {
                                 history.push("/work");
                             }, 300);
@@ -90,8 +93,9 @@ function Landing() {
                     enterPadding={[15, 15]}
                     leavePadding={[50, 50]}
                     {...sizeEvents({
-                        animState: "icon",
+                        animState: "landingSocial_LinkedIn",
                         backgroundColor: "#D7984D",
+                        color: "#000",
                     })}
                     onClick={() => {
                         setMouse({
@@ -113,8 +117,9 @@ function Landing() {
                     enterPadding={[15, 15]}
                     leavePadding={[50, 50]}
                     {...sizeEvents({
-                        animState: "icon",
+                        animState: "landingSocial_Instagram",
                         backgroundColor: "#3ECA7B",
+                        color: "#000",
                     })}
                     onClick={() => {
                         setMouse({
@@ -137,8 +142,9 @@ function Landing() {
                     enterPadding={[15, 15]}
                     leavePadding={[50, 50]}
                     {...sizeEvents({
-                        animState: "icon",
+                        animState: "landingSocial_mail",
                         backgroundColor: "#fff",
+                        color: "#000",
                     })}
                     onClick={() => {
                         setMouse({
@@ -157,8 +163,9 @@ function Landing() {
                     enterPadding={[15, 15]}
                     leavePadding={[50, 50]}
                     {...sizeEvents({
-                        animState: "icon",
+                        animState: "landingSocial_resume",
                         backgroundColor: "#fff",
+                        color: "#000",
                     })}
                     onClick={() => {
                         setMouse({

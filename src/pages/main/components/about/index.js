@@ -54,13 +54,11 @@ function About() {
                     lerpValue={0.01}
                     scrollableParentSelector={"#about-wrapper"}
                     className="square2"
-                    nooffset
                 />
                 <ReactiveShape
                     lerpValue={0.007}
                     scrollableParentSelector={"#about-wrapper"}
                     className="square"
-                    nooffset
                 >
                     <img alt="profile_picture" src={sally_pic} />
                 </ReactiveShape>
@@ -68,7 +66,6 @@ function About() {
                     lerpValue={0.005}
                     scrollableParentSelector={"#about-wrapper"}
                     className="about-me"
-                    nooffset
                 >
                     about me.
                 </ReactiveShape>
@@ -95,7 +92,7 @@ function About() {
                                     }, 220);
                                 }}
                                 {...sizeEvents({
-                                    animState: "icon",
+                                    animState: "aboutSocial_LinkedIn",
                                 })}
                             >
                                 {linkedin_thin_svg}
@@ -120,7 +117,7 @@ function About() {
                                     }, 220);
                                 }}
                                 {...sizeEvents({
-                                    animState: "icon",
+                                    animState: "aboutSocial_Instagram",
                                 })}
                             >
                                 {insta_thin_svg}
@@ -142,7 +139,7 @@ function About() {
                                     }, 220);
                                 }}
                                 {...sizeEvents({
-                                    animState: "icon",
+                                    animState: "aboutSocial_mail",
                                 })}
                             >
                                 {mail_think_svg}
@@ -166,7 +163,7 @@ function About() {
                                     }, 220);
                                 }}
                                 {...sizeEvents({
-                                    animState: "icon",
+                                    animState: "aboutSocial_resume",
                                 })}
                             >
                                 {file_thin_svg}
@@ -211,7 +208,7 @@ function About() {
                                     href="https://www.ucdavis.edu/majors/design"
                                     target="_blank"
                                 >
-                                    University of California, Davis
+                                    <b>University of California, Davis</b>
                                 </a>
                             </u>
                             . After undergrad, I plan on working as a full-time
@@ -325,22 +322,19 @@ function About() {
                     lerpValue={0.007}
                     scrollableParentSelector={"#about-wrapper"}
                     className="circle1"
-                    nooffset
                 />
                 <ReactiveShape
                     lerpValue={0.02}
                     scrollableParentSelector={"#about-wrapper"}
                     className="circle2"
-                    nooffset
                 />
                 <ReactiveShape
                     lerpValue={-0.01}
                     scrollableParentSelector={"#about-wrapper"}
                     className="circle3"
-                    nooffset
                 />
                 <div className="vsig">
-                    <img src={vsig} alt="vertical signature" />
+                    <img alt="" src={vsig} alt="vertical signature" />
                 </div>
             </div>
 

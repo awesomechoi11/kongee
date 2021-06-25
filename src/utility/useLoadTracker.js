@@ -17,13 +17,14 @@ export default function useLoadTracker(assets, updateRecoil = true) {
                 setProgress(totalLoaded.current / total.current);
             };
             img.onerror = () => {
-                throw "err loading img!";
+                throw Error("err loading img!");
             };
 
             resultobj[key] = {
                 src: value,
             };
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
         if (loading && loading.loading) {
@@ -34,6 +35,7 @@ export default function useLoadTracker(assets, updateRecoil = true) {
                 });
             }
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [progress]);
 
     return [loading, progress];

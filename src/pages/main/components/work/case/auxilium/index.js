@@ -23,10 +23,11 @@ import {
 } from "./assets";
 import ReactiveShape from "../../../../../../components/ReactiveShape";
 import FramerCarousel from "../../../../../../components/FramerCarousel";
-import { useSetRecoilState } from "recoil";
-import { case_selector } from "../../../../../../recoil/case_atoms";
 import CaseItem from "../components/CaseItems";
 import CaseSection from "../components/CaseSection";
+import ExpandableImage from "../../../../../../components/ExpandableImage";
+import _ from "lodash";
+import { confettiEmitter } from "../../../../../../components/party";
 
 const auxilium_mockup =
     "https://cdn.brandon-choi.info/kongee/assets/auxilium/auxilium_mockup_400.jpg";
@@ -79,17 +80,6 @@ const presentation8 =
 const presentation9 =
     "https://cdn.brandon-choi.info/kongee/assets/auxilium/presentation/PRESENTATION- SacHacks _ auxilium9.png";
 
-const variants = {
-    hidden: {
-        opacity: 0,
-    },
-    visible: {
-        opacity: 1,
-        transition: {
-            duration: 0.6,
-        },
-    },
-};
 export default function AuxiliumCase() {
     return (
         <>
@@ -241,6 +231,26 @@ const slideData = [
     },
 ];
 
+const emitConfetti = _.throttle(
+    (e) => {
+        confettiEmitter(e.nativeEvent);
+    },
+    500,
+    {
+        leading: true,
+        trailing: true,
+    }
+);
+const emitConfettiClick = _.throttle(
+    (e) => {
+        confettiEmitter(e.nativeEvent);
+    },
+    100,
+    {
+        leading: true,
+        trailing: true,
+    }
+);
 function AuxiliumResults() {
     function Item({ src, title }) {
         return (
@@ -250,7 +260,12 @@ function AuxiliumResults() {
                     scrollableParentSelector=".ScrollbarsCustom-Scroller"
                     animateOnce
                 >
-                    <img src={src} alt={title} />
+                    <ExpandableImage
+                        className="img-wrapper"
+                        imgProps={{
+                            src,
+                        }}
+                    />
                     <div className="title">{title}</div>
                 </ScrollAnimation>
             </div>
@@ -279,7 +294,7 @@ function AuxiliumResults() {
             </div>
             <div className="results-mockup">
                 <Parallax y={[-40, 20]}>
-                    <img src={auxilium_mockup} alt="auxilium mockup" />
+                    <img alt="" src={auxilium_mockup} alt="auxilium mockup" />
                 </Parallax>
             </div>
             <div className="results-screenshots">
@@ -311,14 +326,18 @@ function AuxiliumResults() {
             </div>
             <div className="results-visuals">
                 <div className="title">PRESENTATION VISUALS</div>
-                <FramerCarousel slides={slideData} type="captioned" />
+                <FramerCarousel slides={slideData} />
             </div>
-            <div className="results2">
+            <div
+                className="results2"
+                onMouseMove={emitConfetti}
+                onClick={emitConfettiClick}
+            >
                 <div className="header">RESULTS</div>
                 <div className="title">our takeaways</div>
                 <div className="content">
                     <div className="left">
-                        <img src={results2} alt="results" />
+                        <img alt="" src={results2} alt="results" />
                     </div>
                     <div className="right">
                         After the website was submitted to the judges, our team
@@ -462,18 +481,30 @@ function AuxiliumRnD() {
                     </div>
                 </ScrollAnimation>
                 <div className="rnd2-fig1">
-                    <img src={rndfig1} alt="figure" />
+                    <ExpandableImage
+                        imgProps={{
+                            src: rndfig1,
+                        }}
+                    />
                     <div className="text">
                         <b>figure 1</b>: the mid-fidelity prototype for auxilium
                     </div>
                 </div>
                 <div className="rnd2-fig2">
                     <div className="text">LOW-FIDELITY WIREFRAME</div>
-                    <img src={rndfig2} alt="figure" />
+                    <ExpandableImage
+                        imgProps={{
+                            src: rndfig2,
+                        }}
+                    />
                 </div>
                 <div className="rnd2-fig3">
                     <div className="text">HIGH-FIDELITY WIREFRAME</div>
-                    <img src={rndfig3} alt="figure" />
+                    <ExpandableImage
+                        imgProps={{
+                            src: rndfig3,
+                        }}
+                    />
                 </div>
                 <div className="figure">
                     <b>figure 2</b>:<i> {"\u00A0"}from mid-fi to hi-fi</i>—
@@ -537,7 +568,6 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.09}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        nooffset
                     >
                         {approach_circle_svg}
                     </ReactiveShape>
@@ -553,7 +583,6 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.005}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        nooffset
                     >
                         {approach_ring_svg}
                     </ReactiveShape>
@@ -569,7 +598,6 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.01}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        nooffset
                     >
                         {approach_line_2_svg}
                     </ReactiveShape>
@@ -586,7 +614,6 @@ function AuxiliumApproach(props) {
                     <ReactiveShape
                         lerpValue={0.02}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                        nooffset
                     >
                         {approach_line_1_svg}
                     </ReactiveShape>
@@ -623,7 +650,6 @@ function AuxiliumObjective() {
                         lerpValue={0.005}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
                         className="circle"
-                        nooffset
                     />
                 </ScrollAnimation>
             </Parallax>
@@ -637,7 +663,6 @@ function AuxiliumObjective() {
                         lerpValue={0.018}
                         scrollableParentSelector=".ScrollbarsCustom-Scroller"
                         className=" circle"
-                        nooffset
                     />
                 </ScrollAnimation>
             </Parallax>
@@ -706,7 +731,6 @@ function AuxiliumOverview() {
                             lerpValue={0.005}
                             scrollableParentSelector=".ScrollbarsCustom-Scroller"
                             className="circle"
-                            nooffset
                         />
                     </ScrollAnimation>
                 </Parallax>
@@ -721,18 +745,22 @@ function AuxiliumOverview() {
                             lerpValue={0.018}
                             scrollableParentSelector=".ScrollbarsCustom-Scroller"
                             className=" circle"
-                            nooffset
                         />
                     </ScrollAnimation>
                 </Parallax>
-
-                <ReactiveShape
-                    lerpValue={0.01}
+                <ScrollAnimation
+                    animateIn="fadeIn"
                     scrollableParentSelector=".ScrollbarsCustom-Scroller"
-                    className="overview-graphic"
+                    animateOnce
                 >
-                    {overview_graphic_svg}
-                </ReactiveShape>
+                    <ReactiveShape
+                        lerpValue={0.01}
+                        scrollableParentSelector=".ScrollbarsCustom-Scroller"
+                        className="overview-graphic"
+                    >
+                        {overview_graphic_svg}
+                    </ReactiveShape>
+                </ScrollAnimation>
             </div>
         </CaseSection>
     );

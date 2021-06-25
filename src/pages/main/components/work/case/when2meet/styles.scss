@@ -22,10 +22,10 @@
 .body-2 {
     //styleName: body 2;
     font-family: Apparel;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 2.4rem;
     letter-spacing: 0em;
     text-align: left;
 }
@@ -33,10 +33,10 @@
 .heading-4 {
     //styleName: heading 4;
     font-family: Apparel;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 24px;
+    line-height: 2.4rem;
     letter-spacing: 0em;
     text-align: left;
 }
@@ -48,7 +48,7 @@
         &.case-overview {
             width: 15rem;
             top: 104rem;
-            height: 1670rem;
+            height: 1600rem;
             position: absolute;
             .inner {
                 position: sticky;
@@ -355,7 +355,7 @@
             width: 132rem;
             left: 30rem;
             top: 68.9rem;
-            border-radius: 0px;
+            border-radius: 0rem;
 
             .carousel-slide {
                 width: 100%;

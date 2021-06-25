@@ -101,7 +101,6 @@ function LoFiMidFi(props) {
                 <div className="figure1">
                     <ExpandableImage
                         className="img-wrapper"
-                        layoutId={"lofi-img1"}
                         imgProps={{
                             src: lofi_graphic,
                         }}
@@ -117,9 +116,12 @@ function LoFiMidFi(props) {
                     <b> mid-fidelity screens</b>:
                 </div>
                 <div className="figure2">
-                    <div className="img-wrapper">
-                        <img src={lofi_graphic2} />
-                    </div>
+                    <ExpandableImage
+                        className="img-wrapper"
+                        imgProps={{
+                            src: lofi_graphic2,
+                        }}
+                    />
                     <div className="description">
                         <b>figure 2</b>: mid-fi sketches
                     </div>
@@ -145,7 +147,7 @@ function HiFi(props) {
             key: "hifi1",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide1} />
+                    <img alt='overview after slide1' src={overview_after_Slide1} />
                 </motion.div>
             ),
             description: (
@@ -160,7 +162,7 @@ function HiFi(props) {
             key: "hifi2",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide2} />
+                    <img alt='' src={overview_after_Slide2} />
                 </motion.div>
             ),
             description: (
@@ -178,11 +180,11 @@ function HiFi(props) {
                     {...props}
                     className={clsx(className, "mini-scroller")}
                 >
-                    <img
+                    <img alt=''
                         src={overview_navbar_Slide3}
                         className="slide-3-navbar"
                     />
-                    <img src={overview_after_Slide3} className="content" />
+                    <img alt='' src={overview_after_Slide3} className="content" />
                 </motion.div>
             ),
             description: (
@@ -197,7 +199,7 @@ function HiFi(props) {
             key: "hifi4",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide4} />
+                    <img alt='' src={overview_after_Slide4} />
                 </motion.div>
             ),
             description: (
@@ -210,7 +212,7 @@ function HiFi(props) {
             key: "hifi5",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide5} />
+                    <img alt='' src={overview_after_Slide5} />
                 </motion.div>
             ),
             description: (
@@ -225,7 +227,7 @@ function HiFi(props) {
             key: "hifi6",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide6} />
+                    <img alt='' src={overview_after_Slide6} />
                 </motion.div>
             ),
             description: (
@@ -240,7 +242,7 @@ function HiFi(props) {
             key: "hifi7",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide7} />
+                    <img alt='' src={overview_after_Slide7} />
                 </motion.div>
             ),
             description: (
@@ -270,7 +272,7 @@ function HiFi(props) {
                     withParallax={{ y: [-20, 20] }}
                     className="mockup"
                 >
-                    <img src={mockup} />
+                    <img alt='' src={mockup} />
                 </InteractiveElement>
                 <FramerCarousel
                     slides={slideData}
@@ -306,12 +308,19 @@ function HiFi(props) {
                         <b> inclusivity</b>.
                     </CaseItem>
                 </div>
-                <div className="graphic-guide">
-                    <img src={hifi_guide} />
-                </div>
-                <div className="graphic-types">
-                    <img src={hifi_types} />
-                </div>
+                <ExpandableImage
+                    className="graphic-guide"
+                    imgProps={{
+                        src: hifi_guide,
+                    }}
+                />
+                <ExpandableImage
+                    className="graphic-types"
+                    imgProps={{
+                        src: hifi_types,
+                    }}
+                />
+
                 <div className="hifi-arrow">{hifi_arrow_svg}</div>
                 <div className="floating1">
                     font used for the redesign (century gothic) as well as the
@@ -463,7 +472,7 @@ function RndIdeation(props) {
             key: "ideation1",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={ideation_Slide1} />
+                    <img alt='' src={ideation_Slide1} />
                 </motion.div>
             ),
             description: (
@@ -476,7 +485,7 @@ function RndIdeation(props) {
             key: "ideation2",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={ideation_Slide2} />
+                    <img alt='' src={ideation_Slide2} />
                 </motion.div>
             ),
             description: (
@@ -489,7 +498,7 @@ function RndIdeation(props) {
             key: "ideation3",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={ideation_Slide3} />
+                    <img alt='' src={ideation_Slide3} />
                 </motion.div>
             ),
             description: (
@@ -531,9 +540,12 @@ function RndIdeation(props) {
                         distinguishes the two:
                     </CaseItem>
                 </div>
-                <div className="ideation-graphic">
-                    <img src={ideation_png} />
-                </div>
+                <ExpandableImage
+                    className="ideation-graphic"
+                    imgProps={{
+                        src: ideation_png,
+                    }}
+                />
             </div>
             <div className="part2">
                 <div className="label">
@@ -583,7 +595,7 @@ function RndUserResearch(props) {
                     </span>
                 </motion.div>
                 <motion.div className="bitmoji a">
-                    <img src={research_Slide1_top} />
+                    <img alt='' src={research_Slide1_top} />
                 </motion.div>
                 <motion.div className="research-bubble a">
                     <div className="inner-text">
@@ -606,7 +618,7 @@ function RndUserResearch(props) {
                     </span>
                 </motion.div>
                 <motion.div className="bitmoji b">
-                    <img src={research_Slide1_mid} />
+                    <img alt='' src={research_Slide1_mid} />
                 </motion.div>
                 <motion.div className="research-bubble b">
                     <div className="inner-text">
@@ -629,7 +641,7 @@ function RndUserResearch(props) {
                     </span>
                 </motion.div>
                 <motion.div className="bitmoji c">
-                    <img src={research_Slide1_bot} />
+                    <img alt='' src={research_Slide1_bot} />
                 </motion.div>
                 <motion.div className="research-bubble c">
                     <div className="inner-text">
@@ -659,7 +671,7 @@ function RndUserResearch(props) {
             key: "research2",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={research_Slide2} />
+                    <img alt='' src={research_Slide2} />
                 </motion.div>
             ),
             description: (
@@ -794,7 +806,7 @@ function RndUserResearch(props) {
             <div className="persona persona-1">
                 <div className="left">
                     <div className="headshot">
-                        <img src={persona1} />
+                        <img alt='' src={persona1} />
                     </div>
                     <div className="school"></div>
                     <div className="description">
@@ -871,7 +883,7 @@ function RndUserResearch(props) {
             <div className="persona persona-2">
                 <div className="left">
                     <div className="headshot">
-                        <img src={persona2} />
+                        <img alt='' src={persona2} />
                     </div>
                     <div className="school"></div>
                     <div className="description">
@@ -1052,7 +1064,7 @@ function Overview(props) {
             key: "slide2",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide2} />
+                    <img alt='' src={overview_after_Slide2} />
                 </motion.div>
             ),
             description: (
@@ -1072,7 +1084,7 @@ function Overview(props) {
                         src={overview_navbar_Slide3}
                         className="slide-3-navbar"
                     />
-                    <img src={overview_after_Slide3} className="content" />
+                    <img alt='' src={overview_after_Slide3} className="content" />
                 </motion.div>
             ),
             description: (
@@ -1085,7 +1097,7 @@ function Overview(props) {
             key: "slide4",
             SlideComponent: (props) => (
                 <motion.div {...props}>
-                    <img src={overview_after_Slide4} />
+                    <img alt='' src={overview_after_Slide4} />
                 </motion.div>
             ),
             description: (
