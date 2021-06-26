@@ -53,12 +53,13 @@ export default function FramerCarousel({ slides, ...props }) {
                             <div
                                 className={clsx(
                                     "dot",
-                                    page === index && "selected"
+                                    page === index && "selected",
+                                    page === slides.length && "last"
                                 )}
                                 onClick={() => {
                                     setPage(index);
                                 }}
-                                key={"dot-"+ index}
+                                key={"dot-" + index}
                             >
                                 {page === index && (
                                     <motion.div

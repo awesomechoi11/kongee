@@ -64,7 +64,7 @@ export default function PlaygroundOverlay() {
         if (playgroundOverlayData.id !== "none") {
             overlayController.set("preActive");
             overlayController.start("active").then(() => {
-                console.log("reveals!!");
+                // console.log("reveals!!
                 mainController.start("reveal");
             });
         }
@@ -223,7 +223,7 @@ function PlaygroundLikes({ id, ...props }) {
         return firestore.doc(`/kongee/${id}`);
     }, []);
     const [value, loading, error] = useDocument(docRef);
-    if (value) console.log(value.get("likes"), `/kongee/${id}`);
+    // if (value) console.log(value.get("likes"), `/kongee/${id}`);
 
     useEffect(() => {
         if (!loading && value && !value.exists) {
