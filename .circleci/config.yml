@@ -31,6 +31,24 @@ jobs:
       - run:
           name: Run tests
           command: npm test
+  build:
+    docker:
+      - image: cimg/node:15.1
+
+    steps:
+      - checkout
+      - node/install-packages
+      - docker/build:
+          image: awesomechoi11/kongee 
+      - docker/publish:
+          docker-password: DOCKER_PASSWORD 
+          docker-username: DOCKER_LOGIN 
+          image: awesomechoi11/kongee 
+      
+      - run:
+          name: Deploy app to Digital Ocean Server via Docker
+          command: |
+            ssh -o StrictHostKeyChecking=no root@hello.dpunks.org "/bin/bash ./deploy_app.sh ariv3ra/$IMAGE_NAME:$TAG"
 
 workflows:
   # Below is the definition of your workflow.
