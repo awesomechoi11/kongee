@@ -70,7 +70,7 @@
 
 - [React](https://github.com/facebook/react)
 - [GraphQL](https://github.com/graphql/graphql-js)
-	- [Apollo Client](http://getbootstrap.com/)
+	- [Apollo Client](https://www.apollographql.com/)
 - [Framer Motion](https://github.com/framer/motion)
 - [Firebase](https://github.com/firebase/firebase-js-sdk)
 - [Recoil](https://github.com/facebookexperimental/Recoil)
