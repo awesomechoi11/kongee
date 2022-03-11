@@ -89,8 +89,8 @@ Made possible by:
 ---
 ## Check These Out
 
-- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
+- [thehumanexperience](https://github.com/awesomechoi11/thehumanexperience) - Portfolio of Chris Orozco, a photographer.
+- [researchio](https://github.com/amitmerchant1990/correo) - Main website for re-search.io, a place to find research opportunities.
 
 ---
 
