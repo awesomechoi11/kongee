@@ -90,7 +90,7 @@ Made possible by:
 ## Check These Out
 
 - [thehumanexperience](https://github.com/awesomechoi11/thehumanexperience) - Portfolio of Chris Orozco, a photographer.
-- [researchio](https://github.com/amitmerchant1990/correo) - Main website for re-search.io, a place to find research opportunities.
+- [researchio](https://github.com/awesomechoi11/researchio) - Main website for re-search.io, a place to find research opportunities.
 
 ---
 
